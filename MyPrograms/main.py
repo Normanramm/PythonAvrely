@@ -10,3 +10,4 @@ plt.plot(x, y)
 plt.title("График синуса")
 plt.show()
 
+# fffff
