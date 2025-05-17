@@ -1,4 +1,3 @@
-# Ячейка кода
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -10,4 +9,4 @@ plt.plot(x, y)
 plt.title("График синуса")
 plt.show()
 
-# fffff
+# f
