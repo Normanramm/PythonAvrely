@@ -7,7 +7,8 @@ if word in text:
 else:
     print(text)
 
-#______________________________________________________________
+# ______________________________________________________________
+
 
 class QuestionChecker:
     def __init__(self):
@@ -24,7 +25,8 @@ class QuestionChecker:
 checker = QuestionChecker()
 checker.ask_questions()
 
-#_____________________________________________________________
+# _____________________________________________________________
+
 
 class QuestionChecker:
     def __init__(self, origin_text="кот съел котлету"):
@@ -57,4 +59,3 @@ if __name__ == "__main__":
     user_text = input("Замена слова вручную: ")
     user_text2 = QuestionChecker(user_text)
     user_text2.print_questions()
-
