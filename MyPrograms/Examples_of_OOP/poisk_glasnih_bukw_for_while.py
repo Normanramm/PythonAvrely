@@ -18,12 +18,12 @@ class VowelCounter:
     def looking_vowels_two(self):
         """Ищем гласные буквы while"""
         count = 0
-        index = 0  
+        index = 0  # Начинаем с первого символа (индекс 0)
 
         while index < len(self.zapros):
             if self.zapros[index] in self.bukva:
                 count += 1
-            index += 1 
+            index += 1  # Переходим к следующему символу
 
         print(f'{self.positive_two} - {count} шт.')
 
