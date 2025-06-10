@@ -85,7 +85,7 @@ def get_parol(length=8, symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
     return parol
 
 print(get_parol(10))
-
+print(get_parol(10, "йцукенгшщзхъфывапролджэячсмитьбюё")) # русский алфавит, можно добавить второй аргумент
 # _________________________________________________________________
 import random
 
@@ -95,7 +95,7 @@ def get_parol(length=8, symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
     return result 
 
 print(get_parol(10))
-
+print(get_parol(10, "йцукенгшщзхъфывапролджэячсмитьбюё")) # русский алфавит, можно добавить второй аргумент
 # _________________________________________________________________
 import random
 
@@ -110,3 +110,4 @@ def get_parol(length=8, symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
 
 
 print(get_parol(10))
+print(get_parol(10, "йцукенгшщзхъфывапролджэячсмитьбюё")) # русский алфавит, можно добавить второй аргумент
