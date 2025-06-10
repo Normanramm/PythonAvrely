@@ -73,3 +73,40 @@ class PasswordChecker:
 if __name__ == "__main__":
     checker = PasswordChecker()
     checker.process_access()
+
+
+# ________________________________________________________________
+# Генерирует случайный пароль
+
+import random
+
+def get_parol(length=8, symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
+    parol = "".join([random.choice(symbols) for i in range(length)])
+    return parol
+
+print(get_parol(10))
+
+# _________________________________________________________________
+import random
+
+def get_parol(length=8, symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
+    for i in range(length):
+        result = "".join(random.choice(symbols) for i in range(length))
+    return result 
+
+print(get_parol(10))
+
+# _________________________________________________________________
+import random
+
+
+def get_parol(length=8, symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
+    i = 0
+    parol = ''
+    while i < length:
+        parol += random.choice(symbols)
+        i += 1
+    return parol
+
+
+print(get_parol(10))
