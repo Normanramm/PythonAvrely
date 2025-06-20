@@ -1,34 +1,19 @@
-def make_list():
-    """
-    Метод, который преобразует строку в список и наоборот.
-    Демонстрирует:
-    1. Преобразование строки в список
-    2. Модификацию элементов списка
-    3. Обратное преобразование списка в строку
-    4. Повторное преобразование строки в список
-    """
-    string = 'abc def ghi'
-    print(f'Исходная строка: {string}\n')
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
 
-    # Преобразование строки в список
-    string_list = string.split()
-    print(f'Список из строки: {string_list}\n')
-    
-    # Модификация элементов списка
-    string_list = [word.upper() for word in string_list]
-    print(f'Модифицированный список: {string_list}\n')
+    def add_tasks(self):
+        while True:
+            task = input('Добавьте дело: ')
+            if task == '':
+                break
+            self.tasks.append(task)
 
-    # Обратное преобразование списка в строку
-    big_string = ' '.join(string_list)
-    print(f'Строка из списка: {big_string}\n')
-
-    # Повторное преобразование строки в список
-    big_list = big_string.split()
-    print(f'Финальный список: {big_list}')
-
-    return string_list  # Возвращаем результат для дальнейшего использования
+    def show_tasks(self):
+        for i, task in enumerate(self.tasks, 1):
+            print(f'Добавленное дело {i}: {task}')
 
 
-# Вызываем функцию и выводим docstring
-print(make_list.__doc__)
-make_list()
+my_list = ToDoList()
+my_list.add_tasks()
+my_list.show_tasks()
