@@ -1,29 +1,23 @@
-class SentenceReplacer:
-    def __init__(self):
-        """Запрашивает у пользователя данные"""
-        self.sentence = input("Введите предложение: ")
-        self.old_word = input("Введите слово для поиска: ")
-        self.new_word = input("Введите слово для замены: ")
+# Получаем ввод от пользователя
+sentence = input("Введите предложение: ")
+old_word = input("Введите слово для поиска: ")
+new_word = input("Введите слово для замены: ")
 
-    def split_sentence(self):
-        """Разбивает предложение на список слов"""
-        self.words = self.sentence.split()
+# Разделяем предложение на слова
+words = sentence.split()
 
-    def replace_words(self):
-        """Заменяет все вхождения слова в списке"""
-        i = 0
-        while i < len(self.words):
-            if self.words[i] == self.old_word:
-                self.words[i] = self.new_word
-            i += 1
+# Инициализируем индекс для цикла while
+i = 0
 
-    def output_result(self):
-        """Выводит изменённое предложение"""
-        print("Измененное предложение:", ' '.join(self.words))
+# Используем цикл while для поиска и замены
+while i < len(words):
+    if old_word in words:
+        index = words.index(old_word)
+        words[index] = new_word
+    i += 1
 
-# === Основная часть программы ===
-if __name__ == "__main__":
-    replacer = SentenceReplacer()
-    replacer.split_sentence()
-    replacer.replace_words()
-    replacer.output_result()
+# Собираем предложение обратно в строку
+result = ' '.join(words)
+
+# Выводим результат
+print("Измененное предложение:", result)
