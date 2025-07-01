@@ -73,3 +73,31 @@ if __name__ == "__main__":
     replacer.split_sentence()
     replacer.replace_words()
     replacer.output_result()
+
+# Вариант 2 в классе __________________________________________________________________________________________
+
+class SentenceReplacer:
+    def __init__(self):
+        self.sentence = input("Введите предложение: ")
+        self.old_word = input("Введите слово для поиска: ")
+        self.new_word = input("Введите слово для замены: ")
+
+    def split_sentence(self):
+        self.words = self.sentence.split()
+
+    def replace_words(self):
+        i = 0
+        while i < len(self.words):
+            if self.words[i] == self.old_word:
+                self.words[i] = self.new_word
+            i += 1
+
+    def output_result(self):
+        print("Измененное предложение:", ' '.join(self.words))
+
+
+if __name__ == "__main__":
+    replacer = SentenceReplacer()
+    replacer.split_sentence()
+    replacer.replace_words()
+    replacer.output_result()

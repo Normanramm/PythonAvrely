@@ -1,11 +1,5 @@
 class SentenceReplacer:
     def __init__(self):
-        self.sentence = ""
-        self.old_word = ""
-        self.new_word = ""
-        self.words = []
-
-    def get_input(self):
         """Запрашивает у пользователя данные"""
         self.sentence = input("Введите предложение: ")
         self.old_word = input("Введите слово для поиска: ")
@@ -30,7 +24,6 @@ class SentenceReplacer:
 # === Основная часть программы ===
 if __name__ == "__main__":
     replacer = SentenceReplacer()
-    replacer.get_input()
     replacer.split_sentence()
     replacer.replace_words()
     replacer.output_result()
