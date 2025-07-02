@@ -1,19 +1,15 @@
-class NumbersReverser:
-    def __init__(self):
-        self.numbers = []
+import random
 
-    def number_input(self):
-        self.numbers = input("Введи текст: ").split()
+numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+attempts = 0
 
-    def number_replace(self):
-        self.numbers.reverse()
-
-    def number_join(self):
-        return ' '.join(self.numbers)
-
-
-if __name__ == '__main__':
-    numbers = NumbersReverser()
-    numbers.number_input()
-    numbers.number_replace()
-    print(f"Перевернутый текст: {numbers.number_join()}")
+while True:
+    choice = random.choice(numbers)
+    choice_2 = int(input("Выбери число от 1 до 10: "))
+    attempts += 1
+    
+    if choice == choice_2:
+        print(f"Угадал! Понадобилось попыток: {attempts}")
+        break
+    else:
+        print(f"Не угадал! Правильный ответ был: {choice} (попытка №{attempts})\n")
