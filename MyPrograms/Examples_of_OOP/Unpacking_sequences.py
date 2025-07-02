@@ -1,3 +1,13 @@
+# По простому_________________________________________
+qwerty = input()
+qwerty_2 = input()
+
+qwerty, qwerty_2 = qwerty_2, qwerty
+
+print(qwerty, qwerty_2)
+
+
+# C ООП______________________________________________
 class ValueSwapper:
     def __init__(self):
         self.first_value = ""
