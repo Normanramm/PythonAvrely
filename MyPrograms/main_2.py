@@ -1,31 +1,26 @@
-class NumberSorter:
+import data_sandbox
+
+class StudentSorter:
     def __init__(self):
-        self.input_str = ""
-        self.numbers = []
+        self.students = []
 
-    def get_input(self):
-        """Получает строку от пользователя"""
-        self.input_str = input("Введите числа через пробел: ")
+    def load_students(self):
+        """Загружает данные о студентах из внешнего модуля"""
+        self.students = data_sandbox.get_students()
 
-    def filter_numbers(self):
-        """Оставляет только целые положительные числа"""
-        self.numbers = []
-        for part in self.input_str.split():
-            if part.isdigit():  # Проверяем, что это целое число
-                self.numbers.append(int(part))
+    def sort_students(self):
+        """Сортирует студентов по оценке (второй элемент кортежа) по убыванию"""
+        self.students = sorted(self.students, key=lambda student: student[1], reverse=True)
 
-    def sort_numbers(self):
-        """Сортирует числа в порядке убывания"""
-        self.numbers.sort(reverse=True)
-
-    def show_result(self):
-        """Выводит результат"""
-        print("Отсортированные целые числа в порядке убывания:", *self.numbers)
+    def display_sorted_list(self):
+        """Выводит отсортированный список студентов"""
+        print("Отсортированные студенты по оценке (по убыванию):")
+        for name, score in self.students:
+            print(f"{name}: {score}")
 
 # === Основная часть программы ===
 if __name__ == "__main__":
-    sorter = NumberSorter()
-    sorter.get_input()
-    sorter.filter_numbers()
-    sorter.sort_numbers()
-    sorter.show_result()
+    sorter = StudentSorter()
+    sorter.load_students()
+    sorter.sort_students()
+    sorter.display_sorted_list()

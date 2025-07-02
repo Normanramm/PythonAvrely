@@ -73,13 +73,13 @@ class Sortirivshik:
         self.choice = input("Введите числа через пробел: ")
 
     def sortirovka(self):
-        self.numbers = []
+        self.number = []
         for i in self.choice.split():
             if i.isdigit():
-                self.numbers.append(int(i))
+                self.number.append(int(i))
 
     def sort(self):
-        self.choice_sort = sorted(self.numbers, reverse=True)
+        self.choice_sort = sorted(self.number, reverse=True)
 
     def result(self):
         print("Отсортированные целые числа в порядке убывания:", self.choice_sort)
@@ -91,3 +91,41 @@ if __name__ == '__main__':
     sortirivshik.sortirovka()
     sortirivshik.sort()
     sortirivshik.result()
+
+
+# Используем key для сортировки_______________________________________________
+
+import data_sandbox # тут готовый список студентов типо
+
+number = (data_sandbox.get_students()) # тут готовый список студентов типо
+choice_sort = sorted(number, key=lambda student: student[1], reverse=True)
+print("Отсортированные целые числа в порядке убывания:", choice_sort)
+
+# Используем key с OOP_______________________________________________________
+
+import data_sandbox # тут готовый список студентов типо
+
+class StudentSorter:
+    def __init__(self):
+        self.students = []
+
+    def load_students(self):
+        """Загружает данные о студентах из внешнего модуля"""
+        self.students = data_sandbox.get_students() # тут готовый список студентов типо
+
+    def sort_students(self):
+        """Сортирует студентов по оценке (второй элемент кортежа) по убыванию"""
+        self.students = sorted(self.students, key=lambda student: student[1], reverse=True)
+
+    def display_sorted_list(self):
+        """Выводит отсортированный список студентов"""
+        print("Отсортированные студенты по оценке (по убыванию):")
+        for name, score in self.students:
+            print(f"{name}: {score}")
+
+# === Основная часть программы ===
+if __name__ == "__main__":
+    sorter = StudentSorter()
+    sorter.load_students()
+    sorter.sort_students()
+    sorter.display_sorted_list()
