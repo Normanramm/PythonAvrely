@@ -1,6 +1,11 @@
-qwerty = input()
-qwerty_2 = input()
+choice = input("Введите числа через пробел: ")
+numbers = []
 
-qwerty, qwerty_2 = qwerty_2, qwerty
+for i in choice.split():
+    if i.isdigit():
+        numbers.append(int(i))
 
-print(qwerty, qwerty_2)
+choice_sort = sorted(numbers, reverse=True)
+print(choice_sort)
+ 
+

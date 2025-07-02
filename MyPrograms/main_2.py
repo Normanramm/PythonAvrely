@@ -1,26 +1,31 @@
-class ValueSwapper:
+class NumberSorter:
     def __init__(self):
-        self.first_value = ""
-        self.second_value = ""
+        self.input_str = ""
+        self.numbers = []
 
     def get_input(self):
-        """Запрашивает у пользователя два значения"""
-        self.first_value = input("Введите первое значение: ")
-        self.second_value = input("Введите второе значение: ")
+        """Получает строку от пользователя"""
+        self.input_str = input("Введите числа через пробел: ")
 
-    def swap_values(self):
-        """Меняет значения местами"""
-        self.first_value, self.second_value = self.second_value, self.first_value
+    def filter_numbers(self):
+        """Оставляет только целые положительные числа"""
+        self.numbers = []
+        for part in self.input_str.split():
+            if part.isdigit():  # Проверяем, что это целое число
+                self.numbers.append(int(part))
+
+    def sort_numbers(self):
+        """Сортирует числа в порядке убывания"""
+        self.numbers.sort(reverse=True)
 
     def show_result(self):
-        """Выводит результат после обмена"""
-        print("После обмена:")
-        print(f"Первое значение: {self.first_value}")
-        print(f"Второе значение: {self.second_value}")
+        """Выводит результат"""
+        print("Отсортированные целые числа в порядке убывания:", *self.numbers)
 
 # === Основная часть программы ===
 if __name__ == "__main__":
-    swapper = ValueSwapper()
-    swapper.get_input()
-    swapper.swap_values()
-    swapper.show_result()
+    sorter = NumberSorter()
+    sorter.get_input()
+    sorter.filter_numbers()
+    sorter.sort_numbers()
+    sorter.show_result()
