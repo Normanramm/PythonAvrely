@@ -129,3 +129,33 @@ if __name__ == "__main__":
     sorter.load_students()
     sorter.sort_students()
     sorter.display_sorted_list()
+
+
+# С использованием key, enumerate с OOP________________________________________
+
+import data_sandbox # тут готовый список студентов типо
+
+class StudentSorter:
+    def __init__(self):
+        self.students = []
+
+    def load_students(self):
+        """Загружает данные о студентах из внешнего модуля"""
+        self.students = data_sandbox.get_students()
+
+    def sort_students(self):
+        """Сортирует студентов по оценке (второй элемент кортежа) по убыванию"""
+        self.students = sorted(self.students, key=lambda student: student[1], reverse=True)
+
+    def display_sorted_list(self):
+        """Выводит отсортированный список студентов с нумерацией"""
+        print("Рейтинг студентов по убыванию оценок:")
+        for index, (name, score) in enumerate(self.students, start=1):
+            print(f"{index}. {name}: {score}")
+
+# === Основная часть программы ===
+if __name__ == "__main__":
+    sorter = StudentSorter()
+    sorter.load_students()
+    sorter.sort_students()
+    sorter.display_sorted_list()
