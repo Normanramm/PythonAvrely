@@ -1,3 +1,41 @@
+# прсотая версия ________________________________________________________
+import turtle
+
+colors = ('red', 'green', 'blue', 'yellow')
+lengths = (100, 100, 100, 100)  # Исправлено: кортеж вместо некорректного range
+
+t = turtle.Turtle()
+t.speed(1)  # Добавлена скорость для лучшего наблюдения
+t.width(3)  # Толщина линии
+
+for color, length in zip(colors, lengths):
+    t.color(color)
+    t.forward(length)
+    t.right(90)
+
+t.hideturtle()  # Скрыть черепаху после завершения
+turtle.done()
+
+# Версия с модулем из Letpy в котором хранятся цвета и длины ____________
+
+import turtle
+from data_sandbox import get_rainbow_colors
+
+colors = get_rainbow_colors(100)
+steps = range(1, 100)  
+
+turtle.bgcolor('black')
+
+for color, step in zip(colors, steps):
+    turtle.color(color)           
+    turtle.forward(step)  
+
+    turtle.right(40) # поставить 80 будет цветочек, 40 заветвление, step странный круг           
+
+turtle.done()
+
+
+# Цвета выбором цифр_____________________________________________________
 import turtle
 
 colors = [
