@@ -29,8 +29,9 @@ turtle.bgcolor('black')
 for color, step in zip(colors, steps):
     turtle.color(color)           
     turtle.forward(step)  
-
-    turtle.right(40) # поставить 80 будет цветочек, 40 заветвление, step странный круг           
+    
+    # поставить 80 будет цветочек, 40 заветвление, step странный круг
+    turtle.right(40)            
 
 turtle.done()
 
