@@ -177,3 +177,48 @@ if __name__ == "__main__":
     t.spiral_return()
 
     turtle.done()
+
+
+# Странный круг_____________________________________________________________
+import turtle
+from math import sin, cos, pi
+
+class FlowerSpiral:
+    def __init__(self):
+        self.t = turtle.Turtle()
+        self.t.speed(0)
+        turtle.bgcolor('black')
+        self.t.width(2)
+        
+        # Генерация корректных цветов без отрицательных значений
+        self.colors = [
+            (
+                abs(sin(i/15)), 
+                abs(cos(i/20)), 
+                abs(sin(i/25 + pi/4))
+            ) 
+            for i in range(200)
+        ]
+    
+    def draw(self):
+        for i, color in enumerate(self.colors):
+            self.t.color(color)
+            
+            # Динамические параметры для красивого рисунка
+            step = i * 0.5
+            angle = 45 + 10 * cos(i/10)  # Колебания угла
+            
+            self.t.forward(step)
+            self.t.right(angle)
+            
+            # Периодическое изменение толщины линии
+            if i % 20 == 0:
+                self.t.width(i/100 + 1)
+    
+    def run(self):
+        self.draw()
+        turtle.done()
+
+# Создание и запуск
+art = FlowerSpiral()
+art.run()
