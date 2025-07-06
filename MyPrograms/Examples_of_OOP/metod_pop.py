@@ -31,8 +31,6 @@ def number_choice():
     print(f"\n💤 Игра окончена!  Результат: {i} 💤")
     
     
-
-
 if __name__ == '__main__':
     number_choice()
 
