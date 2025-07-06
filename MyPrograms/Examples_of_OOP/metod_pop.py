@@ -22,13 +22,15 @@ def number_choice():
 
         if choice == numbers_choice:
             i += 1
-            print(f"🤑 Вы угадали число {numbers_choice}!")
+            print(f"🤑 Вы угадали, число {numbers_choice}!")
         else:
-            print(f"🤬 Вы не угадали число {numbers_choice}!")
+            print(f"🤬 Вы не угадали, число {numbers_choice}!")
 
         print(f"\nПобед: {i} из {len(range(1, 10)) - len(number)}")
 
-    print(f"\n💤 Игра окончена! Результат: {i}")
+    print(f"\n💤 Игра окончена!  Результат: {i} 💤")
+    
+    
 
 
 if __name__ == '__main__':
