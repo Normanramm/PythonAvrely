@@ -1,40 +1,37 @@
-# В Функции____________________________________________________________________________________________
 import random
 
-def number_guessing_game():
-    # Создаем список уникальных чисел (можно изменить диапазон и количество)
-    numbers = list(range(1, 10))  # Числа от 1 до 9
-    random.shuffle(numbers)
-    score = 0
-    
-    print("✨ Добро пожаловать в игру 'Угадай число'!")
-    print("Я загадал числа от 1 до 9, попробуй угадать их по порядку!")
-    
-    while numbers:
-        current_num = numbers.pop()  # Берем последнее число из списка
-        print(f"\nОсталось чисел: {len(numbers)}")
-        
-        try:
-            guess = int(input("Твой вариант: "))
-        except ValueError:
-            print("⚠️ Пожалуйста, вводи только числа!")
-            continue
-            
-        if guess == current_num:
-            score += 1
-            print(f"✅ Верно! Это было число {current_num}")
-        else:
-            print(f"❌ Не угадал! Это было число {current_num}")
-        
-        print(f"Текущий счет: {score}/{len(range(1, 10)) - len(numbers)}")
-    
-    print(f"\n🎮 Игра окончена! Твой финальный счет: {score}/9")
 
-# Запуск игры
+class NumberChoiceGame:
+    def __init__(self):
+        self.numbers = list(range(1, 10))
+        random.shuffle(self.numbers)
+        self.wins = 0
+
+    def start(self):
+        print("🤖 Игра началась!")
+
+        while self.numbers:
+            numbers_choice = self.numbers.pop()
+            print(f"\nОсталось чисел: {len(self.numbers)}")
+
+            try:
+                user_choice = int(input("Введите число от 1 до 9: "))
+            except ValueError:
+                print("☠ 🤡 Вы ввели не число 🤡 ☠")
+                continue
+
+            if user_choice == numbers_choice:
+                self.wins += 1
+                print(f"🤑 Вы угадали, число {numbers_choice}!")
+            else:
+                print(f"🤬 Вы не угадали, число {numbers_choice}!")
+
+            total_result = 9 - len(self.numbers)
+            print(f"\nПобед: {self.wins} из {total_result}")
+
+        print(f"\n💤 Игра окончена! Результат: {self.wins} 💤")
+
+
 if __name__ == "__main__":
-    number_guessing_game()
-
-
-
-
-
+    game = NumberChoiceGame()
+    game.start()
