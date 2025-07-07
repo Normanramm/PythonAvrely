@@ -1,27 +1,21 @@
-user_s = input()
-numbers = []
+book = {
+    "login": "letpy",
+    "parol": "1984",
+}
 
-for i in user_s.split():
-    if i.lstrip('-').isdigit():
-        numbers.append(int(i))
+for i in range(3):
+
+    login = input("Введите логин: ")
+    password = input("Введите пароль: ")
+    if login == book["login"] and password == book["parol"]:
+        print("Вы успешно вошли в систему")
+        break
     else:
-        print("Введите числа, дробные тоже нельзя!")
+        print("Неверный логин или пароль")
 
-print(sum(numbers))
+    print(f"Осталось попыток: {2 - i}")
 
-# _________________________________________________
-choice = input("Введите числа: ")
-numbers = []
-for item in choice.split():
-    try:
-        numbers.append(int(item))
-    except ValueError:
-        pass
-print(f"Сумма: {sum(numbers)}")
+else:
+    print("Вы не смогли войти в систему")
 
 
-#___________________________________________________
-
-choice = input("Введите числа через пробел: ")
-numbers = [int(num) for num in choice.split() if num.lstrip('-').isdigit()]
-print(f"Сумма чисел: {sum(numbers)}")
