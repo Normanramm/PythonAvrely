@@ -1,15 +1,11 @@
 from data_sandbox import get_random_search_queries
 
-# Получаем список запросов
+
 queries = get_random_search_queries()
+my_dict = {}
 
-# Создаем словарь для подсчета
-query_counts = {}
-
-# Подсчитываем количество каждого запроса
 for query in queries:
-    query_counts[query] = query_counts.get(query, 0) + 1
+    my_dict[query] = my_dict.get(query, 0) + 1
 
-# Выводим результаты (необязательно для проверки)
-for query, count in query_counts.items():
-    print(f"Запрос '{query}' встречается {count} раз(а)")
+for query, count in my_dict.items():
+    print(f"Запрос: ({query}) - {count} шт.")
