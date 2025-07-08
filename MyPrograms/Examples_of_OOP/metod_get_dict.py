@@ -66,3 +66,36 @@ class BookInfoPrinter:
 printer = BookInfoPrinter()
 printer.print_all_books()
 
+# Еще в классе ________________________________________________
+
+from data_sandbox import get_random_books
+
+class Book:
+    def __init__(self):
+        self.books = get_random_books()
+        self.info = {
+            'title': 'Название',
+            'author': 'Автор',
+            'year': 'Год',
+            'publisher': 'Издательство'
+        }
+
+    def __str__(self):
+        """Возвращает строковое представление всех книг"""
+        result = []
+        for book in self.books:
+            book_info = []
+            for en, ru in self.info.items():
+                book_info.append(f"{ru}: {book.get(en, 'Неизвестно')}")
+            result.append('\n'.join(book_info))
+        return '\n\n'.join(result)
+
+    def print_books(self):
+        """Печатает информацию о всех книгах"""
+        print(self.__str__())
+
+
+if __name__ == '__main__':
+    book_collection = Book()
+    book_collection.print_books()
+
