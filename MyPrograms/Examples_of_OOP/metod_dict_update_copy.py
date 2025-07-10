@@ -50,7 +50,6 @@ class UserSettingsManager:
         print("Новые настройки:", updated_settings)
 
 
-# === Точка входа в программу ===
 if __name__ == "__main__":
     manager = UserSettingsManager()
     manager.prompt_user_for_settings()
