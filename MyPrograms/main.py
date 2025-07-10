@@ -1,19 +1,19 @@
+book = {
+    "letpy": "1984",
+    "admin": "password"
+}
 
-# Списковое включение_________________________________________________________________
-from data_sandbox import get_random_search_queries
+for i in range(3):
+    login = input("Введите логин: ")
+    password = input("Введите пароль: ")
 
-queries = get_random_search_queries()
-my_dict = {}
+    if login in book and book[login] == password:
+        print("Вы успешно вошли в систему")
+        break
+    else:
+        print("Неверный логин или пароль")
 
-my_dict_two = [i for i in queries if my_dict.setdefault(i, queries.count(i))]
-print(my_dict)
-
-# Списковое включение_________________________________________________________________
-
-from data_sandbox import get_random_search_queries
-
-queries = get_random_search_queries()  
-my_dict = {}
-
-my_dict_two = [i for i in queries if i not in my_dict.keys() and my_dict.setdefault(i, queries.count(i))]
-print(my_dict)
+    print(f"Осталось попыток: {2 - i}\n")
+    
+else:
+    print("Вы не смогли войти в систему")
