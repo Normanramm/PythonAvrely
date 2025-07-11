@@ -159,3 +159,21 @@ if __name__ == "__main__":
     sorter.load_students()
     sorter.sort_students()
     sorter.display_sorted_list()
+
+
+
+#_________________________________________________________
+
+from data_sandbox import get_random_search_queries
+
+queries = get_random_search_queries()
+my_dict = {}
+
+for query in queries:
+    my_dict.setdefault(query, 0)
+    my_dict[query] += 1
+
+
+query_count_list = [(query, count) for query, count in my_dict.items()]
+sorted_query = sorted(query_count_list, key=lambda x: x[1])
+print(sorted_query)
