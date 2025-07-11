@@ -177,3 +177,46 @@ for query in queries:
 query_count_list = [(query, count) for query, count in my_dict.items()]
 sorted_query = sorted(query_count_list, key=lambda x: x[1])
 print(sorted_query)
+
+
+# ________________________________________________________
+
+from data_sandbox import get_random_search_queries
+
+# Получаем список поисковых запросов
+queries = get_random_search_queries()
+
+# Считаем, сколько раз встречается каждый запрос
+my_dict = {}
+
+for query in queries:
+    my_dict[query] = my_dict.get(query, 0) + 1
+
+# Преобразуем в список кортежей и сортируем по количеству (по возрастанию)
+sorted_query = sorted(my_dict.items(), key=lambda x: x[1])
+
+# Выводим результат
+print(sorted_query)
+
+
+# ________________________________________________________
+
+
+from data_sandbox import get_random_search_queries
+
+# Получаем список поисковых запросов
+queries = get_random_search_queries()
+
+# Считаем частоту запросов
+my_dict = {}
+for query in queries:
+    my_dict[query] = my_dict.get(query, 0) + 1
+
+# Преобразуем словарь в список кортежей
+query_count_list = list(my_dict.items())
+
+# Сортируем список на месте методом sort()
+query_count_list.sort(key=lambda x: x[1])
+
+# Выводим результат
+print(query_count_list)
