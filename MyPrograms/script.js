@@ -23,7 +23,6 @@ function initGame() {
   steps = 0;
   gameWon = false;
   document.getElementById("steps").textContent = steps;
-  document.getElementById("message").textContent = "";
   renderMaze();
 }
 
@@ -83,14 +82,15 @@ function movePlayer(dx, dy) {
 
     if (maze[newY][newX] === 'E') {
       gameWon = true;
-      document.getElementById("message").textContent = "🎉 Поздравляем! Вы нашли выход!";
+      document.getElementById("final-steps").textContent = steps;
+      document.getElementById("victory-screen").classList.add("visible");
     }
 
     renderMaze();
   }
 }
 
-// Обработка клавиш
+// Обработка клавиш (ПК)
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "ArrowUp":
@@ -112,8 +112,101 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Кнопка "Начать заново"
-document.getElementById("restart").addEventListener("click", initGame);
+// Мобильное управление
+function setupMobileControls() {
+  const upBtn = document.getElementById("up");
+  const downBtn = document.getElementById("down");
+  const leftBtn = document.getElementById("left");
+  const rightBtn = document.getElementById("right");
 
-// Запуск игры при загрузке
-window.onload = initGame;
+  const handleUp = () => movePlayer(0, -1);
+  const handleDown = () => movePlayer(0, 1);
+  const handleLeft = () => movePlayer(-1, 0);
+  const handleRight = () => movePlayer(1, 0);
+
+  // touchstart
+  upBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    handleUp();
+  });
+  downBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    handleDown();
+  });
+  leftBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    handleLeft();
+  });
+  rightBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    handleRight();
+  });
+
+  // click (для теста на ПК)
+  upBtn.addEventListener("click", handleUp);
+  downBtn.addEventListener("click", handleDown);
+  leftBtn.addEventListener("click", handleLeft);
+  rightBtn.addEventListener("click", handleRight);
+}
+
+// Сделать блок управления перетаскиваемым
+function makeDraggable(element) {
+  let pos = { x: 0, y: 0, startX: 0, startY: 0 };
+
+  element.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    pos.startX = touch.clientX;
+    pos.startY = touch.clientY;
+    pos.x = element.offsetLeft;
+    pos.y = element.offsetTop;
+    element.style.opacity = "0.8";
+  }, { passive: false });
+
+  element.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    let dx = touch.clientX - pos.startX;
+    let dy = touch.clientY - pos.startY;
+
+    const maxX = window.innerWidth - element.offsetWidth;
+    const maxY = window.innerHeight - element.offsetHeight;
+
+    let newX = pos.x + dx;
+    let newY = pos.y + dy;
+
+    newX = Math.max(0, Math.min(newX, maxX));
+    newY = Math.max(0, Math.min(newY, maxY));
+
+    element.style.left = newX + "px";
+    element.style.top = newY + "px";
+    element.style.bottom = "auto";
+    element.style.right = "auto";
+  }, { passive: false });
+
+  element.addEventListener("touchend", () => {
+    element.style.opacity = "1";
+    element.style.left = element.offsetLeft + "px";
+    element.style.top = element.offsetTop + "px";
+    element.style.bottom = "auto";
+    element.style.right = "auto";
+  });
+}
+
+// Кнопка "Начать заново"
+document.getElementById("restart").addEventListener("click", () => {
+  initGame();
+});
+
+// Кнопка "Играть снова"
+document.getElementById("play-again").addEventListener("click", () => {
+  document.getElementById("victory-screen").classList.remove("visible");
+  initGame();
+});
+
+// Запуск игры
+window.onload = function () {
+  initGame();
+  setupMobileControls();
+  makeDraggable(document.querySelector(".mobile-controls"));
+};
