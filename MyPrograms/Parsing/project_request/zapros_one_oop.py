@@ -7,13 +7,16 @@ class UserPhotoManager:
     def __init__(self):
         self.base_url = 'https://jsonplaceholder.typicode.com'
         self.photos_dir = 'downloaded_photos'  # Папка для сохранения фото
-        os.makedirs(self.photos_dir, exist_ok=True)  # Создаем папку, если она не существует
+        # Создаем папку, если она не существует
+        os.makedirs(self.photos_dir, exist_ok=True)
 
     def add_user(self, user_data):
         url = f'{self.base_url}/users'
         response = requests.post(url, json=user_data)
         if response.status_code == 201:
             print("Пользователь успешно добавлен:")
+            # indent=4 Позволяет форматировать JSON с отступами (в данном случае — 4 пробела на уровень вложенности). Это делает JSON читаемым для человека.
+            # ensure_ascii=False Позволяет выводить не только ASCII-символы, но и другие символы, такие как кириллица и символы юникода.
             print(json.dumps(response.json(), indent=4, ensure_ascii=False))
         else:
             print(
