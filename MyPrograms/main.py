@@ -1,6 +1,6 @@
 import requests
 
-url = "https://letpy.com/handbook/"
+url = 'https://jsonplaceholder.typicode.com'
 
 response = requests.get(url)
 
