@@ -7,10 +7,13 @@ class TicTacToe:
         self.root = tk.Tk()
         self.root.title("Крестики нолики")
         # self.root.geometry("400x400")  # Отключаем фиксированный размер
-        self.root.iconbitmap("icon1.ico") # создает иконку
+        self.root.iconbitmap("icon1.ico")  # создает иконку
 
         self.buttons = []  # Сюда будем сохранять все кнопки
 
+        # Предназначен для внутреннего использования при инициализации. Принцип инкапсуляции: объект должен быть готов к работе сразу после создания.
+        # Пользователь класса (или ты сам завтра) не должен помнить, что нужно дополнительно вызывать create_widgets().
+        # Так объект будет готов к работе сразу после создания.
         self.create_widgets()
 
     def create_widgets(self):
@@ -24,7 +27,7 @@ class TicTacToe:
                 height=2  # Высота кнопки
             )
             # Размещаем кнопку в сетке(номер строки, номер столбца)
-            button.grid(row=i//3, column=i % 3) # Размещаем кнопку в сетке
+            button.grid(row=i//3, column=i % 3)  # Размещаем кнопку в сетке
             self.buttons.append(button)  # Добавляем кнопку в список
 
     def run(self):
