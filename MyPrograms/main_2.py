@@ -27,7 +27,7 @@ class TicTacToe:
                 height=2  # Высота кнопки
             )
             # Размещаем кнопку в сетке(номер строки, номер столбца)
-            button.grid(row=i//3, column=i % 3)  # Размещаем кнопку в сетке
+            button.grid(row=i//3, column=i % 3)  # Размещаем кнопку в сетке, тут можно добавить другие параметры
             self.buttons.append(button)  # Добавляем кнопку в список
 
     def run(self):
