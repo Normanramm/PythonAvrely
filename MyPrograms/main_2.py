@@ -16,6 +16,19 @@ class TicTacToe:
         # Так объект будет готов к работе сразу после создания.
         self.create_widgets()
 
+    def check_winner(self):
+        """Проверка победителя."""
+        winning_combinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],  # Горизонтальные линии
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],  # Вертикальные линии
+            [0, 4, 8], [2, 4, 6]              # Диагональные линии
+        ]
+        for combo in winning_combinations:
+            a, b, c = combo
+            if self.buttons[a]["text"] == self.buttons[b]["text"] == self.buttons[c]["text"] != "":
+                return True
+        return False
+
     def on_click(self, index):
         """Функция обработки клика, отвечает за ход игрока. 
             Она получает на вход номер кнопки index, которую нажали, и выполняет три важных действия:
@@ -28,6 +41,11 @@ class TicTacToe:
         if self.buttons[index]["text"] == "":
             # Записываем X или O
             self.buttons[index]["text"] = self.current_player
+
+            # Проверяем, есть ли победитель
+            if self.check_winner():
+                # Временный вывод в консоль(позже заменить на всплывающее окно.)
+                print(f"Победил {self.current_player}!")
 
             # Меняем игрока
             if self.current_player == "X":
