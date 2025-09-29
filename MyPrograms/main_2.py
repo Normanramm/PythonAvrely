@@ -26,6 +26,10 @@ class TicTacToe:
         for combo in winning_combinations:
             a, b, c = combo
             if self.buttons[a]["text"] == self.buttons[b]["text"] == self.buttons[c]["text"] != "":
+                # Закрашиваем победную линию
+                self.buttons[a].config(bg="lightgreen")
+                self.buttons[b].config(bg="lightgreen")
+                self.buttons[c].config(bg="lightgreen")
                 return True
         return False
 
