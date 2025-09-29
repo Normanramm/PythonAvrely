@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 
 class TicTacToe:
@@ -49,9 +50,12 @@ class TicTacToe:
             # Проверяем, есть ли победитель
             if self.check_winner():
                 # Временный вывод в консоль(позже заменить на всплывающее окно.)
-                print(f"Победил {self.current_player}!")
+                # Всплывающее окно с победителем
+                messagebox.showinfo(
+                    "Победа!", f"Победил {self.current_player}!")
             elif all(button["text"] != "" for button in self.buttons):  # Проверяем ничью
-                print("Ничья!")  # Выводим сообщение о ничьей
+                # Всплывающее окно с ничьей
+                messagebox.showinfo("Ничья!", "Игра окончена. Ничья!")
 
             # Меняем игрока
             if self.current_player == "X":
