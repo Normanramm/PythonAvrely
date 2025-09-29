@@ -63,6 +63,15 @@ class TicTacToe:
             else:
                 self.current_player = "X"
 
+    def reset_game(self):
+        """Функция для сброса игры. Будет вызываться при нажатии на кнопку "Новая игра"."""
+        # global current_player(это тоже самое, вообще в данном случае удалить)!!!
+        self.current_player = "X"  # Первый ход всегда за "X"
+
+        # Очищаем все кнопки, возвращая им стандартный цвет и убирая текст
+        for button in self.buttons:
+            button.config(text="", bg="SystemButtonFace")
+
     def create_widgets(self):
         """Создаёт игровое поле из 9 кнопок."""
         for i in range(9):  # Создаём 9 кнопок (от 0 до 8)
@@ -82,6 +91,11 @@ class TicTacToe:
 
     def run(self):
         """Запускает главное окно."""
+        # Окно с кнопкой "Новая игра"
+        reset_button = tk.Button(self.root, text="Новая игра", font=(
+            "Arial", 14), command=self.reset_game)
+        reset_button.grid(row=3, column=0, columnspan=3, sticky="we")
+        # Запускаем главное окно
         self.root.mainloop()
 
 
