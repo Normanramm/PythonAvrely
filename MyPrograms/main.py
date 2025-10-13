@@ -37,3 +37,9 @@ img = qr.make_image(
 
 # Открытие изображения
 img.show()
+
+# сохраненинг изображения(можно использовать другой формат jpg, png, gif, bmp)
+img.save("D:\\Downloaded files Brauser\\qr_code.png")
+
+
+print("✅ QR-код успешно создан!")
