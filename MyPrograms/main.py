@@ -1,13 +1,19 @@
-def hero(bullets, dragons):
-    qwerty = bullets // dragons
-    if qwerty % 2 == 0 and bullets > dragons:
-        return True
-    return False
-    
-  
-print(hero(10, 5)) # true
-print(hero(7, 4)) # false
-print(hero(4, 5)) # false
-print(hero(100, 40)) # true
-print(hero(1500, 751)) # false
-print(hero(0, 1)) #false
+import qrcode
+
+data = input("Введите ссылку: ")
+
+# используем класс QRCode из библиотеки qrcode. Этот класс позволяет настроить все параметры QR-кода
+
+"""
+Варианты уровней коррекции:
+ERROR_CORRECT_L — позволяет исправить до 7% повреждений. Это самый низкий уровень защиты.
+ERROR_CORRECT_M — исправление до 15% повреждений. Это стандартный уровень.
+ERROR_CORRECT_Q — исправление до 25% повреждений. Более высокий уровень защиты.
+ERROR_CORRECT_H — позволяет исправить до 30% повреждений. Это максимальная защита.
+"""
+qr = qrcode.QRCode(
+    version=1, # Определяет размер QR-кода, который может изменяться от 1 до 40.
+    error_correction=qrcode.constants.ERROR_CORRECT_L, # параметр определяет уровень коррекции ошибок. Он влияет на то, насколько QR-код будет устойчив к повреждениям
+    box_size=10, # размер квадрата в пикселях
+    border=4, # устанавливает толщину рамки вокруг QR-кода в ячейках
+)
