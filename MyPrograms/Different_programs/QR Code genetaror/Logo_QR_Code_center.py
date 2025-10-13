@@ -15,6 +15,7 @@ qr.add_data(data)
 qr.make(fit=True)
 
 # 3. Генерация изображения QR-кода
+# Метод .convert('RGB') необходим для того, чтобы изображение было в цветном формате, который можно редактировать (вставить логотип).
 img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
 
 # 4. Загрузка логотипа
