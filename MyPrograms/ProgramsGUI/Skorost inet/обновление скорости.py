@@ -43,3 +43,7 @@ def check_and_update():
 
 if __name__ == "__main__":
     check_and_update()
+
+
+# Удалить непраивльный pip uninstall speedtest -y
+# установить правильный pip install speedtest-cli
