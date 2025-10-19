@@ -2,9 +2,9 @@ import sqlite3  # Импорт модуля для работы с SQLite
 
 
 class Calculator:
-  
+
     def calculate(self, a, b, opr):
-  
+
         if opr == 1:
             return a + b
         elif opr == 2:
@@ -24,8 +24,10 @@ class DatabaseManager:
         """
         Инициализирует соединение с базой данных и создаёт таблицу при необходимости.
         """
-        self.conn = sqlite3.connect(db_name)  # Подключение к БД
-        self.cursor = self.conn.cursor()      # Создание курсора для выполнения SQL-запросов
+        self.conn = sqlite3.connect(db_name)  # Подключение к
+        self.conn.row_factory = sqlite3.Row
+        # Создание курсора для выполнения SQL-запросов
+        self.cursor = self.conn.cursor()
         self._create_table()                  # Вызов метода создания таблицы
 
     def _create_table(self):
@@ -61,7 +63,8 @@ class DatabaseManager:
         Параметры:
         - limit: количество записей для получения (по умолчанию 10)
         """
-        self.cursor.execute("SELECT * FROM operations ORDER BY timestamp DESC LIMIT ?", (limit,))
+        self.cursor.execute(
+            "SELECT * FROM operations ORDER BY timestamp DESC LIMIT ?", (limit,))
         return self.cursor.fetchall()
 
     def close(self):
@@ -91,7 +94,8 @@ class App:
         print("=== Калькулятор ===")
         a = int(input("Введите первое число: "))
         b = int(input("Введите второе число: "))
-        opr = int(input("Выберите операцию (1 - сложение, 2 - вычитание, 3 - умножение): "))
+        opr = int(
+            input("Выберите операцию (1 - сложение, 2 - вычитание, 3 - умножение): "))
 
         result = self.calculator.calculate(a, b, opr)
         print(f"Результат: {result}")
@@ -103,23 +107,19 @@ class App:
         self.db.close()  # Закрываем соединение с БД
 
     def show_history(self):
-        """
-        Выводит на экран последние 10 операций в читаемом виде.
-        """
         print("\n--- История последних 10 операций ---")
         for row in self.db.get_history():
             op_name = {
                 1: "+",
                 2: "-",
                 3: "*"
-            }.get(row[3], "Неизвестная операция")
+            }.get(row["operation"], "Неизвестная операция")
 
-            print(f"ID: {row[0]} | "
-                  f"{row[1]} {op_name} {row[2]} = {row[4]} | "
-                  f"{row[5]}")
+            print(f"ID: {row['id']} | "
+                f"{row['a']} {op_name} {row['b']} = {row['result']} | "
+                f"{row['timestamp']}")
 
 
 if __name__ == "__main__":
     app = App()   # Создаём экземпляр приложения
     app.run()     # Запускаем его
-
