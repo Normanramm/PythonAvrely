@@ -1,17 +1,24 @@
-def find_short(s):
-    words = s.split()  # Разбиваем строку на слова
-    min_length = min(len(word) for word in words)  # Находим минимальную длину
-    short_words = [word for word in words if len(word) == min_length]  # Все слова такой длины
-    return min_length, short_words
+def solution(s):
+    if not s:
+        return s  
+    
+    result = [s[0]]  
+    
+    for char in s[1:]:
+        if char.isupper():
+            result.append(' ')  
+        result.append(char)
+    
+    return ''.join(result)
+    
+print(solution("camelCase"))         
+print(solution("breakCamelCase"))    
+print(solution("HelloWorld"))        
+print(solution("A"))                 
+print(solution(""))                  
+print(solution("oneTwoThree"))       
 
-# Пример использования
-s = "bitcoin take over the world maybe who knows perhaps"
-length, words = find_short(s)
-
-print(f"Самая короткая длина: {length}")
-print(f"Слова с этой длиной: {words}")
 
 
-   
 
 
