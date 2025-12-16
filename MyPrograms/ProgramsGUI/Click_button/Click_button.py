@@ -13,13 +13,13 @@ class MouseWigglerApp:
         self.root.geometry("800x500")
         self.root.resizable(False, False)
 
-        # Фон — светло-серый, как в современных UI
+        # Фон 
         self.root.configure(bg="#f8f9fa")
 
         self.center_window()
         self.wiggling = False
 
-        # === Верхняя панель (заголовок) ===
+        # Верхняя панель (заголовок)
         header_frame = tk.Frame(root, bg="#343a40", height=80)
         header_frame.pack(fill="x")
         header_frame.pack_propagate(False)  # сохраняем высоту
@@ -34,7 +34,7 @@ class MouseWigglerApp:
         )
         self.header_label.pack(pady=20)
 
-        # === Основное содержимое ===
+        # Основное содержимое 
         main_frame = tk.Frame(root, bg="#f8f9fa")
         main_frame.pack(fill="both", expand=True, padx=40, pady=30)
 
@@ -72,7 +72,7 @@ class MouseWigglerApp:
         )
         self.start_button.pack(pady=(0, 25))
 
-        # Кнопка "ОСТАНОВИТЬ" — ЕЩЁ КРУПНЕЕ И КРАСНЕЕ
+        # Кнопка "ОСТАНОВИТЬ" 
         stop_font = font.Font(family="Segoe UI", size=24, weight="bold")
         self.stop_button = tk.Button(
             main_frame,
