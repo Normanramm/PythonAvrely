@@ -13,7 +13,7 @@ class MouseWigglerApp:
         self.root.geometry("800x500")
         self.root.resizable(False, False)
 
-        # Фон 
+        # Фон
         self.root.configure(bg="#f8f9fa")
 
         self.center_window()
@@ -34,7 +34,7 @@ class MouseWigglerApp:
         )
         self.header_label.pack(pady=20)
 
-        # Основное содержимое 
+        # Основное содержимое
         main_frame = tk.Frame(root, bg="#f8f9fa")
         main_frame.pack(fill="both", expand=True, padx=40, pady=30)
 
@@ -72,7 +72,7 @@ class MouseWigglerApp:
         )
         self.start_button.pack(pady=(0, 25))
 
-        # Кнопка "ОСТАНОВИТЬ" 
+        # Кнопка "ОСТАНОВИТЬ"
         stop_font = font.Font(family="Segoe UI", size=24, weight="bold")
         self.stop_button = tk.Button(
             main_frame,
@@ -100,14 +100,18 @@ class MouseWigglerApp:
 
     def wiggle_mouse(self):
         screen_width, screen_height = pyautogui.size()
-        while self.wiggling:
-            dx = random.randint(-40, 40)
-            dy = random.randint(-40, 40)
-            x, y = pyautogui.position()
-            new_x = max(0, min(screen_width - 1, x + dx))
-            new_y = max(0, min(screen_height - 1, y + dy))
-            pyautogui.moveTo(new_x, new_y, duration=0.03)
-            time.sleep(0.1)
+        try:
+            while self.wiggling:
+                dx = random.randint(-40, 40)
+                dy = random.randint(-40, 40)
+                x, y = pyautogui.position()
+                new_x = max(0, min(screen_width - 1, x + dx))
+                new_y = max(0, min(screen_height - 1, y + dy))
+                pyautogui.moveTo(new_x, new_y, duration=0.03)
+                time.sleep(0.1)
+        except Exception as e:
+            print(f"Ошибка: {e}")
+            self.stop_wiggling()
 
     def start_wiggling(self):
         if not self.wiggling:
