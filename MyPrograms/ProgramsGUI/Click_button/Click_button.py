@@ -159,8 +159,8 @@ class MouseWigglerApp:
         try:
             while self.wiggling:
                 # Движение мыши
-                dx = random.randint(-40, 40)
-                dy = random.randint(-40, 40)
+                dx = random.randint(-1, 1)
+                dy = random.randint(-1, 1)
                 x, y = pyautogui.position()
                 new_x = max(10, min(screen_width - 10, x + dx))
                 new_y = max(10, min(screen_height - 10, y + dy))
