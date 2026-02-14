@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор | Современный дизайн</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .calculator:hover {
+            transform: translateY(-5px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .display {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #e9ecef;
+        }
+
+        .expression {
+            font-size: 16px;
+            color: #6c757d;
+            min-height: 24px;
+            text-align: right;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+        }
+
+        .result {
+            font-size: 48px;
+            font-weight: 600;
+            color: #333;
+            text-align: right;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            margin-top: 10px;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #f8f9fa;
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .operator {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .operator:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .equals {
+            background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+            color: white;
+        }
+
+        .equals:hover {
+            background: linear-gradient(135deg, #96c93d 0%, #00b09b 100%);
+        }
+
+        .clear {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .clear:hover {
+            background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+        }
+
+        .delete {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            color: #333;
+        }
+
+        .number {
+            background: white;
+            font-weight: 600;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        /* Анимация нажатия */
+        @keyframes press {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        .pressed {
+            animation: press 0.1s ease;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 480px) {
+            .calculator {
+                padding: 20px;
+            }
+
+            button {
+                padding: 15px;
+                font-size: 18px;
+            }
+
+            .result {
+                font-size: 36px;
+            }
+        }
+
+        /* История вычислений */
+        .history {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border: 2px solid #e9ecef;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .history h3 {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-item {
+            padding: 8px;
+            border-bottom: 1px solid #dee2e6;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            color: #495057;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .clear-history {
+            background: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .clear-history:hover {
+            background: #c82333;
+        }
+
+        /* Индикатор ошибки */
+        .error {
+            color: #dc3545 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="header">
+            <h1>🧮 Калькулятор</h1>
+            <p>Простой и стильный</p>
+        </div>
+
+        <!-- Дисплей -->
+        <div class="display">
+            <div class="expression" id="expression"></div>
+            <div class="result" id="result">0</div>
+        </div>
+
+        <!-- Кнопки -->
+        <div class="buttons">
+            <button class="clear" onclick="clearAll()">C</button>
+            <button class="delete" onclick="deleteLast()">⌫</button>
+            <button class="operator" onclick="appendOperator('/')">÷</button>
+            <button class="operator" onclick="appendOperator('*')">×</button>
+            
+            <button class="number" onclick="appendNumber('7')">7</button>
+            <button class="number" onclick="appendNumber('8')">8</button>
+            <button class="number" onclick="appendNumber('9')">9</button>
+            <button class="operator" onclick="appendOperator('-')">−</button>
+            
+            <button class="number" onclick="appendNumber('4')">4</button>
+            <button class="number" onclick="appendNumber('5')">5</button>
+            <button class="number" onclick="appendNumber('6')">6</button>
+            <button class="operator" onclick="appendOperator('+')">+</button>
+            
+            <button class="number" onclick="appendNumber('1')">1</button>
+            <button class="number" onclick="appendNumber('2')">2</button>
+            <button class="number" onclick="appendNumber('3')">3</button>
+            <button class="operator" onclick="appendSquareRoot()">√</button>
+            
+            <button class="number zero" onclick="appendNumber('0')" style="grid-column: span 2;">0</button>
+            <button class="number" onclick="appendNumber('.')">.</button>
+            <button class="equals" onclick="calculate()">=</button>
+        </div>
+
+        <!-- История вычислений -->
+        <div class="history">
+            <h3>
+                📜 История
+                <button class="clear-history" onclick="clearHistory()">Очистить</button>
+            </h3>
+            <div id="history-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Переменные для хранения состояния калькулятора
+        let currentInput = '';
+        let previousInput = '';
+        let operator = null;
+        let shouldResetScreen = false;
+        let history = JSON.parse(localStorage.getItem('calculatorHistory')) || [];
+
+        // Элементы DOM
+        const expressionDisplay = document.getElementById('expression');
+        const resultDisplay = document.getElementById('result');
+        const historyList = document.getElementById('history-list');
+
+        // Инициализация
+        function init() {
+            updateDisplay();
+            renderHistory();
+            
+            // Добавляем поддержку клавиатуры
+            document.addEventListener('keydown', handleKeyboardInput);
+        }
+
+        // Обработка клавиатуры
+        function handleKeyboardInput(e) {
+            const key = e.key;
+            
+            if (key >= '0' && key <= '9') appendNumber(key);
+            else if (key === '.') appendNumber('.');
+            else if (key === '+' || key === '-' || key === '*' || key === '/') appendOperator(key);
+            else if (key === 'Enter' || key === '=') calculate();
+            else if (key === 'Escape') clearAll();
+            else if (key === 'Backspace') deleteLast();
+            else if (key === '%') calculatePercentage();
+            
+            // Анимация нажатия на кнопку
+            const button = Array.from(document.querySelectorAll('button')).find(
+                btn => btn.textContent === key || 
+                       (key === '/' && btn.textContent === '÷') ||
+                       (key === '*' && btn.textContent === '×')
+            );
+            
+            if (button) {
+                button.classList.add('pressed');
+                setTimeout(() => button.classList.remove('pressed'), 100);
+            }
+        }
+
+        // Добавление числа
+        function appendNumber(number) {
+            if (shouldResetScreen) {
+                currentInput = '';
+                shouldResetScreen = false;
+            }
+            
+            if (number === '.' && currentInput.includes('.')) return;
+            if (number === '.' && currentInput === '') currentInput = '0';
+            
+            currentInput += number;
+            updateDisplay();
+        }
+
+        // Добавление оператора
+        function appendOperator(op) {
+            if (currentInput === '' && previousInput === '') return;
+            
+            if (previousInput !== '' && currentInput !== '') {
+                calculate();
+            }
+            
+            operator = op;
+            previousInput = currentInput || previousInput;
+            currentInput = '';
+            updateDisplay();
+        }
+
+        // Вычисление результата
+        function calculate() {
+            if (previousInput === '' || currentInput === '' || !operator) return;
+            
+            let result;
+            const prev = parseFloat(previousInput);
+            const current = parseFloat(currentInput);
+            
+            if (isNaN(prev) || isNaN(current)) return;
+            
+            switch (operator) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*':
+                    result = prev * current;
+                    break;
+                case '/':
+                    if (current === 0) {
+                        showError('Деление на ноль невозможно');
+                        return;
+                    }
+                    result = prev / current;
+                    break;
+                default:
+                    return;
+            }
+            
+            // Округляем до 10 знаков после запятой
+            result = Math.round(result * 10000000000) / 10000000000;
+            
+            // Добавляем в историю
+            addToHistory(`${prev} ${getOperatorSymbol(operator)} ${current} = ${result}`);
+            
+            currentInput = result.toString();
+            operator = null;
+            previousInput = '';
+            shouldResetScreen = true;
+            
+            updateDisplay();
+        }
+
+        // Квадратный корень
+        function appendSquareRoot() {
+            if (currentInput === '') return;
+            
+            const num = parseFloat(currentInput);
+            if (num < 0) {
+                showError('Корень из отрицательного числа');
+                return;
+            }
+            
+            const result = Math.sqrt(num);
+            addToHistory(`√${num} = ${result}`);
+            
+            currentInput = result.toString();
+            shouldResetScreen = true;
+            updateDisplay();
+        }
+
+        // Процент
+        function calculatePercentage() {
+            if (currentInput === '') return;
+            
+            const num = parseFloat(currentInput);
+            const result = num / 100;
+            
+            currentInput = result.toString();
+            updateDisplay();
+        }
+
+        // Очистка всего
+        function clearAll() {
+            currentInput = '';
+            previousInput = '';
+            operator = null;
+            shouldResetScreen = false;
+            updateDisplay();
+        }
+
+        // Удаление последнего символа
+        function deleteLast() {
+            if (currentInput !== '') {
+                currentInput = currentInput.slice(0, -1);
+            } else if (operator !== null) {
+                operator = null;
+                previousInput = '';
+            }
+            updateDisplay();
+        }
+
+        // Обновление дисплея
+        function updateDisplay() {
+            // Обновляем выражение
+            let expression = '';
+            if (previousInput !== '') {
+                expression += previousInput;
+                if (operator) expression += ` ${getOperatorSymbol(operator)}`;
+            }
+            expressionDisplay.textContent = expression;
+            
+            // Обновляем результат
+            resultDisplay.textContent = currentInput || '0';
+            resultDisplay.classList.remove('error');
+        }
+
+        // Получение символа оператора
+        function getOperatorSymbol(op) {
+            switch (op) {
+                case '/': return '÷';
+                case '*': return '×';
+                default: return op;
+            }
+        }
+
+        // Добавление в историю
+        function addToHistory(entry) {
+            history.unshift(entry);
+            if (history.length > 10) history.pop();
+            
+            // Сохраняем в localStorage
+            localStorage.setItem('calculatorHistory', JSON.stringify(history));
+            
+            renderHistory();
+        }
+
+        // Очистка истории
+        function clearHistory() {
+            history = [];
+            localStorage.removeItem('calculatorHistory');
+            renderHistory();
+        }
+
+        // Отображение истории
+        function renderHistory() {
+            historyList.innerHTML = '';
+            history.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.textContent = item;
+                historyList.appendChild(div);
+            });
+        }
+
+        // Показ ошибки
+        function showError(message) {
+            resultDisplay.textContent = message;
+            resultDisplay.classList.add('error');
+            currentInput = '';
+            previousInput = '';
+            operator = null;
+            setTimeout(() => updateDisplay(), 1500);
+        }
+
+        // Запуск калькулятора
+        init();
+    </script>
+</body>
+</html>

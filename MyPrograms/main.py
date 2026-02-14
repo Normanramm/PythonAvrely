@@ -1,35 +1,40 @@
-import requests
-from fastapi import FastAPI
-from datetime import datetime, timedelta
+class Ship:
+    def __init__(self, name, model, year):
+        self.name = name
+        self.model = model
+        self.year = year
 
-app = FastAPI()
-WEATHER_API_KEY = "your_key"
-cache = {}
+    def __str__(self):
+        return (f"Название корабля: {self.name}\n"
+                f"Модель корабля: {self.model}\n"
+                f"Год выпуска: {self.year}")
 
-@app.get("/weather/{city}")
-async def get_weather(city: str):
-    # Проверяем кэш (актуальность 10 минут)
-    if city in cache:
-        cached_time, data = cache[city]
-        if datetime.now() - cached_time < timedelta(minutes=10):
-            return {"source": "cache", **data}
+
+if __name__ == "__main__":
+    print("=== Регистрация корабля ===")
     
-    # Запрос к внешнему API
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={WEATHER_API_KEY}&units=metric&lang=ru"
-    response = requests.get(url)
+    name = input("Введите название корабля: ").strip()
+    while not name:
+        print("Название не может быть пустым!")
+        name = input("Введите название корабля: ").strip()
+
+    model = input("Введите модель корабля: ").strip()
+    while not model:
+        print("Модель не может быть пустой!")
+        model = input("Введите модель корабля: ").strip()
+
+    while True:
+        try:
+            year = int(input("Введите год выпуска корабля: "))
+            if 1000 <= year <= 2025:
+                break
+            else:
+                print("Год должен быть в диапазоне от 1000 до 2025.")
+        except ValueError:
+            print("Пожалуйста, введите корректное число для года.")
+
+    ship = Ship(name, model, year)
     
-    if response.status_code == 200:
-        data = response.json()
-        weather_data = {
-            "city": data["name"],
-            "temp": data["main"]["temp"],
-            "feels_like": data["main"]["feels_like"],
-            "description": data["weather"][0]["description"],
-            "icon": data["weather"][0]["icon"]
-        }
-        
-        # Сохраняем в кэш
-        cache[city] = (datetime.now(), weather_data)
-        return {"source": "api", **weather_data}
-    else:
-        return {"error": "City not found"}
+    print("\n--- Информация о корабле ---")
+    print(ship)
+
