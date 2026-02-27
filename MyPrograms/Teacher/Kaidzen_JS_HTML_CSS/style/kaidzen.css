@@ -1,4 +1,17 @@
 body {
-    background-color: #f8f9f8;
+    background-color: #f9f9f9;
 }
 
+.elem {
+    width: 500px;
+    height: 50px;
+    background-color: #068c49;
+    color: #ffffff;
+}
+
+#elem {
+    width: 500px;
+    height: 50px;
+    background-color: #6119a0;
+    color: #ffffff;
+}
