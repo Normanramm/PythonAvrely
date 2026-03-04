@@ -510,9 +510,6 @@ font-size: 32px;
 .form-row {
 grid-template-columns: 1fr;
 }
-.preview-container {
-display: none;
-}
 }
 </style>
 </head>
@@ -524,10 +521,10 @@ display: none;
 <span>Web Encyclopedia Vlad Avrely</span>
 </div>
 <div class="tabs">
-<button class="tab active" onclick="switchTab('html', this)">HTML5</button>
-<button class="tab" onclick="switchTab('css', this)">CSS3</button>
-<button class="tab" onclick="switchTab('js', this)">JavaScript</button>
-<button class="tab" onclick="switchTab('python', this)">Python</button>
+<button class="tab active" onclick="switchTab('html')">HTML5</button>
+<button class="tab" onclick="switchTab('css')">CSS3</button>
+<button class="tab" onclick="switchTab('js')">JavaScript</button>
+<button class="tab" onclick="switchTab('python')">Python</button>
 </div>
 <div class="search-box">
 <span class="search-icon">🔍</span>
@@ -1210,7 +1207,7 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
         <span class="t">&lt;legend&gt;</span>Группа полей<span class="t">&lt;/legend&gt;</span>
     <span class="t">&lt;/fieldset&gt;</span>
 <span class="t">&lt;/form&gt;</span></pre>
-<!-- PREVIEW: Живой пример всех типов полей формы -->
+</div>
 <div class="preview-container" style="align-items: flex-start; flex-direction: column;">
 <span class="preview-label">🖥️ PREVIEW</span>
 <div style="width: 100%; display: flex; flex-direction: column; gap: 10px;">
@@ -1594,53 +1591,7 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
 <td><span class="attr-val">"rect"</span> <span class="attr-val">"circle"</span> <span class="attr-val">"poly"</span></td>
 <td class="attr-desc">Форма области карты</td>
 </tr>
-...</table>
-</div>
-</article>
-<!-- 15. SEO & META -->
-<article class="card" data-tags="meta seo head title description og twitter robots canonical">
-<div class="card-header">
-<span class="card-title">SEO &amp; Meta теги</span>
-<span class="badge b-html">SEO</span>
-</div>
-<div class="card-body">
-<p class="card-desc">
-Ключевые метатеги для SEO, соцсетей и правильного отображения сайта.
-</p>
-<div class="code-container">
-<span class="code-label">CODE</span>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre class="code-block"><span class="t">&lt;head&gt;</span>
-    <span class="t">&lt;title&gt;</span>Заголовок страницы<span class="t">&lt;/title&gt;</span>
-    <span class="t">&lt;meta</span> <span class="a">name</span>=<span class="s">"description"</span> <span class="a">content</span>=<span class="s">"Краткое описание страницы"</span><span class="t">&gt;</span>
-    <span class="t">&lt;meta</span> <span class="a">name</span>=<span class="s">"keywords"</span> <span class="a">content</span>=<span class="s">"html, css, js, python"</span><span class="t">&gt;</span>
-    <span class="t">&lt;meta</span> <span class="a">name</span>=<span class="s">"robots"</span> <span class="a">content</span>=<span class="s">"index,follow"</span><span class="t">&gt;</span>
-    <span class="c">&lt;!-- Open Graph --&gt;</span>
-    <span class="t">&lt;meta</span> <span class="a">property</span>=<span class="s">"og:title"</span> <span class="a">content</span>=<span class="s">"Заголовок для соцсетей"</span><span class="t">&gt;</span>
-    <span class="t">&lt;meta</span> <span class="a">property</span>=<span class="s">"og:description"</span> <span class="a">content</span>=<span class="s">"Описание для соцсетей"</span><span class="t">&gt;</span>
-    <span class="t">&lt;meta</span> <span class="a">property</span>=<span class="s">"og:image"</span> <span class="a">content</span>=<span class="s">"https://site.com/preview.png"</span><span class="t">&gt;</span>
-    <span class="c">&lt;!-- Canonical URL --&gt;</span>
-    <span class="t">&lt;link</span> <span class="a">rel</span>=<span class="s">"canonical"</span> <span class="a">href</span>=<span class="s">"https://site.com/page"</span><span class="t">&gt;</span>
-<span class="t">&lt;/head&gt;</span></pre>
-</div>
-<!-- PREVIEW: Как страница выглядит в поиске и соцсетях -->
-<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 12px;">
-<span class="preview-label">🖥️ PREVIEW</span>
-<div class="preview-content" style="width: 100%; max-width: 420px;">
-<div style="background: var(--bg-preview); border-radius: 8px; border: 1px solid var(--border); padding: 12px; font-size: 12px;">
-<div style="color: #1a0dab; font-size: 14px; margin-bottom: 4px;">Заголовок страницы — site.com</div>
-<div style="color: #006621; margin-bottom: 4px;">https://site.com/page</div>
-<div style="color: var(--text-sec);">Краткое описание страницы…</div>
-</div>
-<div style="display: flex; gap: 10px; margin-top: 10px; align-items: center;">
-<div style="width: 60px; height: 60px; border-radius: 6px; background: linear-gradient(135deg, #0071e3, #34c759);"></div>
-<div>
-<div style="font-weight: 600; margin-bottom: 4px;">Заголовок для соцсетей</div>
-<div style="font-size: 12px; color: var(--text-sec);">Описание для соцсетей</div>
-</div>
-</div>
-</div>
-</div>
+</table>
 </div>
 </article>
 </div>
@@ -2234,105 +2185,6 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
 <td class="attr-desc">Цвет в формате HSL</td>
 </tr>
 </table>
-</div>
-</article>
-</div>
-<!-- CSS Variables & @media -->
-<article class="card" data-tags="css variables var root media responsive">
-<div class="card-header">
-<span class="card-title">Переменные и @media</span>
-<span class="badge b-css">Advanced</span>
-</div>
-<div class="card-body">
-<p class="card-desc">
-CSS-переменные в :root и адаптивность через @media.
-</p>
-<div class="code-container">
-<span class="code-label">CSS</span>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre class="code-block"><span class="k">:root</span> {
-    <span class="a">--primary</span>: <span class="s">#0071e3</span>;
-    <span class="a">--radius</span>: <span class="s">12px</span>;
-}
-<span class="k">.card</span> {
-    <span class="a">background</span>: <span class="k">var</span>(<span class="s">--bg-card</span>);
-    <span class="a">border-radius</span>: <span class="k">var</span>(<span class="s">--radius</span>);
-}
-<span class="c">/* Адаптивность */</span>
-<span class="k">@media</span> (<span class="a">max-width</span>: <span class="s">768px</span>) {
-    <span class="k">.grid</span> {
-        <span class="a">grid-template-columns</span>: <span class="s">1fr</span>;
-        <span class="a">gap</span>: <span class="s">16px</span>;
-    }
-    <span class="k">header</span> {
-        <span class="a">position</span>: <span class="s">sticky</span>;
-        <span class="a">top</span>: <span class="s">0</span>;
-    }
-}</pre>
-</div>
-<!-- PREVIEW: изменение темы и сетки на мобильных -->
-<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 12px;">
-<span class="preview-label">🖥️ PREVIEW</span>
-<div class="preview-content" style="width: 100%; display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
-<div style="border-radius: var(--radius); border: 1px solid var(--border); padding: 12px;">
-<div style="font-size: 11px; text-transform: uppercase; color: var(--text-sec); margin-bottom: 6px;">Desktop</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-<div style="background: var(--accent); border-radius: var(--radius); height: 50px;"></div>
-<div style="background: var(--accent); border-radius: var(--radius); height: 50px; opacity: .7;"></div>
-</div>
-</div>
-<div style="border-radius: var(--radius); border: 1px solid var(--border); padding: 12px;">
-<div style="font-size: 11px; text-transform: uppercase; color: var(--text-sec); margin-bottom: 6px;">Mobile @media</div>
-<div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
-<div style="background: var(--accent); border-radius: var(--radius); height: 40px;"></div>
-<div style="background: var(--accent); border-radius: var(--radius); height: 40px; opacity: .7;"></div>
-</div>
-</div>
-</div>
-</div>
-</article>
-<!-- Transitions & Transform / Animation -->
-<article class="card" data-tags="transition transform animation keyframes hover">
-<div class="card-header">
-<span class="card-title">Анимация, Transition и Transform</span>
-<span class="badge b-css">Motion</span>
-</div>
-<div class="card-body">
-<p class="card-desc">
-Плавные переходы, 2D‑трансформации и ключевые кадры.
-</p>
-<div class="code-container">
-<span class="code-label">CSS</span>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre class="code-block"><span class="k">.btn</span> {
-    <span class="a">background</span>: <span class="s">#0071e3</span>;
-    <span class="a">color</span>: <span class="s">#fff</span>;
-    <span class="a">padding</span>: <span class="s">10px 18px</span>;
-    <span class="a">border-radius</span>: <span class="s">999px</span>;
-    <span class="a">transition</span>: <span class="s">transform .2s ease, box-shadow .2s ease</span>;
-}
-<span class="k">.btn:hover</span> {
-    <span class="a">transform</span>: <span class="s">translateY(-2px) scale(1.02)</span>;
-    <span class="a">box-shadow</span>: <span class="s">0 8px 20px rgba(0,0,0,.25)</span>;
-}
-<span class="k">@keyframes</span> pulse {
-    <span class="s">0%</span>   { <span class="a">transform</span>: <span class="s">scale(1)</span>; }
-    <span class="s">50%</span>  { <span class="a">transform</span>: <span class="s">scale(1.05)</span>; <span class="a">opacity</span>: <span class="s">.85</span>; }
-    <span class="s">100%</span> { <span class="a">transform</span>: <span class="s">scale(1)</span>; }
-}
-<span class="k">.badge-anim</span> {
-    <span class="a">animation</span>: <span class="s">pulse 1.5s infinite</span>;
-}</pre>
-</div>
-<!-- PREVIEW: hover‑кнопка и пульсирующий бейдж -->
-<div class="preview-container" style="align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-<span class="preview-label">🖥️ PREVIEW</span>
-<div style="display: flex; gap: 12px; align-items: center;">
-<button style="background:#0071e3;color:#fff;padding:10px 18px;border-radius:999px;border:none;font-size:13px;cursor:pointer;">Hover Button</button>
-<span style="background:#34c759;color:#fff;padding:6px 10px;border-radius:999px;font-size:11px;">transform + transition</span>
-</div>
-<div style="background:#ffcc00;color:#000;padding:6px 10px;border-radius:999px;font-size:11px;box-shadow:0 0 0 4px rgba(255,204,0,0.25);">pulse animation</div>
-</div>
 </div>
 </article>
 </div>
@@ -3694,138 +3546,6 @@ squares = (x**<span class="s">2</span> <span class="k">for</span> x <span class=
 </div>
 </div>
 </article>
-<!-- 12. HTTP-запросы (requests) -->
-<article class="card">
-<div class="card-header">
-<span class="card-title">HTTP-запросы (requests)</span>
-<span class="badge b-python">HTTP</span>
-</div>
-<div class="card-body">
-<p class="card-desc">
-Библиотека requests для простых REST‑API запросов и работы с JSON.
-</p>
-<div class="code-container">
-<span class="code-label">PYTHON</span>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre class="code-block"><span class="k">import</span> requests
-<span class="c"># GET-запрос</span>
-response = requests.<span class="k">get</span>(<span class="s">"https://api.example.com/users"</span>)
-<span class="k">if</span> response.status_code == <span class="s">200</span>:
-    data = response.<span class="k">json</span>()
-    <span class="k">print</span>(data[<span class="s">0</span>][<span class="s">"name"</span>])
-<span class="c"># POST-запрос с JSON</span>
-payload = {<span class="s">"name"</span>: <span class="s">"Vlad"</span>, <span class="s">"role"</span>: <span class="s">"admin"</span>}
-response = requests.<span class="k">post</span>(
-    <span class="s">"https://api.example.com/users"</span>,
-    json=payload,
-    timeout=<span class="s">5</span>,
-)
-<span class="k">print</span>(response.status_code)</pre>
-</div>
-<div class="preview-container" style="align-items: flex-start;">
-<span class="preview-label">🖥️ PREVIEW</span>
-<div style="font-family: monospace; font-size: 12px; width: 100%; background: var(--bg-preview); border-radius: 8px; padding: 8px; border: 1px solid var(--border);">
-GET /users → 200 OK<br/>
-[{ "id": 1, "name": "Vlad" }, ...]
-<br/><br/>
-POST /users → 201 CREATED
-</div>
-</div>
-</div>
-</article>
-<!-- 13. venv и pip -->
-<article class="card">
-<div class="card-header">
-<span class="card-title">venv и pip</span>
-<span class="badge b-python">Env</span>
-</div>
-<div class="card-body">
-<p class="card-desc">
-Создание виртуального окружения и установка сторонних пакетов.
-</p>
-<div class="code-container">
-<span class="code-label">PYTHON</span>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre class="code-block"><span class="c"># Создать виртуальное окружение</span>
-python -m venv venv
-<span class="c"># Активация (Windows)</span>
-venv\Scripts\activate
-<span class="c"># Активация (macOS/Linux)</span>
-source venv/bin/activate
-<span class="c"># Установка пакетов</span>
-pip install requests flask
-<span class="c"># Заморозить зависимости</span>
-pip freeze &gt; requirements.txt
-<span class="c"># Установка из файла</span>
-pip install -r requirements.txt</pre>
-</div>
-<div class="preview-container" style="align-items: flex-start;">
-<span class="preview-label">🖥️ PREVIEW</span>
-<div style="font-family: monospace; font-size: 12px; width: 100%; background: var(--bg-preview); border-radius: 8px; padding: 8px; border: 1px solid var(--border);">
-project/<br/>
- ├─ venv/<br/>
- ├─ app.py<br/>
- └─ requirements.txt
-</div>
-</div>
-</div>
-</article>
-<!-- 14. SQLite3 база данных -->
-<article class="card">
-<div class="card-header">
-<span class="card-title">SQLite3 база данных</span>
-<span class="badge b-python">DB</span>
-</div>
-<div class="card-body">
-<p class="card-desc">
-Использование встроенной SQLite для хранения данных без отдельного сервера.
-</p>
-<div class="code-container">
-<span class="code-label">PYTHON</span>
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre class="code-block"><span class="k">import</span> sqlite3
-<span class="c"># Подключение к файлу БД</span>
-conn = sqlite3.<span class="k">connect</span>(<span class="s">"app.db"</span>)
-cursor = conn.<span class="k">cursor</span>()
-<span class="c"># Создание таблицы</span>
-cursor.<span class="k">execute</span>(<span class="s">
-    "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)"
-</span>)
-<span class="c"># Вставка данных</span>
-cursor.<span class="k">execute</span>(
-    <span class="s">"INSERT INTO users (name, age) VALUES (?, ?)"</span>,
-    (<span class="s">"Vlad"</span>, <span class="s">25</span>),
-)
-conn.<span class="k">commit</span>()
-<span class="c"># Чтение</span>
-cursor.<span class="k">execute</span>(<span class="s">"SELECT name, age FROM users"</span>)
-rows = cursor.<span class="k">fetchall</span>()
-<span class="k">for</span> name, age <span class="k">in</span> rows:
-    <span class="k">print</span>(name, age)
-conn.<span class="k">close</span>()</pre>
-</div>
-<div class="preview-container" style="align-items: flex-start;">
-<span class="preview-label">🖥️ PREVIEW</span>
-<table class="attr-table" style="width: 100%;">
-<tr>
-<th>id</th>
-<th>name</th>
-<th>age</th>
-</tr>
-<tr>
-<td>1</td>
-<td>Vlad</td>
-<td>25</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Alice</td>
-<td>23</td>
-</tr>
-</table>
-</div>
-</div>
-</article>
 </div>
 </section>
 </main>
@@ -3834,12 +3554,11 @@ conn.<span class="k">close</span>()</pre>
 </footer>
 <div class="toast" id="toast">✓ Код скопирован!</div>
 <script>
-// Переключение вкладок HTML / CSS / JS / Python
-function switchTab(id, el) {
+function switchTab(id) {
     document.querySelectorAll(".section").forEach((s) => s.classList.remove("active"));
     document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
     document.getElementById(id).classList.add("active");
-    if (el) el.classList.add("active");
+    event.target.classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 function filterCards() {
