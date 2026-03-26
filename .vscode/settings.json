@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/MyPrograms/Teacher/Kaidzen_JS_HTML_CSS/index.html"
+    "livePreview.defaultPreviewPath": "/MyPrograms/main.html",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
