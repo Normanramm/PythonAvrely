@@ -570,6 +570,7 @@ onkeyup="filterCards()"
 <span class="t">&lt;body&gt;</span>Контент<span class="t">&lt;/body&gt;</span>
 <span class="t">&lt;/html&gt;</span></pre>
 </div>
+<!-- PREVIEW: как браузер отображает базовую HTML‑страницу -->
 <div class="preview-container">
 <span class="preview-label">🖥️ PREVIEW</span>
 <div class="preview-content">
@@ -621,6 +622,7 @@ onkeyup="filterCards()"
 <span class="t">&lt;h5&gt;</span>Мелкий<span class="t">&lt;/h5&gt;</span>
 <span class="t">&lt;h6&gt;</span>Минимальный<span class="t">&lt;/h6&gt;</span></pre>
 </div>
+<!-- PREVIEW: визуальная иерархия заголовков h1–h6 -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ PREVIEW</span>
 <div class="preview-content" style="width: 100%;">
@@ -654,6 +656,7 @@ onkeyup="filterCards()"
 <span class="t">&lt;p&gt;</span><span class="t">&lt;code&gt;</span>console.log()<span class="t">&lt;/code&gt;</span><span class="t">&lt;/p&gt;</span>
 <span class="t">&lt;hr&gt;</span></pre>
 </div>
+<!-- PREVIEW: базовое форматирование текста и разделительные линии -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ PREVIEW</span>
 <div class="preview-content" style="width: 100%; line-height: 1.8;">
@@ -1436,6 +1439,7 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
 <span class="t">&lt;/main&gt;</span>
 <span class="t">&lt;footer&gt;</span>Подвал сайта<span class="t">&lt;/footer&gt;</span></pre>
 </div>
+<!-- PREVIEW: каркас страницы с основными семантическими областями -->
 <div class="preview-container" style="padding: 0; display: flex; flex-direction: column; min-height: 220px;">
 <span class="preview-label">🖥️ PREVIEW</span>
 <div style="background: var(--accent); color: white; padding: 12px; text-align: center; font-size: 12px; font-weight: 600; letter-spacing: 1px;">🏁 HEADER</div>
@@ -1465,8 +1469,13 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
 <span class="t">&lt;details</span> <span class="a">open</span><span class="t">&gt;</span>
     <span class="t">&lt;summary&gt;</span>Нажмите чтобы раскрыть<span class="t">&lt;/summary&gt;</span>
     <span class="t">&lt;p&gt;</span>Скрытый контент здесь...<span class="t">&lt;/p&gt;</span>
-<span class="t">&lt;/details&gt;</span></pre>
+<span class="t">&lt;/details&gt;</span>
+<span class="c">&lt;!-- Диалоговое окно --&gt;</span>
+<span class="t">&lt;dialog</span> <span class="a">open</span><span class="t">&gt;</span>
+    <span class="t">&lt;p&gt;</span>Пример встроенного диалога HTML5<span class="t">&lt;/p&gt;</span>
+<span class="t">&lt;/dialog&gt;</span></pre>
 </div>
+<!-- PREVIEW: details/summary и нативный &lt;dialog&gt; без JS -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ PREVIEW</span>
 <details open style="width: 100%; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;">
@@ -1478,6 +1487,9 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
 ✅ Скрытый контент теперь виден! Это работает без JavaScript.
 </div>
 </details>
+<dialog open style="margin-top: 12px; border-radius: 8px; border: 1px solid var(--border); padding: 12px; font-size: 13px;">
+    Нативный &lt;dialog&gt; (поддержка зависит от браузера)
+</dialog>
 </div>
 </div>
 </article>
@@ -1681,8 +1693,12 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
 <span class="k">:target</span> { }
 <span class="k">::first-letter</span> { }
 <span class="k">::first-line</span> { }
-<span class="k">::selection</span> { }</pre>
+<span class="k">::selection</span> { }
+<span class="k">:is</span>(.btn, a) { } <span class="c">/* Современная группировка */</span>
+<span class="k">:where</span>(.card .title) { } <span class="c">/* Без влияния специфичности */</span>
+<span class="k">:has</span>(img) { } <span class="c">/* Родитель, содержащий img (поддержка зависит от браузера) */</span></pre>
 </div>
+<!-- PREVIEW: основные типы CSS‑селекторов -->
 <div class="preview-container" style="align-items: flex-start; flex-wrap: wrap; gap: 12px;">
 <span class="preview-label">🖥️ PREVIEW</span>
 <span style="color: #ff6b6b; font-weight: 600; padding: 8px 14px; background: rgba(255, 107, 107, 0.1); border-radius: 6px; font-size: 12px;">element</span>
@@ -1724,6 +1740,11 @@ style="border-radius: 12px; width: 150px; height: 150px; object-fit: cover; box-
 <td><span class="attr-name">Общий сосед</span></td>
 <td><span class="attr-val">elem ~ elem</span></td>
 <td class="attr-desc">Все следующие соседи</td>
+</tr>
+<tr>
+<td><span class="attr-name">Современные</span></td>
+<td><span class="attr-val">:is()</span> <span class="attr-val">:where()</span> <span class="attr-val">:has()</span></td>
+<td class="attr-desc">Гибкая работа со сложными селекторами</td>
 </tr>
 </table>
 </div>
@@ -2491,8 +2512,13 @@ arr.<span class="k">sort</span>((a, b) => a - b);
 arr.<span class="k">splice</span>(<span class="s">1</span>, <span class="s">1</span>, <span class="s">99</span>);
 <span class="c">// push/pop/shift/unshift</span>
 arr.<span class="k">push</span>(<span class="s">6</span>); arr.<span class="k">pop</span>();
-arr.<span class="k">unshift</span>(<span class="s">0</span>); arr.<span class="k">shift</span>();</pre>
+arr.<span class="k">unshift</span>(<span class="s">0</span>); arr.<span class="k">shift</span>();
+<span class="c">// flat / flatMap - работа с вложенностями</span>
+<span class="k">const</span> nested = [[<span class="s">1</span>], [<span class="s">2</span>, <span class="s">3</span>]];
+<span class="k">const</span> flat = nested.<span class="k">flat</span>();          <span class="c">// [1,2,3]</span>
+<span class="k">const</span> flatMapped = arr.<span class="k">flatMap</span>(x => [x, x * <span class="s">2</span>]);</pre>
 </div>
+<!-- PREVIEW: ключевые методы массивов в действии -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ OUTPUT</span>
 <div style="font-family: monospace; font-size: 12px; width: 100%;">
@@ -2551,6 +2577,11 @@ arr.<span class="k">unshift</span>(<span class="s">0</span>); arr.<span class="k
 <td><span class="attr-val">boolean</span></td>
 <td class="attr-desc">Проверяет все элементы</td>
 </tr>
+<tr>
+<td><span class="attr-name">flat / flatMap</span></td>
+<td><span class="attr-val">new array</span></td>
+<td class="attr-desc">Разворачивает и/или трансформирует вложенные массивы</td>
+</tr>
 </table>
 </div>
 </article>
@@ -2589,6 +2620,7 @@ str.<span class="k">split</span>(<span class="s">", "</span>); <span class="c">/
 str.<span class="k">padStart</span>(<span class="s">20</span>, <span class="s">"0"</span>);
 str.<span class="k">repeat</span>(<span class="s">3</span>);</pre>
 </div>
+<!-- PREVIEW: примеры работы со строками в JS -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ OUTPUT</span>
 <div style="font-family: monospace; font-size: 12px; width: 100%;">
@@ -2632,10 +2664,12 @@ Math.<span class="k">min</span>(<span class="s">1</span>, <span class="s">5</spa
 Number.<span class="k">parseInt</span>(<span class="s">"42px"</span>); <span class="c">// 42</span>
 Number.<span class="k">parseFloat</span>(<span class="s">"3.14"</span>); <span class="c">// 3.14</span>
 Number.<span class="k">isNaN</span>(<span class="s">NaN</span>); <span class="c">// true</span>
+Number.<span class="k">isFinite</span>(<span class="s">10</span>); <span class="c">// true</span>
 <span class="c">// Форматирование</span>
 (<span class="s">1234.567</span>).<span class="k">toFixed</span>(<span class="s">2</span>); <span class="c">// "1234.57"</span>
 (<span class="s">1234</span>).<span class="k">toLocaleString</span>(); <span class="c">// "1,234"</span></pre>
 </div>
+<!-- PREVIEW: округление, случайные числа и форматирование -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ OUTPUT</span>
 <div style="font-family: monospace; font-size: 12px; width: 100%;">
@@ -2681,8 +2715,10 @@ Object.<span class="k">keys</span>(obj); <span class="c">// ["name", "age", "cit
 Object.<span class="k">values</span>(obj); <span class="c">// ["Alice", 25, "Moscow"]</span>
 Object.<span class="k">entries</span>(obj); <span class="c">// [["name", "Alice"], ...]</span>
 Object.<span class="k">assign</span>({}, obj); <span class="c">// Копия</span>
-Object.<span class="k">freeze</span>(obj); <span class="c">// Заморозка</span></pre>
+Object.<span class="k">freeze</span>(obj); <span class="c">// Заморозка</span>
+Object.<span class="k">fromEntries</span>([ [<span class="s">"a"</span>, <span class="s">1</span>], [<span class="s">"b"</span>, <span class="s">2</span>] ]); <span class="c">// Обратное к entries</span></pre>
 </div>
+<!-- PREVIEW: деструктуризация и вспомогательные функции Object.* -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ OUTPUT</span>
 <div style="font-family: monospace; font-size: 12px; width: 100%;">
@@ -2732,6 +2768,7 @@ parent.<span class="k">insertBefore</span>(el, ref);
 parent.<span class="k">removeChild</span>(el);
 el.<span class="k">remove</span>();</pre>
 </div>
+<!-- PREVIEW: до и после изменения DOM‑элемента -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ RESULT</span>
 <div id="js-demo" style="padding: 12px; background: var(--bg-preview); border-radius: 8px; border: 1px solid var(--border); width: 100%;">
@@ -2770,6 +2807,7 @@ btn.<span class="k">removeEventListener</span>(<span class="s">"click"</span>, h
 <span class="c">// Всплытие и погружение</span>
 element.<span class="k">addEventListener</span>(<span class="s">"click"</span>, handler, <span class="k">true</span>);</pre>
 </div>
+<!-- PREVIEW: клики, наведение и фокус на элементах -->
 <div class="preview-container" style="align-items: center; flex-wrap: wrap; gap: 12px;">
 <span class="preview-label">🖥️ EVENTS</span>
 <button onclick="alert('Click!')" style="padding: 10px 20px; background: var(--accent); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">click</button>
@@ -2814,6 +2852,7 @@ fetch(<span class="s">"https://api.example.com/data"</span>)
     .<span class="k">then</span>(res => res.<span class="k">json</span>())
     .<span class="k">then</span>(data => console.<span class="k">log</span>(data));</pre>
 </div>
+<!-- PREVIEW: житейский цикл промиса и async/await -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ OUTPUT</span>
 <div style="font-family: monospace; font-size: 12px; width: 100%;">
@@ -2932,6 +2971,7 @@ user_input = <span class="k">input</span>(<span class="s">"Введите имя
 <span class="c"># None</span>
 nothing = <span class="k">None</span></pre>
 </div>
+<!-- PREVIEW: пример вывода базового синтаксиса Python -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ OUTPUT</span>
 <div style="font-family: monospace; font-size: 12px; width: 100%; color: var(--text-sec);">
@@ -3191,6 +3231,7 @@ evens = [x <span class="k">for</span> x <span class="k">in</span> <span class="k
 <span class="c"># Dict comprehension</span>
 squares_dict = {x: x**<span class="s">2</span> <span class="k">for</span> x <span class="k">in</span> <span class="k">range</span>(<span class="s">5</span>)}</pre>
 </div>
+<!-- PREVIEW: пример результата работы управляющих конструкций и генераторов -->
 <div class="preview-container" style="align-items: flex-start;">
 <span class="preview-label">🖥️ OUTPUT</span>
 <div style="font-family: monospace; font-size: 12px; width: 100%; color: var(--text-sec);">
@@ -3261,6 +3302,54 @@ add = <span class="k">lambda</span> x, y: x + y
 </table>
 </div>
 </article>
+<!-- 4.1. JSON & HTTP -->
+<article class="card">
+<div class="card-header">
+<span class="card-title">JSON и HTTP‑запросы</span>
+<span class="badge b-python">Web</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">import</span> json
+<span class="k">import</span> requests  <span class="c"># pip install requests</span>
+
+<span class="c"># Словарь → JSON‑строка</span>
+data = {<span class="s">"name"</span>: <span class="s">"Alice"</span>, <span class="s">"age"</span>: <span class="s">25</span>}
+json_str = json.dumps(data, ensure_ascii=<span class="k">False</span>, indent=<span class="s">2</span>)
+
+<span class="c"># JSON‑строка → словарь</span>
+parsed = json.loads(json_str)
+
+<span class="c"># Простой GET‑запрос</span>
+resp = requests.get(<span class="s">"https://api.example.com/user/1"</span>, timeout=<span class="s">5</span>)
+<span class="k">if</span> resp.status_code == <span class="s">200</span>:
+    user = resp.json()
+    <span class="k">print</span>(user[<span class="s">"name"</span>])
+
+<span class="c"># POST с JSON‑телом</span>
+payload = {<span class="s">"title"</span>: <span class="s">"Hello"</span>, <span class="s">"body"</span>: <span class="s">"World"</span>}
+resp = requests.post(<span class="s">"https://api.example.com/posts"</span>, json=payload, timeout=<span class="s">5</span>)
+<span class="k">print</span>(resp.status_code)</pre>
+</div>
+<!-- PREVIEW: сериализация JSON и базовые HTTP‑запросы через requests -->
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ OUTPUT</span>
+<div style="font-family: monospace; font-size: 12px; width: 100%; color: var(--text-sec);">
+<div style="background: var(--bg-preview); padding: 8px; border-radius: 6px; margin-bottom: 6px;">
+json.dumps → { "name": "Alice", "age": 25 }
+</div>
+<div style="background: var(--bg-preview); padding: 8px; border-radius: 6px; margin-bottom: 6px;">
+GET /user/1 → 200 OK, user["name"] = "Alice"
+</div>
+<div style="background: var(--bg-preview); padding: 8px; border-radius: 6px;">
+POST /posts → 201 Created
+</div>
+</div>
+</div>
+</div>
+</article>
 <!-- 5. CLASSES & OOP -->
 <article class="card">
 <div class="card-header">
@@ -3291,10 +3380,15 @@ add = <span class="k">lambda</span> x, y: x + y
     <span class="c"># Строковое представление</span>
     <span class="k">def</span> <span class="k">__str__</span>(self):
         <span class="k">return</span> <span class="s">f"{self.name}, {self.age} лет"</span>
+    <span class="c"># Свойство через @property</span>
+    <span class="k">@property</span>
+    <span class="k">def</span> <span class="k">info</span>(self):
+        <span class="k">return</span> <span class="s">f"{self.name} ({self.age})"</span>
 <span class="c"># Создание объекта</span>
 person = Person(<span class="s">"Alice"</span>, <span class="s">25</span>)
 <span class="k">print</span>(person.greet())  <span class="c"># Hi, I'm Alice</span>
-<span class="k">print</span>(person)          <span class="c"># Alice, 25 лет</span></pre>
+<span class="k">print</span>(person)          <span class="c"># Alice, 25 лет</span>
+<span class="k">print</span>(person.info)     <span class="c"># Alice (25)</span></pre>
 </div>
 <table class="attr-table">
 <tr>
@@ -3819,8 +3913,8 @@ conn.<span class="k">close</span>()</pre>
 </tr>
 <tr>
 <td>2</td>
-<td>Alice</td>
-<td>23</td>
+<td>Nadejda</td>
+e<td>23</td>
 </tr>
 </table>
 </div>
