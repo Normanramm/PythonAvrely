@@ -1,6 +1,6 @@
 <div align="center">
   
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3500&color=58A6FF&center=true&vCenter=true&multiline=false&lines=🐍+PythonAvrely;A+collection+of+scenarios+and+mini-projects;by+Vladislav+Avrely" alt="Typing SVG"/>
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3500&color=58A6FF&center=true&vCenter=true&multiline=false&lines=%F0%9F%90%8D+PythonAvrely;A+collection+of+scripts+and+mini-projects;by+Vladislav+Avrely" alt="Typing SVG" />
   
   <br />
 
