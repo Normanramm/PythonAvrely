@@ -12,7 +12,7 @@
 - ✅ **для учебы и души** 
 - ✅ **есть готовые программы для них нет нужды для отдельного репозитория** 
 - 📸 **Instagram** [@vladislav_avrely](https://instagram.com/vladislav_avrely?spm=a2ty_o01.29997173.0.0.50e75171qlqaYY)
-- ⚔️ **CodeWars** [(автоматически подстраивается под систему)](https://www.codewars.com/users/Normanramm?spm=a2ty_o01.29997173.0.0.50e75171qlqaYY)
+- ⚔️ **CodeWars** [Normanramm](https://www.codewars.com/users/Normanramm?spm=a2ty_o01.29997173.0.0.50e75171qlqaYY)
 
 
 - ✉️ **Email** 
