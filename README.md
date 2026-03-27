@@ -1,18 +1,22 @@
+<div align="center">
+
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-
 > **О репозитории** моя личная коллекция разноплановых программ и скриптов. Здесь собрано всё, что не требует отдельного репозитория, но слишком ценно, чтобы просто лежать в папке на компьютере.
 
 ## ✨ О репозитории
 
-- ✅ **всего понемногу** 
-- ✅ **для учебы и души** 
-- ✅ **есть готовые программы для них нет нужды для отдельного репозитория** 
+- ✅ **всего понемногу**
+- ✅ **для учебы и души**
+- ✅ **есть готовые программы для них нет нужды для отдельного репозитория**
+
+## 📬 Контакты
+
 - 📸 **Instagram** [@vladislav_avrely](https://instagram.com/vladislav_avrely?spm=a2ty_o01.29997173.0.0.50e75171qlqaYY)
 - ⚔️ **CodeWars** [Normanramm](https://www.codewars.com/users/Normanramm?spm=a2ty_o01.29997173.0.0.50e75171qlqaYY)
 
-
-- ✉️ **Email** 
+- ✉️ **Email:** [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:tesei87arieds@gmail.com)
+</div>
