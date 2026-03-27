@@ -16,6 +16,30 @@
   ![Last Commit](https://img.shields.io/github/last-commit/Normanramm/PythonAvrely?style=for-the-badge&color=2ea44f)
   ![Repo Size](https://img.shields.io/github/repo-size/Normanramm/PythonAvrely?style=for-the-badge&color=blueviolet)
 
+  <!-- Последнее обновление -->
+
+![Last Commit](https://img.shields.io/github/last-commit/Normanramm/PythonAvrely?style=for-the-badge&color=2ea44f)
+
+<!-- Количество звёзд -->
+
+![Stars](https://img.shields.io/github/stars/Normanramm/PythonAvrely?style=for-the-badge&color=yellow)
+
+<!-- Количество форков -->
+
+![Forks](https://img.shields.io/github/forks/Normanramm/PythonAvrely?style=for-the-badge&color=blue)
+
+<!-- Языки программирования -->
+
+![Languages](https://img.shields.io/github/languages/count/Normanramm/PythonAvrely?style=for-the-badge&color=orange)
+
+<!-- Лицензия -->
+
+![License](https://img.shields.io/github/license/Normanramm/PythonAvrely?style=for-the-badge&color=blueviolet)
+
+<!-- Статус сборки (если есть GitHub Actions) -->
+
+![Build](https://img.shields.io/github/actions/workflow/status/Normanramm/PythonAvrely/ci.yml?style=for-the-badge&logo=github)
+
   <br />
   <br />
 
