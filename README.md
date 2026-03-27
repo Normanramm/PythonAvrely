@@ -17,6 +17,7 @@
   ![Repo Size](https://img.shields.io/github/repo-size/Normanramm/PythonAvrely?style=for-the-badge&color=blueviolet)
   ![Stars](https://img.shields.io/github/stars/Normanramm/PythonAvrely?style=for-the-badge&color=yellow)
   ![Languages](https://img.shields.io/github/languages/count/Normanramm/PythonAvrely?style=for-the-badge&color=orange)
+  ![Forks](https://img.shields.io/github/forks/Normanramm/PythonAvrely?style=for-the-badge&color=blue)
   ![Build](https://img.shields.io/github/actions/workflow/status/Normanramm/PythonAvrely/ci.yml?style=for-the-badge&logo=github)
 
   <br />
