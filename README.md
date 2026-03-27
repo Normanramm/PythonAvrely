@@ -16,7 +16,6 @@
   ![Last Commit](https://img.shields.io/github/last-commit/Normanramm/PythonAvrely?style=for-the-badge&color=2ea44f)
   ![Repo Size](https://img.shields.io/github/repo-size/Normanramm/PythonAvrely?style=for-the-badge&color=blueviolet)
   ![Stars](https://img.shields.io/github/stars/Normanramm/PythonAvrely?style=for-the-badge&color=yellow)
-  ![Forks](https://img.shields.io/github/forks/Normanramm/PythonAvrely?style=for-the-badge&color=blue)
   ![Languages](https://img.shields.io/github/languages/count/Normanramm/PythonAvrely?style=for-the-badge&color=orange)
   ![Build](https://img.shields.io/github/actions/workflow/status/Normanramm/PythonAvrely/ci.yml?style=for-the-badge&logo=github)
 
@@ -38,3 +37,18 @@
 - ✅ Готовые решения — копируй и запускай
 - ✅ Чистый код — с комментариями и примерами
 - ✅ Постоянно пополняется — заглядывайте чаще!
+
+### 🚀 Быстрый старт
+
+<!-- Бейджи действий -->
+
+[![Clone](https://img.shields.io/badge/📥_Clone-2ea44f?style=for-the-badge&logo=git&logoColor=white)](https://github.com/Normanramm/PythonAvrely)
+[![Download ZIP](https://img.shields.io/badge/📦_ZIP-Download-181717?style=for-the-badge&logo=github)](https://github.com/Normanramm/PythonAvrely/archive/refs/heads/main.zip)
+[![Fork](https://img.shields.io/badge/🍴_Fork-Repository-f7df1e?style=for-the-badge&logo=github&logoColor=black)](https://github.com/Normanramm/PythonAvrely/fork)
+
+<!-- Команда для терминала -->
+
+```bash
+git clone https://github.com/Normanramm/PythonAvrely.git
+cd PythonAvrely
+```
