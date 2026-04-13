@@ -1,39 +1,43 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Мой сайт</title>
-    <link rel="stylesheet" href="style/kaidzen.css" />
-  </head>
 
-  <body>
-    <!-- Это спрятанный комментарий (так создается комментарий) -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мой сайт</title>
+  <link rel="stylesheet" href="style/kaidzen.css" />
+</head>
 
-    <h1>
-      <span style="color: rgba(26, 208, 117, 0.931)">
-        Это шпаргалка по HTML, CSS, JS
-      </span>
-    </h1>
+<body>
+  <!-- Это спрятанный комментарий (так создается комментарий) -->
 
-    <h2>Тег &lt;h1&gt;, &lt;h2&gt; и т.д. — заголовочный тег</h2>
+  <h1>
+    <span style="color: rgba(26, 208, 117, 0.931)">
+      Это шпаргалка по HTML, CSS, JS
+    </span>
+  </h1>
 
-    <p>
-      Тег &lt;p&gt; — блочный элемент, который обозначает текстовый абзац
-      (законченную мысль или часть текста, отделённую от других частей).
-    </p>
+  <h2>Тег &lt;h1&gt;, &lt;h2&gt; и т.д. — заголовочный тег</h2>
 
-    <script src="script/kaidzen.js"></script>
+  <p title="title">
+    Тег &lt;p&gt; — блочный элемент, который обозначает текстовый абзац
+    (законченную мысль или часть текста, отделённую от других частей).
+  </p>
+  <p>Это конкретный элемент &lt;p&gt; выбранный в CSS.</p>
+  <p class="text2">Этот текст исключен в CSS для цвета.</p>
+  <p>Этот тоже не исключен.</p>
 
-    <ol>
-      <li>Тег &lt;ol&gt; для создания нумерованного списка</li>
-    </ol>
+  <script src="script/kaidzen.js"></script>
 
-    <ul>
-      <li>Тег &lt;ul&gt; для создания маркированного списка</li>
-    </ul>
+  <ol>
+    <li>Тег &lt;ol&gt; для создания нумерованного списка</li>
+  </ol>
 
-    <pre>
+  <ul>
+    <li>Тег &lt;ul&gt; для создания маркированного списка</li>
+  </ul>
+
+  <pre>
 Тэг <span style="color: rgb(244, 2, 2);">&lt;pre&gt;</span> нужен для сохранения форматирования
   на разных строках
     где пишешь текст и появляется текст
@@ -45,6 +49,7 @@
 <hr>
     </pre>
 
+  <div class="container">
     <ul>
       <li>../img/kaidzen.png - так пишется путь для вложенных папок</li>
       <li>Экранирование &lt;сюда вставить тег&gt;</li>
@@ -65,44 +70,52 @@
       </li>
       <li>Тег &lt;script&gt; для подключения JS скрипта</li>
     </ul>
+  </div>
 
-    <table border="5">
-      <caption>
-        Тег &lt;caption&gt; для создания заголовка таблицы
-      </caption>
-      <tr>
-        <td>Тег &lt;table&gt; для создания таблицы</td>
-        <td>Тег &lt;td&gt; для создания столбцов</td>
-      </tr>
-      <tr>
-        <td>Тег &lt;tr&gt; для создания строк</td>
-        <td>
-          Атрибут border="" &lt;table border="5"&gt; для создания рамок и
-          толщины рамки
-        </td>
-      </tr>
-    </table>
 
-    <p>Формы &lt;form&gt;</p>
-    <form action="">
-      <input type="text" />
-      <textarea name="" id="1" cols="30" rows="10">
+  <table border="5">
+    <caption>
+      Тег &lt;caption&gt; для создания заголовка таблицы
+    </caption>
+    <tr>
+      <td>Тег &lt;table&gt; для создания таблицы</td>
+      <td>Тег &lt;td&gt; для создания столбцов таблицы</td>
+    </tr>
+    <tr>
+      <td>Тег &lt;tr&gt; для создания строк таблицы</td>
+      <td>
+        Атрибут border="" &lt;table border="5"&gt; для создания рамок и
+        толщины рамки тыблиц
+      </td>
+    </tr>
+  </table>
+
+  <p>Формы &lt;form&gt;</p>
+  <form action="">
+    <input type="text" />
+    <textarea name="" id="1" cols="30" rows="10">
  &lt;textarea name="" id="1" cols="30" rows="10"&gt;для создания вот этой рамки 
-        &lt;input type="text"&gt; для создания ввода слева </textarea
-      >
-      <button>Кнопка &lt;button&gt;</button>
-      <select name="" id="">
-        <option value="">Тег &lt;option&gt;</option>
-        <option value="">Тег &lt;option&gt; создает выпадающее меню</option>
-      </select>
-    </form>
+        &lt;input type="text"&gt; для создания ввода слева </textarea>
+    <button>Кнопка &lt;button&gt;</button> <br>
 
-    <div class="elem">1</div>
-    <div id="elem">2</div>
-    <script src="script/kaidzen.js"></script>
+    <input type="checkbox" checked /> <span>item 1</span> <br>
+    <input type="checkbox" /> <span>item 2</span> <br>
+    <input type="checkbox" /> <span>item 3</span> <br>
+    <input type="checkbox" checked /> <span>item 4</span> <br>
 
-    <div title="Всплывающая подсказка (атрибут title в div)">
-      <a href="second.html">На вторую страницу</a>
-    </div>
-  </body>
+    <select name="" id="">
+      <option value="">Тег &lt;option&gt;</option>
+      <option value="">Тег &lt;option&gt; создает выпадающее меню</option>
+    </select>
+  </form>
+
+  <div class="elem">1</div>
+  <div id="elem">2</div>
+  <script src="script/kaidzen.js"></script>
+
+  <div title="Всплывающая подсказка (атрибут title в div)">
+    <a href="second.html">На вторую страницу</a>
+  </div>
+</body>
+
 </html>
