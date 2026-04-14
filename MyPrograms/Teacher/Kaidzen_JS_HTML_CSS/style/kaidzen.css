@@ -1,3 +1,10 @@
+/* обратится ко всему body */
+body {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+
 /* Позволяет обратится ко всем тегам на странице */
 * {
     margin: 0;
@@ -11,7 +18,7 @@ li a:hover {
 
 /* меняет цвет ul идущий после pre */
 pre+ul {
-    color: #dd00ff;
+    color: #a00bb7;
     /* цвет текста */
     border: 1px solid rgb(0, 123, 255);
     /* цвет рамки */
@@ -19,12 +26,12 @@ pre+ul {
 
 /*выбор дочерних элементов которые вложенные(тут сработала специфичность, выше блок кода не сработал)*/
 div.container>ul>li {
-    border: 1px solid rgb(251, 0, 201);
+    border: 1px solid rgb(0, 247, 239);
 }
 
 /*обратится к элементу который имеет определенный атрибут*/
 p[title] {
-    color: #73ba1b;
+    color: #fb6400;
 }
 
 /* обратится к элементу который имеет определенный атрибут*/
@@ -40,15 +47,56 @@ input:checked+span {
 p:not(.text2) {
     color: #8303f3;
 }
+
 /*выбрать конкретный элемент*/
 p:nth-child(4) {
     color: rgb(0, 170, 255);
 }
 
-/* обратится ко всему body */
-body {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+/* отобразить картинку*/
+.img {
+    color: #63ffff;
+    background-image: url("../img/kaidzen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 350px;
+    height: 250px;
+}
+
+/* выбрать конкретный элемент по id и наложил тект по вверх картинки в рамке  */
+#title2 {
+    color: #c1fc00;
+    background-color: rgba(72, 255, 0, 0.32);
+}
+
+/* выбрать конкретный элемент по id и сделал рамку */
+#title3 {
+    border: 3px dashed rgb(7, 240, 7);
+    border-radius: 50%;
+    color: #19c822;
+    width: 80%;
+    height: 10%;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bolder;
+    background-color: #412657;
+}
+
+#title4 {
+    color: #b2285a;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 25px 50px 25px;
+    border-color: transparent transparent red transparent;
+
+      /* Добавлено для центрирования */
+    display: block; /* Убедиться, что элемент блочный */
+    margin: 0 auto; /* 0 сверху/снизу, auto по бокам (центрует) */
 }
 
 /* обратится к классу */
