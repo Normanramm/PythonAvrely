@@ -258,6 +258,21 @@ color: #55551d;
 background: #fefebc;
 color: #37ab8a;
 }
+.b-sql {
+background: #e7f7ff;
+color: #006494;
+}
+.b-postgres {
+background: #dfefff;
+color: #1f4f99;
+}
+.b-algo {
+background: #efe7ff;
+color: #5a32a3;
+}
+#sql .card.sql-cheat-top {
+order: -100;
+}
 .card-body {
 padding: 24px;
 display: flex;
@@ -514,6 +529,13 @@ grid-template-columns: 1fr;
 display: none;
 }
 }
+/* Mobile preview hotfix:
+   keep existing rules intact, but force preview visibility on phones */
+@media (max-width: 768px) {
+main .preview-container {
+display: flex !important;
+}
+}
 </style>
 </head>
 <body>
@@ -528,6 +550,9 @@ display: none;
 <button class="tab" onclick="switchTab('css', this)">CSS3</button>
 <button class="tab" onclick="switchTab('js', this)">JavaScript</button>
 <button class="tab" onclick="switchTab('python', this)">Python</button>
+<button class="tab" onclick="switchTab('sql', this)">SQL</button>
+<button class="tab" onclick="switchTab('postgres', this)">PostgreSQL</button>
+<button class="tab" onclick="switchTab('algorithms', this)">Алгоритмы</button>
 </div>
 <div class="search-box">
 <span class="search-icon">🔍</span>
@@ -3922,13 +3947,1249 @@ e<td>23</td>
 </article>
 </div>
 </section>
+<!-- ================= SQL SECTION ================= -->
+<section id="sql" class="section">
+<div class="section-header">
+<h1 class="section-title" style="background: linear-gradient(135deg, #006494, #00a6fb); background-clip: text; -webkit-background-clip: text;">SQL Полная Справка</h1>
+<p class="section-desc">Полный путь от базовых запросов до аналитики, транзакций, оптимизации и практик проектирования БД</p>
+</div>
+<div class="grid">
+<article class="card" data-tags="sql create table ddl schema primary key foreign key">
+<div class="card-header">
+<span class="card-title">CREATE TABLE и связи</span>
+<span class="badge b-sql">DDL</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE TABLE</span> users (
+    id <span class="k">INTEGER PRIMARY KEY</span>,
+    name <span class="k">TEXT NOT NULL</span>,
+    city <span class="k">TEXT</span>
+);
+<span class="k">CREATE TABLE</span> orders (
+    id <span class="k">INTEGER PRIMARY KEY</span>,
+    user_id <span class="k">INTEGER NOT NULL</span>,
+    total <span class="k">DECIMAL(10,2)</span>,
+    created_at <span class="k">DATE</span>,
+    <span class="k">FOREIGN KEY</span> (user_id) <span class="k">REFERENCES</span> users(id)
+);</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>Таблица</th><th>Колонки</th><th>Ключи</th></tr>
+<tr><td>users</td><td>id, name, city</td><td>PK: id</td></tr>
+<tr><td>orders</td><td>id, user_id, total, created_at</td><td>PK: id, FK: user_id → users.id</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql insert update delete dml where order by limit">
+<div class="card-header">
+<span class="card-title">INSERT / UPDATE / DELETE</span>
+<span class="badge b-sql">DML</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">INSERT INTO</span> users (id, name, city) <span class="k">VALUES</span>
+(1, <span class="s">'Vlad'</span>, <span class="s">'Moscow'</span>),
+(2, <span class="s">'Nadia'</span>, <span class="s">'Kazan'</span>);
+
+<span class="k">UPDATE</span> users
+<span class="k">SET</span> city = <span class="s">'Saint Petersburg'</span>
+<span class="k">WHERE</span> id = 2;
+
+<span class="k">DELETE FROM</span> users
+<span class="k">WHERE</span> id = 99;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 10px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 13px; color: var(--text-sec);">Изменение данных в таблице без изменения структуры.</div>
+<div style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 12px;">
+Rows affected: 2 INSERT, 1 UPDATE, 0 DELETE
+</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql select join left join inner join relation">
+<div class="card-header">
+<span class="card-title">JOIN: объединение таблиц</span>
+<span class="badge b-sql">JOIN</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span> u.name, o.total, o.created_at
+<span class="k">FROM</span> users u
+<span class="k">INNER JOIN</span> orders o <span class="k">ON</span> u.id = o.user_id
+<span class="k">WHERE</span> o.total >= 1000
+<span class="k">ORDER BY</span> o.created_at <span class="k">DESC</span>;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>name</th><th>total</th><th>created_at</th></tr>
+<tr><td>Vlad</td><td>1990.00</td><td>2026-04-10</td></tr>
+<tr><td>Nadia</td><td>1250.00</td><td>2026-04-11</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql group by having count sum avg min max aggregate">
+<div class="card-header">
+<span class="card-title">Агрегации и GROUP BY</span>
+<span class="badge b-sql">Analytics</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span> user_id,
+       <span class="k">COUNT</span>(*) <span class="k">AS</span> orders_count,
+       <span class="k">SUM</span>(total) <span class="k">AS</span> total_sum,
+       <span class="k">AVG</span>(total) <span class="k">AS</span> avg_total
+<span class="k">FROM</span> orders
+<span class="k">GROUP BY</span> user_id
+<span class="k">HAVING</span> <span class="k">SUM</span>(total) > 1500;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>user_id</th><th>orders_count</th><th>total_sum</th><th>avg_total</th></tr>
+<tr><td>1</td><td>3</td><td>4200.00</td><td>1400.00</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql index performance explain query plan optimization">
+<div class="card-header">
+<span class="card-title">Индексы и производительность</span>
+<span class="badge b-sql">Perf</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE INDEX</span> idx_orders_user_id <span class="k">ON</span> orders(user_id);
+<span class="k">CREATE INDEX</span> idx_orders_created_at <span class="k">ON</span> orders(created_at);
+
+<span class="k">EXPLAIN QUERY PLAN</span>
+<span class="k">SELECT</span> * <span class="k">FROM</span> orders <span class="k">WHERE</span> user_id = 1;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 12px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 12px;">
+SEARCH orders USING INDEX idx_orders_user_id (user_id=?)
+</div>
+<div style="font-size: 12px; color: var(--text-sec);">Индекс сокращает полный скан таблицы и ускоряет фильтрацию по `user_id`.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql join left right full cross self join types">
+<div class="card-header">
+<span class="card-title">Типы JOIN (полная карта)</span>
+<span class="badge b-sql">JOIN</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">-- INNER JOIN</span>
+<span class="k">SELECT</span> u.name, o.total
+<span class="k">FROM</span> users u
+<span class="k">INNER JOIN</span> orders o <span class="k">ON</span> u.id = o.user_id;
+
+<span class="k">-- LEFT JOIN</span>
+<span class="k">SELECT</span> u.name, o.total
+<span class="k">FROM</span> users u
+<span class="k">LEFT JOIN</span> orders o <span class="k">ON</span> u.id = o.user_id;
+
+<span class="k">-- CROSS JOIN</span>
+<span class="k">SELECT</span> u.name, p.period
+<span class="k">FROM</span> users u
+<span class="k">CROSS JOIN</span> (<span class="k">SELECT</span> <span class="s">'Q1'</span> <span class="k">AS</span> period <span class="k">UNION ALL SELECT</span> <span class="s">'Q2'</span>) p;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">INNER: пересечение, LEFT: все из левой, CROSS: декартово произведение.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql cte with recursive hierarchy">
+<div class="card-header">
+<span class="card-title">CTE и рекурсия</span>
+<span class="badge b-sql">Advanced</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">WITH RECURSIVE</span> nums(n) <span class="k">AS</span> (
+    <span class="k">SELECT</span> 1
+    <span class="k">UNION ALL</span>
+    <span class="k">SELECT</span> n + 1 <span class="k">FROM</span> nums <span class="k">WHERE</span> n &lt; 5
+)
+<span class="k">SELECT</span> * <span class="k">FROM</span> nums;
+
+<span class="k">WITH</span> top_orders <span class="k">AS</span> (
+    <span class="k">SELECT</span> * <span class="k">FROM</span> orders <span class="k">WHERE</span> total &gt;= 1000
+)
+<span class="k">SELECT</span> * <span class="k">FROM</span> top_orders;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>n</th></tr>
+<tr><td>1</td></tr><tr><td>2</td></tr><tr><td>3</td></tr><tr><td>4</td></tr><tr><td>5</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql window functions over partition by row_number rank lag lead">
+<div class="card-header">
+<span class="card-title">Оконные функции</span>
+<span class="badge b-sql">Window</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span>
+    user_id,
+    total,
+    <span class="k">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">PARTITION BY</span> user_id <span class="k">ORDER BY</span> total <span class="k">DESC</span>) <span class="k">AS</span> rn,
+    <span class="k">LAG</span>(total) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> user_id <span class="k">ORDER BY</span> created_at) <span class="k">AS</span> prev_total
+<span class="k">FROM</span> orders;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 12px;">
+user_id=1, total=1990, rn=1, prev_total=960
+</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql subquery exists in any all correlated">
+<div class="card-header">
+<span class="card-title">Подзапросы и EXISTS</span>
+<span class="badge b-sql">Subquery</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span> name
+<span class="k">FROM</span> users u
+<span class="k">WHERE EXISTS</span> (
+    <span class="k">SELECT</span> 1
+    <span class="k">FROM</span> orders o
+    <span class="k">WHERE</span> o.user_id = u.id <span class="k">AND</span> o.total &gt; 1000
+);
+
+<span class="k">SELECT</span> name
+<span class="k">FROM</span> users
+<span class="k">WHERE</span> id <span class="k">IN</span> (
+    <span class="k">SELECT</span> user_id <span class="k">FROM</span> orders
+);</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>name</th></tr>
+<tr><td>Vlad</td></tr>
+<tr><td>Nadia</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql transaction begin commit rollback acid isolation">
+<div class="card-header">
+<span class="card-title">Транзакции и ACID</span>
+<span class="badge b-sql">TCL</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">BEGIN TRANSACTION</span>;
+
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance - 500 <span class="k">WHERE</span> id = 1;
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance + 500 <span class="k">WHERE</span> id = 2;
+
+<span class="k">COMMIT</span>;
+<span class="k">-- при ошибке:</span>
+<span class="k">ROLLBACK</span>;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Atomicity: обе операции применяются вместе или откатываются вместе.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql view trigger stored procedure function">
+<div class="card-header">
+<span class="card-title">VIEW, TRIGGER, PROCEDURE</span>
+<span class="badge b-sql">DB Objects</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE VIEW</span> active_users <span class="k">AS</span>
+<span class="k">SELECT</span> id, name <span class="k">FROM</span> users <span class="k">WHERE</span> id <span class="k">&gt;</span> 0;
+
+<span class="k">CREATE TRIGGER</span> trg_orders_ai
+<span class="k">AFTER INSERT ON</span> orders
+<span class="k">BEGIN</span>
+    <span class="k">INSERT INTO</span> logs(message) <span class="k">VALUES</span> (<span class="s">'order inserted'</span>);
+<span class="k">END</span>;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">VIEW упрощает сложные SELECT, TRIGGER автоматизирует бизнес-логику.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql normalization 1nf 2nf 3nf bcfn denormalization">
+<div class="card-header">
+<span class="card-title">Нормализация (1NF / 2NF / 3NF)</span>
+<span class="badge b-sql">Design</span>
+</div>
+<div class="card-body">
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 10px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>Форма</th><th>Суть</th><th>Результат</th></tr>
+<tr><td>1NF</td><td>Атомарные значения, без повторяющихся групп</td><td>Чистые строки/столбцы</td></tr>
+<tr><td>2NF</td><td>Нет частичных зависимостей от составного PK</td><td>Меньше дублирования</td></tr>
+<tr><td>3NF</td><td>Нет транзитивных зависимостей</td><td>Стабильная модель</td></tr>
+</table>
+<div style="font-size: 12px; color: var(--text-sec);">Денормализация допустима для аналитики и ускорения чтения.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql union union all intersect except set operations">
+<div class="card-header">
+<span class="card-title">Операции над наборами</span>
+<span class="badge b-sql">Set Ops</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span> name <span class="k">FROM</span> users_moscow
+<span class="k">UNION</span>
+<span class="k">SELECT</span> name <span class="k">FROM</span> users_kazan;
+
+<span class="k">SELECT</span> name <span class="k">FROM</span> active_users
+<span class="k">INTERSECT</span>
+<span class="k">SELECT</span> name <span class="k">FROM</span> paid_users;
+
+<span class="k">SELECT</span> name <span class="k">FROM</span> all_users
+<span class="k">EXCEPT</span>
+<span class="k">SELECT</span> name <span class="k">FROM</span> blocked_users;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">`UNION` объединяет уникальные строки, `INTERSECT` возвращает пересечение, `EXCEPT` показывает разницу наборов.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql case coalesce nullif ifnull is null conditional logic">
+<div class="card-header">
+<span class="card-title">CASE и работа с NULL</span>
+<span class="badge b-sql">Logic</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span>
+  name,
+  <span class="k">CASE</span>
+    <span class="k">WHEN</span> age &lt; 18 <span class="k">THEN</span> <span class="s">'minor'</span>
+    <span class="k">WHEN</span> age &gt;= 18 <span class="k">THEN</span> <span class="s">'adult'</span>
+    <span class="k">ELSE</span> <span class="s">'unknown'</span>
+  <span class="k">END</span> <span class="k">AS</span> age_group,
+  <span class="k">COALESCE</span>(city, <span class="s">'N/A'</span>) <span class="k">AS</span> city_safe
+<span class="k">FROM</span> users;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">`CASE` добавляет условные категории прямо в выборке, `COALESCE` подставляет значение вместо `NULL`.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql merge upsert insert on conflict update replace">
+<div class="card-header">
+<span class="card-title">UPSERT (INSERT OR UPDATE)</span>
+<span class="badge b-sql">DML</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">INSERT INTO</span> users (id, name, city)
+<span class="k">VALUES</span> (1, <span class="s">'Vlad'</span>, <span class="s">'Moscow'</span>)
+<span class="k">ON CONFLICT</span> (id)
+<span class="k">DO UPDATE SET</span>
+  name = EXCLUDED.name,
+  city = EXCLUDED.city;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">UPSERT полезен для синхронизации: если строка есть — обновляем, если нет — создаем.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="sql schema migration alter rename drop column table safe migrations">
+<div class="card-header">
+<span class="card-title">Изменение схемы без потерь</span>
+<span class="badge b-sql">Migration</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">ALTER TABLE</span> users <span class="k">ADD COLUMN</span> phone <span class="k">TEXT</span>;
+<span class="k">UPDATE</span> users <span class="k">SET</span> phone = <span class="s">'unknown'</span> <span class="k">WHERE</span> phone <span class="k">IS NULL</span>;
+<span class="k">ALTER TABLE</span> users <span class="k">ALTER COLUMN</span> phone <span class="k">SET NOT NULL</span>;
+
+<span class="k">-- безопасное переименование</span>
+<span class="k">ALTER TABLE</span> users <span class="k">RENAME COLUMN</span> city <span class="k">TO</span> location;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Правильная миграция: добавить колонку, заполнить данные, затем усиливать ограничения.</div>
+</div>
+</div>
+</article>
+
+<article class="card sql-cheat-top" data-tags="sql cheat sheet constraints null unique default check alter drop truncate grant revoke">
+<div class="card-header">
+<span class="card-title">SQL Cheat Sheet</span>
+<span class="badge b-sql">Reference</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">QUICK REFERENCE</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">-- 1) DDL: сначала создаем структуру</span>
+<span class="k">CREATE TABLE</span> table_name (
+    id <span class="k">INTEGER PRIMARY KEY</span>,
+    col1 <span class="k">TEXT NOT NULL</span>,
+    col2 <span class="k">INTEGER</span>,
+    <span class="k">UNIQUE</span> (col1),
+    <span class="k">CHECK</span> (col2 >= 0),
+    <span class="k">DEFAULT</span> 0
+);
+<span class="k">ALTER TABLE</span> table_name <span class="k">ADD COLUMN</span> created_at <span class="k">DATE</span>;
+<span class="k">CREATE INDEX</span> idx_table_col1 <span class="k">ON</span> table_name(col1);
+
+<span class="k">-- 2) DML: заполняем и изменяем данные</span>
+<span class="k">INSERT INTO</span> table_name (col1, col2) <span class="k">VALUES</span> (<span class="s">'A'</span>, 10);
+<span class="k">UPDATE</span> table_name <span class="k">SET</span> col2 = 20 <span class="k">WHERE</span> col1 = <span class="s">'A'</span>;
+<span class="k">DELETE FROM</span> table_name <span class="k">WHERE</span> col1 = <span class="s">'B'</span>;
+
+<span class="k">-- 3) DQL: правильный порядок SELECT</span>
+<span class="k">SELECT</span> col1, <span class="k">SUM</span>(col2) <span class="k">AS</span> total
+<span class="k">FROM</span> table_name
+<span class="k">WHERE</span> col2 > 0
+<span class="k">GROUP BY</span> col1
+<span class="k">HAVING</span> <span class="k">SUM</span>(col2) >= 10
+<span class="k">ORDER BY</span> total <span class="k">DESC</span>
+<span class="k">LIMIT</span> 10;
+
+<span class="k">-- 4) TCL: оборачиваем критичные изменения в транзакцию</span>
+<span class="k">BEGIN</span>;
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance - 100 <span class="k">WHERE</span> id = 1;
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance + 100 <span class="k">WHERE</span> id = 2;
+<span class="k">COMMIT</span>; <span class="k">-- или ROLLBACK;</span>
+
+<span class="k">-- 5) DCL: права доступа</span>
+<span class="k">GRANT SELECT, INSERT ON</span> table_name <span class="k">TO</span> analyst_user;
+<span class="k">REVOKE INSERT ON</span> table_name <span class="k">FROM</span> analyst_user;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 10px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-main);">
+<strong>Как писать SQL по шагам:</strong> DDL (структура) → DML (данные) → DQL (чтение) → TCL (безопасность изменений) → DCL (доступы).
+</div>
+<div style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-sec);">
+Комментарий: блок <code>SELECT</code> в шпаргалке расположен в корректном синтаксическом порядке:
+<code>SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY → LIMIT</code>.
+</div>
+<div style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--text-sec);">
+Комментарий: транзакции (<code>BEGIN/COMMIT/ROLLBACK</code>) используйте для денежных и критичных операций, чтобы избежать частично примененных изменений.
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- ================= POSTGRESQL SECTION ================= -->
+<section id="postgres" class="section">
+<div class="section-header">
+<h1 class="section-title" style="background: linear-gradient(135deg, #336791, #4a89dc); background-clip: text; -webkit-background-clip: text;">PostgreSQL Полная Справка</h1>
+<p class="section-desc">От установки до production: типы, индексы, JSONB, транзакции, администрирование, мониторинг и оптимизация</p>
+</div>
+<div class="grid">
+<article class="card" data-tags="postgresql install psql docker initdb pg_hba postgresql conf">
+<div class="card-header">
+<span class="card-title">Установка и подключение</span>
+<span class="badge b-postgres">Setup</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PSQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">-- Подключение к серверу</span>
+psql -h localhost -p 5432 -U postgres -d app_db
+
+<span class="k">-- Проверка версии и текущей БД</span>
+<span class="k">SELECT</span> version();
+<span class="k">SELECT</span> current_database();
+
+<span class="k">-- Создание пользователя и БД</span>
+<span class="k">CREATE ROLE</span> app_user <span class="k">WITH LOGIN PASSWORD</span> <span class="s">'StrongPass123'</span>;
+<span class="k">CREATE DATABASE</span> app_db <span class="k">OWNER</span> app_user;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Сервер PostgreSQL запущен, база `app_db` и роль `app_user` готовы для приложения.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: сначала создается отдельная роль приложения, затем база назначается владельцу — это безопаснее, чем работать под `postgres` в проде.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql datatypes serial bigint uuid timestamptz numeric jsonb array">
+<div class="card-header">
+<span class="card-title">Типы данных PostgreSQL</span>
+<span class="badge b-postgres">Types</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE TABLE</span> events (
+    id <span class="k">BIGSERIAL PRIMARY KEY</span>,
+    event_uuid <span class="k">UUID NOT NULL</span>,
+    title <span class="k">TEXT NOT NULL</span>,
+    price <span class="k">NUMERIC(10,2)</span>,
+    tags <span class="k">TEXT[]</span>,
+    payload <span class="k">JSONB</span>,
+    created_at <span class="k">TIMESTAMPTZ DEFAULT now()</span>
+);</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>Тип</th><th>Где применять</th></tr>
+<tr><td>UUID</td><td>публичные идентификаторы</td></tr>
+<tr><td>JSONB</td><td>гибкая структура данных</td></tr>
+<tr><td>TIMESTAMPTZ</td><td>даты/время с часовым поясом</td></tr>
+</table>
+<div style="font-size: 12px; color: var(--text-sec); margin-top: 8px;">Комментарий: выбор правильных типов влияет на производительность, точность данных и корректную работу с часовыми поясами.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql constraints primary key foreign key unique check default generated">
+<div class="card-header">
+<span class="card-title">Ограничения и целостность</span>
+<span class="badge b-postgres">Schema</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE TABLE</span> users (
+    id <span class="k">BIGSERIAL PRIMARY KEY</span>,
+    email <span class="k">TEXT UNIQUE NOT NULL</span>,
+    age <span class="k">INT CHECK</span> (age &gt;= 13),
+    created_at <span class="k">TIMESTAMPTZ DEFAULT now()</span>
+);
+
+<span class="k">CREATE TABLE</span> orders (
+    id <span class="k">BIGSERIAL PRIMARY KEY</span>,
+    user_id <span class="k">BIGINT REFERENCES</span> users(id) <span class="k">ON DELETE CASCADE</span>,
+    total <span class="k">NUMERIC(10,2) CHECK</span> (total &gt;= 0)
+);</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">`CHECK`, `UNIQUE` и `FK` защищают данные от некорректных значений и «висячих» связей.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: ограничения лучше задавать в БД, а не только в коде приложения — это последняя линия защиты целостности.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql index btree gin gist brin partial expression explain analyze">
+<div class="card-header">
+<span class="card-title">Индексы и EXPLAIN ANALYZE</span>
+<span class="badge b-postgres">Perf</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE INDEX</span> idx_orders_user_id <span class="k">ON</span> orders(user_id);
+<span class="k">CREATE INDEX</span> idx_events_payload_gin <span class="k">ON</span> events <span class="k">USING GIN</span>(payload);
+<span class="k">CREATE INDEX</span> idx_orders_paid_partial <span class="k">ON</span> orders(id) <span class="k">WHERE</span> total &gt; 0;
+
+<span class="k">EXPLAIN ANALYZE</span>
+<span class="k">SELECT</span> * <span class="k">FROM</span> orders <span class="k">WHERE</span> user_id = 42;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 12px;">
+Index Scan using idx_orders_user_id on orders  (actual time=0.08..0.15 rows=18 loops=1)
+</div>
+<div style="font-size: 12px; color: var(--text-sec); margin-top: 8px;">Комментарий: `EXPLAIN ANALYZE` показывает реальный план и время — используйте его для проверки, что запрос действительно идет по индексу.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql jsonb operators containment path query update">
+<div class="card-header">
+<span class="card-title">JSONB: хранение и поиск</span>
+<span class="badge b-postgres">JSONB</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span> id, payload-&gt;&gt;<span class="s">'status'</span> <span class="k">AS</span> status
+<span class="k">FROM</span> events
+<span class="k">WHERE</span> payload @&gt; <span class="s">'{"priority":"high"}'</span>::jsonb;
+
+<span class="k">UPDATE</span> events
+<span class="k">SET</span> payload = jsonb_set(payload, <span class="s">'{status}'</span>, <span class="s">'"processed"'</span>::jsonb)
+<span class="k">WHERE</span> id = 1;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">JSONB позволяет хранить полуструктурированные данные и быстро фильтровать их с GIN-индексами.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: оператор `@>` проверяет вхождение JSON-объекта, а `jsonb_set` безопасно обновляет конкретный путь без полной перезаписи документа.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql cte recursive window functions rank row_number lag lead">
+<div class="card-header">
+<span class="card-title">CTE и оконные функции</span>
+<span class="badge b-postgres">Analytics</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">WITH monthly AS</span> (
+  <span class="k">SELECT</span> user_id, date_trunc(<span class="s">'month'</span>, created_at) <span class="k">AS</span> m, <span class="k">SUM</span>(total) <span class="k">AS</span> revenue
+  <span class="k">FROM</span> orders
+  <span class="k">GROUP BY</span> user_id, m
+)
+<span class="k">SELECT</span> user_id, m, revenue,
+       <span class="k">RANK</span>() <span class="k">OVER</span> (<span class="k">PARTITION BY</span> user_id <span class="k">ORDER BY</span> revenue <span class="k">DESC</span>) <span class="k">AS</span> revenue_rank
+<span class="k">FROM</span> monthly;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>user_id</th><th>month</th><th>revenue</th><th>rank</th></tr>
+<tr><td>1</td><td>2026-04</td><td>2950.00</td><td>1</td></tr>
+</table>
+<div style="font-size: 12px; color: var(--text-sec); margin-top: 8px;">Комментарий: CTE делает сложный запрос читаемым, а оконная функция дает ранг без потери исходных строк.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql transaction isolation level read committed repeatable read serializable deadlock">
+<div class="card-header">
+<span class="card-title">Транзакции и уровни изоляции</span>
+<span class="badge b-postgres">ACID</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">BEGIN</span>;
+<span class="k">SET TRANSACTION ISOLATION LEVEL</span> REPEATABLE READ;
+
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance - 500 <span class="k">WHERE</span> id = 1;
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance + 500 <span class="k">WHERE</span> id = 2;
+
+<span class="k">COMMIT</span>;
+<span class="k">-- при ошибке: ROLLBACK;</span></pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Для финансовых операций используйте транзакции и корректный уровень изоляции, чтобы избежать гонок и грязных чтений.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: `REPEATABLE READ` фиксирует снимок данных внутри транзакции и снижает риск непредсказуемых результатов.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql roles grants revoke row level security rls permissions backup restore pg_dump pg_restore">
+<div class="card-header">
+<span class="card-title">Роли, права, backup/restore</span>
+<span class="badge b-postgres">Admin</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">ADMIN</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE ROLE</span> readonly <span class="k">NOLOGIN</span>;
+<span class="k">GRANT CONNECT ON DATABASE</span> app_db <span class="k">TO</span> readonly;
+<span class="k">GRANT USAGE ON SCHEMA</span> public <span class="k">TO</span> readonly;
+<span class="k">GRANT SELECT ON ALL TABLES IN SCHEMA</span> public <span class="k">TO</span> readonly;
+
+<span class="k">-- Политика построчного доступа (RLS)</span>
+<span class="k">ALTER TABLE</span> orders <span class="k">ENABLE ROW LEVEL SECURITY</span>;
+<span class="k">CREATE POLICY</span> orders_owner_policy <span class="k">ON</span> orders
+<span class="k">USING</span> (user_id = current_setting(<span class="s">'app.user_id'</span>)::bigint);
+
+<span class="k">-- Резервная копия и восстановление</span>
+pg_dump -Fc -U postgres -d app_db -f app_db.dump
+pg_restore -U postgres -d app_db_new app_db.dump</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Минимальные права по ролям + регулярный `pg_dump` — базовая стратегия безопасной эксплуатации PostgreSQL.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: RLS ограничивает строки на уровне БД, даже если в приложении где-то пропущена проверка доступа.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql extensions pgcrypto uuid-ossp citext unaccent postgis">
+<div class="card-header">
+<span class="card-title">Расширения PostgreSQL</span>
+<span class="badge b-postgres">Extensions</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE EXTENSION IF NOT EXISTS</span> pgcrypto;
+<span class="k">CREATE EXTENSION IF NOT EXISTS</span> citext;
+
+<span class="k">CREATE TABLE</span> accounts (
+    id <span class="k">UUID PRIMARY KEY DEFAULT gen_random_uuid()</span>,
+    email <span class="k">CITEXT UNIQUE NOT NULL</span>
+);</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">`pgcrypto` дает безопасный UUID, а `citext` делает email-поля регистронезависимыми.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: расширения включаются отдельно в каждой базе и должны быть учтены в миграциях.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql partitioning range list hash large tables retention">
+<div class="card-header">
+<span class="card-title">Партиционирование таблиц</span>
+<span class="badge b-postgres">Scale</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE TABLE</span> logs (
+    id <span class="k">BIGSERIAL</span>,
+    created_at <span class="k">DATE NOT NULL</span>,
+    payload <span class="k">JSONB</span>
+) <span class="k">PARTITION BY RANGE</span> (created_at);
+
+<span class="k">CREATE TABLE</span> logs_2026_04 <span class="k">PARTITION OF</span> logs
+<span class="k">FOR VALUES FROM</span> (<span class="s">'2026-04-01'</span>) <span class="k">TO</span> (<span class="s">'2026-05-01'</span>);</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Данные автоматически раскладываются по партициям; старые партиции можно архивировать или удалять отдельно.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: партиционирование особенно полезно для больших time-series таблиц и политики retention.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql materialized view refresh concurrently reporting">
+<div class="card-header">
+<span class="card-title">Materialized View</span>
+<span class="badge b-postgres">Reporting</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">CREATE MATERIALIZED VIEW</span> mv_monthly_revenue <span class="k">AS</span>
+<span class="k">SELECT</span> date_trunc(<span class="s">'month'</span>, created_at) <span class="k">AS</span> month, <span class="k">SUM</span>(total) <span class="k">AS</span> revenue
+<span class="k">FROM</span> orders
+<span class="k">GROUP BY</span> month;
+
+<span class="k">REFRESH MATERIALIZED VIEW CONCURRENTLY</span> mv_monthly_revenue;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Материализованное представление хранит предрасчитанный результат и ускоряет аналитические дашборды.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: `CONCURRENTLY` позволяет обновлять view без долгой блокировки чтения (при наличии уникального индекса).</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql vacuum analyze autovacuum bloat maintenance">
+<div class="card-header">
+<span class="card-title">VACUUM, ANALYZE, Autovacuum</span>
+<span class="badge b-postgres">Maintenance</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">VACUUM</span> orders;
+<span class="k">ANALYZE</span> orders;
+<span class="k">VACUUM (VERBOSE, ANALYZE)</span> orders;
+
+<span class="k">-- Проверка активности autovacuum</span>
+<span class="k">SELECT</span> relname, n_live_tup, n_dead_tup
+<span class="k">FROM</span> pg_stat_user_tables
+<span class="k">ORDER BY</span> n_dead_tup <span class="k">DESC</span>;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">`VACUUM` чистит мертвые версии строк, `ANALYZE` обновляет статистику для оптимизатора.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: без актуальной статистики планировщик может выбрать медленный план даже при наличии индексов.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="postgresql monitoring pg_stat_activity locks slow queries connections">
+<div class="card-header">
+<span class="card-title">Мониторинг и диагностика</span>
+<span class="badge b-postgres">Observability</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">SQL</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">SELECT</span> pid, usename, state, wait_event_type, query
+<span class="k">FROM</span> pg_stat_activity
+<span class="k">WHERE</span> state &lt;&gt; <span class="s">'idle'</span>;
+
+<span class="k">SELECT</span> locktype, relation::regclass, mode, granted
+<span class="k">FROM</span> pg_locks
+<span class="k">WHERE</span> relation <span class="k">IS NOT NULL</span>;</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Через `pg_stat_activity` видно долгие запросы, через `pg_locks` — блокировки, мешающие транзакциям.</div>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: это первый шаг при жалобах на “тормозит БД” и “все зависло”.</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- ================= ALGORITHMS SECTION ================= -->
+<section id="algorithms" class="section">
+<div class="section-header">
+<h1 class="section-title" style="background: linear-gradient(135deg, #5a32a3, #8b5cf6); background-clip: text; -webkit-background-clip: text;">Алгоритмы Полная Справка</h1>
+<p class="section-desc">От Big O и базовых структур до графов, динамического программирования и практики собеседований</p>
+</div>
+<div class="grid">
+<article class="card" data-tags="algorithms big o complexity time memory best average worst">
+<div class="card-header">
+<span class="card-title">Big O и оценка сложности</span>
+<span class="badge b-algo">Base</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">REFERENCE</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">O(1)</span>  <span class="c">-- доступ по индексу</span>
+<span class="k">O(log n)</span>  <span class="c">-- бинарный поиск</span>
+<span class="k">O(n)</span>  <span class="c">-- линейный проход</span>
+<span class="k">O(n log n)</span>  <span class="c">-- эффективные сортировки</span>
+<span class="k">O(n^2)</span>  <span class="c">-- двойные циклы, bubble/selection</span>
+<span class="k">O(2^n)</span>  <span class="c">-- полный перебор подмножеств</span>
+<span class="k">O(n!)</span>  <span class="c">-- перестановки</span></pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: Big O сравнивает масштабируемость алгоритмов при росте входных данных, а не абсолютное время в миллисекундах.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms array hash map set two pointers sliding window">
+<div class="card-header">
+<span class="card-title">Массивы, HashMap, два указателя</span>
+<span class="badge b-algo">Patterns</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON + JS</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="c"># Python: Two Sum (O(n))</span>
+<span class="k">def</span> two_sum(nums, target):
+    seen = {}
+    <span class="k">for</span> i, x <span class="k">in</span> <span class="k">enumerate</span>(nums):
+        <span class="k">if</span> target - x <span class="k">in</span> seen:
+            <span class="k">return</span> [seen[target - x], i]
+        seen[x] = i
+
+<span class="c">// JS: max sum subarray of size k (sliding window)</span>
+<span class="k">function</span> maxWindowSum(arr, k) {
+  <span class="k">let</span> sum = <span class="s">0</span>, best = -Infinity;
+  <span class="k">for</span> (<span class="k">let</span> i = <span class="s">0</span>; i &lt; arr.length; i++) {
+    sum += arr[i];
+    <span class="k">if</span> (i &gt;= k) sum -= arr[i - k];
+    <span class="k">if</span> (i &gt;= k - <span class="s">1</span>) best = Math.max(best, sum);
+  }
+  <span class="k">return</span> best;
+}</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: HashMap помогает перейти от O(n²) к O(n), а sliding window убирает повторные вычисления в подмассивах.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms sorting quicksort mergesort heapsort counting sort radix sort">
+<div class="card-header">
+<span class="card-title">Сортировки</span>
+<span class="badge b-algo">Sorting</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">def</span> merge_sort(arr):
+    <span class="k">if</span> <span class="k">len</span>(arr) &lt;= <span class="s">1</span>:
+        <span class="k">return</span> arr
+    mid = <span class="k">len</span>(arr) // <span class="s">2</span>
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    out = []
+    i = j = <span class="s">0</span>
+    <span class="k">while</span> i &lt; <span class="k">len</span>(left) <span class="k">and</span> j &lt; <span class="k">len</span>(right):
+        <span class="k">if</span> left[i] &lt;= right[j]:
+            out.append(left[i]); i += <span class="s">1</span>
+        <span class="k">else</span>:
+            out.append(right[j]); j += <span class="s">1</span>
+    <span class="k">return</span> out + left[i:] + right[j:]</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>Алгоритм</th><th>Сложность</th><th>Стабильность</th></tr>
+<tr><td>Merge Sort</td><td>O(n log n)</td><td>Да</td></tr>
+<tr><td>Quick Sort</td><td>O(n log n) avg</td><td>Нет</td></tr>
+<tr><td>Heap Sort</td><td>O(n log n)</td><td>Нет</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms binary search lower bound upper bound sorted arrays">
+<div class="card-header">
+<span class="card-title">Бинарный поиск</span>
+<span class="badge b-algo">Search</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">JAVASCRIPT</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">function</span> binarySearch(arr, target) {
+  <span class="k">let</span> l = <span class="s">0</span>, r = arr.length - <span class="s">1</span>;
+  <span class="k">while</span> (l &lt;= r) {
+    <span class="k">const</span> m = (l + r) >> <span class="s">1</span>;
+    <span class="k">if</span> (arr[m] === target) <span class="k">return</span> m;
+    <span class="k">if</span> (arr[m] &lt; target) l = m + <span class="s">1</span>;
+    <span class="k">else</span> r = m - <span class="s">1</span>;
+  }
+  <span class="k">return</span> -<span class="s">1</span>;
+}</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: бинарный поиск работает только на отсортированных данных и делит область поиска пополам на каждом шаге.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms stack queue deque monotonic stack">
+<div class="card-header">
+<span class="card-title">Стек и очередь</span>
+<span class="badge b-algo">DS</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">from</span> collections <span class="k">import</span> deque
+
+<span class="c"># Stack (LIFO)</span>
+stack = []
+stack.append(<span class="s">10</span>)
+stack.append(<span class="s">20</span>)
+top = stack.pop()  <span class="c"># 20</span>
+
+<span class="c"># Queue (FIFO)</span>
+q = deque([<span class="s">1</span>, <span class="s">2</span>])
+q.append(<span class="s">3</span>)
+first = q.popleft()  <span class="c"># 1</span></pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: стек часто применяют для парсинга/скобок/DFS, очередь — для BFS и задач с обработкой по порядку.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms linked list reverse fast slow pointers cycle detection">
+<div class="card-header">
+<span class="card-title">Связные списки и указатели</span>
+<span class="badge b-algo">LinkedList</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">def</span> reverse_list(head):
+    prev = <span class="k">None</span>
+    cur = head
+    <span class="k">while</span> cur:
+        nxt = cur.next
+        cur.next = prev
+        prev = cur
+        cur = nxt
+    <span class="k">return</span> prev
+
+<span class="c"># Floyd cycle detection: slow/fast pointers</span></pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: техника slow/fast pointers позволяет находить цикл без дополнительной памяти O(1).</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms tree dfs bfs inorder preorder postorder bst heap trie">
+<div class="card-header">
+<span class="card-title">Деревья и обходы</span>
+<span class="badge b-algo">Tree</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">JAVASCRIPT</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">function</span> inorder(root, out = []) {
+  <span class="k">if</span> (!root) <span class="k">return</span> out;
+  inorder(root.left, out);
+  out.push(root.val);
+  inorder(root.right, out);
+  <span class="k">return</span> out;
+}</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>Обход</th><th>Порядок</th><th>Применение</th></tr>
+<tr><td>Preorder</td><td>Root-Left-Right</td><td>Сериализация</td></tr>
+<tr><td>Inorder</td><td>Left-Root-Right</td><td>Отсортированный вывод BST</td></tr>
+<tr><td>Postorder</td><td>Left-Right-Root</td><td>Удаление/сворачивание дерева</td></tr>
+</table>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms graph bfs dfs dijkstra topological sort union find mst">
+<div class="card-header">
+<span class="card-title">Графовые алгоритмы</span>
+<span class="badge b-algo">Graph</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">import</span> heapq
+<span class="k">def</span> dijkstra(graph, start):
+    dist = {v: float(<span class="s">'inf'</span>) <span class="k">for</span> v <span class="k">in</span> graph}
+    dist[start] = <span class="s">0</span>
+    pq = [(<span class="s">0</span>, start)]
+    <span class="k">while</span> pq:
+        d, v = heapq.heappop(pq)
+        <span class="k">if</span> d != dist[v]:
+            <span class="k">continue</span>
+        <span class="k">for</span> to, w <span class="k">in</span> graph[v]:
+            nd = d + w
+            <span class="k">if</span> nd &lt; dist[to]:
+                dist[to] = nd
+                heapq.heappush(pq, (nd, to))
+    <span class="k">return</span> dist</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: Дейкстра ищет кратчайшие пути в графе с неотрицательными весами через приоритетную очередь.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms recursion backtracking permutations subsets n queens">
+<div class="card-header">
+<span class="card-title">Рекурсия и Backtracking</span>
+<span class="badge b-algo">Search</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">def</span> subsets(nums):
+    res = []
+    <span class="k">def</span> dfs(i, path):
+        <span class="k">if</span> i == <span class="k">len</span>(nums):
+            res.append(path[:]); <span class="k">return</span>
+        dfs(i + <span class="s">1</span>, path)
+        path.append(nums[i])
+        dfs(i + <span class="s">1</span>, path)
+        path.pop()
+    dfs(<span class="s">0</span>, [])
+    <span class="k">return</span> res</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: backtracking перебирает дерево решений с откатом, что подходит для комбинаций, перестановок и constraint-задач.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms dynamic programming knapsack lis lcs memoization tabulation">
+<div class="card-header">
+<span class="card-title">Динамическое программирование</span>
+<span class="badge b-algo">DP</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">JAVASCRIPT</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">function</span> fibDP(n) {
+  <span class="k">if</span> (n &lt;= <span class="s">1</span>) <span class="k">return</span> n;
+  <span class="k">const</span> dp = Array(n + <span class="s">1</span>).fill(<span class="s">0</span>);
+  dp[<span class="s">1</span>] = <span class="s">1</span>;
+  <span class="k">for</span> (<span class="k">let</span> i = <span class="s">2</span>; i &lt;= n; i++) {
+    dp[i] = dp[i - <span class="s">1</span>] + dp[i - <span class="s">2</span>];
+  }
+  <span class="k">return</span> dp[n];
+}</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: DP сокращает экспоненциальный перебор за счет хранения результатов подзадач (memoization/tabulation).</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms greedy interval scheduling huffman activity selection">
+<div class="card-header">
+<span class="card-title">Жадные алгоритмы</span>
+<span class="badge b-algo">Greedy</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">def</span> max_non_overlap(intervals):
+    intervals.sort(key=<span class="k">lambda</span> x: x[<span class="s">1</span>])
+    end = -<span class="s">10</span>**<span class="s">9</span>
+    cnt = <span class="s">0</span>
+    <span class="k">for</span> l, r <span class="k">in</span> intervals:
+        <span class="k">if</span> l &gt;= end:
+            cnt += <span class="s">1</span>
+            end = r
+    <span class="k">return</span> cnt</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: greedy берет локально лучшее решение; работает, только если задача обладает свойством жадного выбора.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms strings kmp z function rolling hash rabin karp trie">
+<div class="card-header">
+<span class="card-title">Строковые алгоритмы</span>
+<span class="badge b-algo">Strings</span>
+</div>
+<div class="card-body">
+<div class="code-container">
+<span class="code-label">PYTHON</span>
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre class="code-block"><span class="k">def</span> prefix_function(s):
+    pi = [<span class="s">0</span>] * <span class="k">len</span>(s)
+    <span class="k">for</span> i <span class="k">in</span> <span class="k">range</span>(<span class="s">1</span>, <span class="k">len</span>(s)):
+        j = pi[i - <span class="s">1</span>]
+        <span class="k">while</span> j &gt; <span class="s">0</span> <span class="k">and</span> s[i] != s[j]:
+            j = pi[j - <span class="s">1</span>]
+        <span class="k">if</span> s[i] == s[j]:
+            j += <span class="s">1</span>
+        pi[i] = j
+    <span class="k">return</span> pi</pre>
+</div>
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: префикс-функция — основа KMP для поиска подстроки за O(n + m) без отката по тексту.</div>
+</div>
+</div>
+</article>
+
+<article class="card" data-tags="algorithms interview roadmap practice leetcode codeforces atcoder">
+<div class="card-header">
+<span class="card-title">Roadmap по алгоритмам</span>
+<span class="badge b-algo">Roadmap</span>
+</div>
+<div class="card-body">
+<div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 10px;">
+<span class="preview-label">🖥️ PREVIEW</span>
+<table class="attr-table" style="width: 100%;">
+<tr><th>Этап</th><th>Темы</th><th>Цель</th></tr>
+<tr><td>1</td><td>Big O, массивы, hashmap, two pointers</td><td>Уверенная база</td></tr>
+<tr><td>2</td><td>Сортировки, бинарный поиск, стек/очередь</td><td>Шаблоны задач</td></tr>
+<tr><td>3</td><td>Деревья, графы, DFS/BFS, shortest path</td><td>Средний+ уровень</td></tr>
+<tr><td>4</td><td>DP, greedy, backtracking, string algorithms</td><td>Сложные задачи</td></tr>
+</table>
+<div style="font-size: 12px; color: var(--text-sec);">Комментарий: эффективная практика — решать 2-3 задачи в день с обязательным разбором сложности и альтернативных решений.</div>
+</div>
+</div>
+</article>
+</div>
+</section>
 </main>
 <footer>
 <p>© 2026 Web Encyclopedia Vlad Avrely. Полный справочник с визуальными примерами.</p>
 </footer>
 <div class="toast" id="toast">✓ Код скопирован!</div>
 <script>
-// Переключение вкладок HTML / CSS / JS / Python
+// Переключение вкладок HTML / CSS / JS / Python / SQL / PostgreSQL / Алгоритмы
 function switchTab(id, el) {
     document.querySelectorAll(".section").forEach((s) => s.classList.remove("active"));
     document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
@@ -3963,6 +5224,52 @@ function copyCode(btn) {
         setTimeout(() => toast.classList.remove("show"), 2500);
     });
 }
+
+function initSqlPreviewNotes() {
+    const sqlSection = document.getElementById("sql");
+    if (!sqlSection) return;
+    const cards = sqlSection.querySelectorAll(".card");
+    cards.forEach((card) => {
+        const preview = card.querySelector(".preview-container");
+        if (!preview) return;
+        if (preview.querySelector(".sql-note-auto")) return;
+        const titleEl = card.querySelector(".card-title");
+        const title = titleEl ? titleEl.textContent.trim() : "";
+        let note = "Комментарий: в этом PREVIEW показан ожидаемый результат выполнения SQL из карточки.";
+
+        if (title.includes("CREATE TABLE")) note = "Комментарий: здесь показано, как таблицы связаны внешним ключом и как формируется структура БД.";
+        else if (title.includes("INSERT / UPDATE / DELETE")) note = "Комментарий: PREVIEW отражает, сколько строк затронули операции добавления, изменения и удаления.";
+        else if (title.includes("JOIN")) note = "Комментарий: PREVIEW показывает итог объединения строк из нескольких таблиц по условию связи.";
+        else if (title.includes("GROUP BY")) note = "Комментарий: PREVIEW демонстрирует агрегирование данных по группам и фильтрацию через HAVING.";
+        else if (title.includes("Индексы")) note = "Комментарий: PREVIEW показывает, что оптимизатор использует индекс вместо полного сканирования.";
+        else if (title.includes("CTE")) note = "Комментарий: PREVIEW показывает промежуточные результаты CTE и их повторное использование в основном запросе.";
+        else if (title.includes("Оконные функции")) note = "Комментарий: PREVIEW демонстрирует вычисления по окну строк без потери детализации.";
+        else if (title.includes("Подзапросы")) note = "Комментарий: PREVIEW показывает фильтрацию строк на основе результата вложенного запроса.";
+        else if (title.includes("ACID")) note = "Комментарий: PREVIEW описывает поведение транзакции — изменения применяются целиком или откатываются.";
+        else if (title.includes("VIEW")) note = "Комментарий: PREVIEW показывает, как объекты БД автоматизируют повторяющуюся логику.";
+        else if (title.includes("Нормализация")) note = "Комментарий: PREVIEW объясняет, как формы нормализации уменьшают дублирование и аномалии.";
+        else if (title.includes("Set Ops")) note = "Комментарий: PREVIEW поясняет, как SQL работает с объединением, пересечением и разницей наборов.";
+        else if (title.includes("CASE")) note = "Комментарий: PREVIEW показывает условные вычисления и безопасную обработку NULL.";
+        else if (title.includes("UPSERT")) note = "Комментарий: PREVIEW отражает логику «обновить если есть, вставить если нет».";
+        else if (title.includes("схемы")) note = "Комментарий: PREVIEW показывает безопасный порядок миграций без потери данных.";
+        else if (title.includes("Cheat Sheet")) note = "Комментарий: PREVIEW показывает правильный порядок написания SQL-блоков от DDL к DCL.";
+
+        const box = document.createElement("div");
+        box.className = "sql-note-auto";
+        box.style.width = "100%";
+        box.style.background = "var(--bg-preview)";
+        box.style.border = "1px solid var(--border)";
+        box.style.borderRadius = "8px";
+        box.style.padding = "10px";
+        box.style.fontSize = "12px";
+        box.style.color = "var(--text-sec)";
+        box.style.marginTop = "8px";
+        box.textContent = note;
+        preview.appendChild(box);
+    });
+}
+
+initSqlPreviewNotes();
 </script>
 </body>
 </html>
