@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Web Encyclopedia Vlad Avrely — HTML5 • CSS3 • JS • Python • SQL • PostgreSQL • Algorithms</title>
+    <title>Web Encyclopedia Vlad Avrely — HTML5 • CSS3 • JS • Python • SQL • PostgreSQL • Algorithms • FastAPI • Flask • Django</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
@@ -352,6 +352,21 @@
             color: #5a32a3;
         }
 
+        .b-fastapi {
+            background: #e0f7ff;
+            color: #009688;
+        }
+
+        .b-flask {
+            background: #fef4e0;
+            color: #cc6600;
+        }
+
+        .b-django {
+            background: #e8f5e9;
+            color: #1b5e20;
+        }
+
         /* Code & Preview */
         .code-container {
             background: var(--bg-code);
@@ -666,10 +681,13 @@
                 <button class="tab" onclick="switchTab('sql', this)">SQL</button>
                 <button class="tab" onclick="switchTab('postgres', this)">PostgreSQL</button>
                 <button class="tab" onclick="switchTab('algorithms', this)">Алгоритмы</button>
+                <button class="tab" onclick="switchTab('fastapi', this)">FastAPI</button>
+                <button class="tab" onclick="switchTab('flask', this)">Flask</button>
+                <button class="tab" onclick="switchTab('django', this)">Django</button>
             </div>
             <div class="search-box">
                 <span class="search-icon">🔍</span>
-                <input type="text" class="search-input" placeholder="Поиск (video, audio, flex, class...)"
+                <input type="text" class="search-input" placeholder="Поиск (video, async, flex, query, route, model...)"
                     onkeyup="filterCards()" />
             </div>
         </div>
@@ -1903,6 +1921,68 @@
                         </div>
                     </div>
                 </article>
+                <!-- NEW: CANVAS -->
+                <article class="card" data-tags="html canvas drawing graphics">
+                    <div class="card-header">
+                        <span class="card-title">Canvas для рисования</span>
+                        <span class="badge b-html">Graphics</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            HTML5 элемент для программного рисования графики, анимаций и игр.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">HTML + JS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="t">&lt;canvas</span> <span class="a">id</span>=<span class="s">"myCanvas"</span> <span class="a">width</span>=<span class="s">"200"</span> <span class="a">height</span>=<span class="s">"100"</span><span class="t">&gt;&lt;/canvas&gt;</span>
+
+<span class="k">const</span> canvas = document.getElementById(<span class="s">'myCanvas'</span>);
+<span class="k">const</span> ctx = canvas.getContext(<span class="s">'2d'</span>);
+
+<span class="c">// Рисуем прямоугольник</span>
+ctx.fillStyle = <span class="s">'#0071e3'</span>;
+ctx.fillRect(<span class="s">10</span>, <span class="s">10</span>, <span class="s">50</span>, <span class="s">50</span>);
+
+<span class="c">// Рисуем круг</span>
+ctx.beginPath();
+ctx.arc(<span class="s">100</span>, <span class="s">50</span>, <span class="s">30</span>, <span class="s">0</span>, <span class="s">2</span> * Math.PI);
+ctx.fill();</pre>
+                        </div>
+                        <div class="preview-container">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <canvas id="canvas-preview" width="200" height="100" style="border: 1px solid var(--border); border-radius: 4px;"></canvas>
+                            <script>
+                                const canvas = document.getElementById('canvas-preview');
+                                if (canvas) {
+                                    const ctx = canvas.getContext('2d');
+                                    ctx.fillStyle = '#0071e3';
+                                    ctx.fillRect(10, 10, 50, 50);
+                                    ctx.beginPath();
+                                    ctx.arc(100, 50, 30, 0, 2 * Math.PI);
+                                    ctx.fill();
+                                }
+                            </script>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Метод</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">fillRect(x,y,w,h)</span></td>
+                                <td class="attr-desc">Заливка прямоугольника</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">arc(x,y,r,start,end)</span></td>
+                                <td class="attr-desc">Рисование дуги/круга</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">getContext('2d')</span></td>
+                                <td class="attr-desc">Получение 2D контекста</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
             </div>
         </section>
         <!-- ================= CSS SECTION ================= -->
@@ -2714,6 +2794,67 @@
                     </div>
                 </div>
             </article>
+                <!-- NEW: CSS GRID ADVANCED -->
+                <article class="card" data-tags="css grid advanced template-areas auto-fit minmax">
+                    <div class="card-header">
+                        <span class="card-title">CSS Grid Advanced</span>
+                        <span class="badge b-css">Grid</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            Продвинутые возможности CSS Grid: именованные области, адаптивные сетки.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">.container</span> {
+    <span class="a">display</span>: <span class="s">grid</span>;
+    <span class="a">grid-template-areas</span>:
+        <span class="s">"header header header"</span>
+        <span class="s">"sidebar main main"</span>
+        <span class="s">"sidebar footer footer"</span>;
+    <span class="a">grid-template-columns</span>: <span class="s">200px 1fr 1fr</span>;
+    <span class="a">grid-template-rows</span>: <span class="s">auto 1fr auto</span>;
+    <span class="a">gap</span>: <span class="s">20px</span>;
+}
+
+<span class="k">.header</span>  { <span class="a">grid-area</span>: <span class="s">header</span>; }
+<span class="k">.sidebar</span> { <span class="a">grid-area</span>: <span class="s">sidebar</span>; }
+<span class="k">.main</span>   { <span class="a">grid-area</span>: <span class="s">main</span>; }
+<span class="k">.footer</span> { <span class="a">grid-area</span>: <span class="s">footer</span>; }
+
+<span class="c">/* Адаптивная сетка */</span>
+<span class="k">.responsive-grid</span> {
+    <span class="a">display</span>: <span class="s">grid</span>;
+    <span class="a">grid-template-columns</span>: <span class="s">repeat(auto-fit, minmax(250px, 1fr))</span>;
+    <span class="a">gap</span>: <span class="s">20px</span>;
+}</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">grid-template-areas позволяет создавать семантические макеты без лишних классов.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: auto-fit minmax создает адаптивные колонки без медиа-запросов.</div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Свойство</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">grid-template-areas</span></td>
+                                <td class="attr-desc">Определяет именованные области сетки</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">grid-area</span></td>
+                                <td class="attr-desc">Присваивает элемент к именованной области</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">auto-fit</span></td>
+                                <td class="attr-desc">Автоматически подстраивает количество колонок</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
             </div>
         </section>
         <!-- ================= JS SECTION ================= -->
@@ -3354,6 +3495,78 @@ fetch(<span class="s">"https://api.example.com/data"</span>)
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </article>
+                <!-- NEW: ASYNC AWAIT FETCH -->
+                <article class="card" data-tags="javascript async await fetch api promises">
+                    <div class="card-header">
+                        <span class="card-title">Async/Await & Fetch API</span>
+                        <span class="badge b-js">Async</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            Асинхронное программирование и HTTP-запросы в современном JavaScript.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">JAVASCRIPT</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c">// Async функция</span>
+<span class="k">async function</span> fetchUserData(userId) {
+    <span class="k">try</span> {
+        <span class="k">const</span> response = <span class="k">await</span> fetch(<span class="s">`https://api.example.com/users/${userId}</span>`);
+        <span class="k">if</span> (!response.ok) {
+            <span class="k">throw new</span> <span class="k">Error</span>(<span class="s">`HTTP error! status: ${response.status}</span>`);
+        }
+        <span class="k">const</span> userData = <span class="k">await</span> response.json();
+        <span class="k">return</span> userData;
+    } <span class="k">catch</span> (error) {
+        console.<span class="k">error</span>(<span class="s">'Ошибка загрузки:'</span>, error);
+        <span class="k">throw</span> error;
+    }
+}
+
+<span class="c">// Использование</span>
+<span class="k">async function</span> loadUser() {
+    <span class="k">try</span> {
+        <span class="k">const</span> user = <span class="k">await</span> fetchUserData(<span class="s">123</span>);
+        console.<span class="k">log</span>(<span class="s">'Пользователь:'</span>, user);
+    } <span class="k">catch</span> (error) {
+        console.<span class="k">error</span>(<span class="s">'Не удалось загрузить пользователя'</span>);
+    }
+}
+
+<span class="c">// Fetch с опциями</span>
+<span class="k">const</span> postData = <span class="k">await</span> fetch(<span class="s">'/api/posts'</span>, {
+    <span class="a">method</span>: <span class="s">'POST'</span>,
+    <span class="a">headers</span>: {
+        <span class="s">'Content-Type'</span>: <span class="s">'application/json'</span>
+    },
+    <span class="a">body</span>: JSON.stringify({ title: <span class="s">'Новый пост'</span>, content: <span class="s">'Текст'</span> })
+});</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">async/await делает асинхронный код читаемым, как синхронный.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: Fetch API заменил XMLHttpRequest для HTTP-запросов.</div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Метод</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">async function</span></td>
+                                <td class="attr-desc">Объявляет асинхронную функцию</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">await</span></td>
+                                <td class="attr-desc">Ждет выполнения Promise</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">fetch()</span></td>
+                                <td class="attr-desc">Выполняет HTTP-запрос</td>
+                            </tr>
+                        </table>
                     </div>
                 </article>
             </div>
@@ -4351,6 +4564,87 @@ conn.<span class="k">close</span>()</pre>
                         </div>
                     </div>
                 </article>
+                <!-- NEW: PYTHON DECORATORS -->
+                <article class="card" data-tags="python decorator function wrapper functools">
+                    <div class="card-header">
+                        <span class="card-title">Декораторы в Python</span>
+                        <span class="badge b-python">Advanced</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            Функции, модифицирующие поведение других функций. Используются для логирования, кеширования, аутентификации.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">import</span> functools
+<span class="k">import</span> time
+
+<span class="c"># Простой декоратор</span>
+<span class="k">def</span> timer(func):
+    @functools.wraps(func)
+    <span class="k">def</span> wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        <span class="k">print</span>(<span class="s">f"{func.__name__} took {end - start:.2f}s"</span>)
+        <span class="k">return</span> result
+    <span class="k">return</span> wrapper
+
+<span class="c"># Декоратор с параметрами</span>
+<span class="k">def</span> repeat(times):
+    <span class="k">def</span> decorator(func):
+        @functools.wraps(func)
+        <span class="k">def</span> wrapper(*args, **kwargs):
+            <span class="k">for</span> _ <span class="k">in</span> <span class="k">range</span>(times):
+                result = func(*args, **kwargs)
+            <span class="k">return</span> result
+        <span class="k">return</span> wrapper
+    <span class="k">return</span> decorator
+
+<span class="c"># Использование</span>
+@timer
+<span class="k">def</span> slow_function():
+    time.sleep(<span class="s">1</span>)
+
+@repeat(<span class="s">3</span>)
+<span class="k">def</span> greet(name):
+    <span class="k">print</span>(<span class="s">f"Hello, {name}!"</span>)
+
+slow_function()  <span class="c"># Выведет время выполнения</span>
+greet(<span class="s">"World"</span>)  <span class="c"># Выполнится 3 раза</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ OUTPUT</span>
+                            <div style="font-family: monospace; font-size: 12px; width: 100%;">
+                                <div style="background: var(--bg-preview); padding: 8px; border-radius: 6px; margin-bottom: 6px;">
+                                    slow_function took 1.00s
+                                </div>
+                                <div style="background: var(--bg-preview); padding: 8px; border-radius: 6px;">
+                                    Hello, World!<br>Hello, World!<br>Hello, World!
+                                </div>
+                            </div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Декоратор</th>
+                                <th>Назначение</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">@functools.wraps</span></td>
+                                <td class="attr-desc">Сохраняет метаданные оригинальной функции</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">@property</span></td>
+                                <td class="attr-desc">Создает геттеры/сеттеры</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">@staticmethod</span></td>
+                                <td class="attr-desc">Статические методы класса</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
             </div>
         </section>
         <!-- ================= SQL SECTION ================= -->
@@ -4958,6 +5252,80 @@ conn.<span class="k">close</span>()</pre>
                                 критичных операций, чтобы избежать частично примененных изменений.
                             </div>
                         </div>
+                    </div>
+                </article>
+                <!-- NEW: WINDOW FUNCTIONS -->
+                <article class="card" data-tags="sql window functions over partition order rank dense_rank row_number">
+                    <div class="card-header">
+                        <span class="card-title">Оконные функции</span>
+                        <span class="badge b-sql">Advanced</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            Функции, работающие с окнами строк. Позволяют вычислять агрегаты без группировки.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">SELECT</span>
+    name,
+    salary,
+    department,
+    <span class="k">ROW_NUMBER</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> salary <span class="k">DESC</span>) <span class="k">AS</span> overall_rank,
+    <span class="k">RANK</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> salary <span class="k">DESC</span>) <span class="k">AS</span> rank_with_ties,
+    <span class="k">DENSE_RANK</span>() <span class="k">OVER</span> (<span class="k">ORDER BY</span> salary <span class="k">DESC</span>) <span class="k">AS</span> dense_rank,
+    <span class="k">AVG</span>(salary) <span class="k">OVER</span> (<span class="k">PARTITION BY</span> department) <span class="k">AS</span> dept_avg,
+    <span class="k">LAG</span>(salary) <span class="k">OVER</span> (<span class="k">ORDER BY</span> hire_date) <span class="k">AS</span> prev_salary
+<span class="k">FROM</span> employees;</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <table class="attr-table" style="width: 100%;">
+                                <tr>
+                                    <th>name</th>
+                                    <th>salary</th>
+                                    <th>dept_avg</th>
+                                    <th>overall_rank</th>
+                                </tr>
+                                <tr>
+                                    <td>Alice</td>
+                                    <td>100000</td>
+                                    <td>95000</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Bob</td>
+                                    <td>95000</td>
+                                    <td>95000</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>Charlie</td>
+                                    <td>95000</td>
+                                    <td>95000</td>
+                                    <td>2</td>
+                                </tr>
+                            </table>
+                            <div style="font-size: 12px; color: var(--text-sec); margin-top: 8px;">Комментарий: ROW_NUMBER уникален, RANK пропускает позиции при равенстве, DENSE_RANK нет.</div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Функция</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">ROW_NUMBER()</span></td>
+                                <td class="attr-desc">Уникальный номер строки</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">RANK()</span></td>
+                                <td class="attr-desc">Ранг с пропусками</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">LAG()/LEAD()</span></td>
+                                <td class="attr-desc">Доступ к предыдущим/следующим строкам</td>
+                            </tr>
+                        </table>
                     </div>
                 </article>
             </div>
@@ -5851,15 +6219,1295 @@ first = q.popleft()  <span class="c"># 1</span></pre>
                         </div>
                     </div>
                 </article>
+                <!-- NEW: SEGMENT TREE -->
+                <article class="card" data-tags="algorithms segment tree range queries update">
+                    <div class="card-header">
+                        <span class="card-title">Сегментное дерево</span>
+                        <span class="badge b-algo">Data Structures</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            Структура данных для эффективных запросов на диапазонах и обновлений элементов.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">class</span> SegmentTree:
+    <span class="k">def</span> __init__(self, arr):
+        self.n = <span class="k">len</span>(arr)
+        self.tree = [<span class="s">0</span>] * (<span class="s">4</span> * self.n)
+        self.build(arr, <span class="s">0</span>, <span class="s">0</span>, self.n - <span class="s">1</span>)
+
+    <span class="k">def</span> build(self, arr, node, start, end):
+        <span class="k">if</span> start == end:
+            self.tree[node] = arr[start]
+            <span class="k">return</span>
+        mid = (start + end) // <span class="s">2</span>
+        self.build(arr, <span class="s">2</span>*node+<span class="s">1</span>, start, mid)
+        self.build(arr, <span class="s">2</span>*node+<span class="s">2</span>, mid+<span class="s">1</span>, end)
+        self.tree[node] = self.tree[<span class="s">2</span>*node+<span class="s">1</span>] + self.tree[<span class="s">2</span>*node+<span class="s">2</span>]
+
+    <span class="k">def</span> query(self, node, start, end, l, r):
+        <span class="k">if</span> r &lt; start <span class="k">or</span> end &lt; l:
+            <span class="k">return</span> <span class="s">0</span>
+        <span class="k">if</span> l &lt;= start <span class="k">and</span> end &lt;= r:
+            <span class="k">return</span> self.tree[node]
+        mid = (start + end) // <span class="s">2</span>
+        left = self.query(<span class="s">2</span>*node+<span class="s">1</span>, start, mid, l, r)
+        right = self.query(<span class="s">2</span>*node+<span class="s">2</span>, mid+<span class="s">1</span>, end, l, r)
+        <span class="k">return</span> left + right
+
+<span class="c"># Использование</span>
+arr = [<span class="s">1</span>, <span class="s">3</span>, <span class="s">5</span>, <span class="s">7</span>, <span class="s">9</span>, <span class="s">11</span>]
+st = SegmentTree(arr)
+print(st.query(<span class="s">0</span>, <span class="s">0</span>, <span class="s">5</span>, <span class="s">1</span>, <span class="s">3</span>))  <span class="c"># Сумма с 1 по 3: 3+5+7=15</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Сегментное дерево позволяет выполнять запросы суммы/минимума на диапазоне за O(log n).</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: подходит для задач с частыми обновлениями и запросами на диапазонах.</div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Операция</th>
+                                <th>Сложность</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Build</span></td>
+                                <td class="attr-desc">O(n)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Query</span></td>
+                                <td class="attr-desc">O(log n)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Update</span></td>
+                                <td class="attr-desc">O(log n)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
             </div>
         </section>
-    </main>
+        <!-- ================= FASTAPI SECTION ================= -->
+        <section id="fastapi" class="section">
+            <div class="section-header">
+                <h1 class="section-title"
+                    style="background: linear-gradient(135deg, #009688, #00d4b4); background-clip: text; -webkit-background-clip: text;">
+                    FastAPI Полная Справка</h1>
+                <p class="section-desc">Современный асинхронный фреймворк для создания REST API с автоматической документацией</p>
+            </div>
+            <div class="grid">
+                <article class="card" data-tags="fastapi install pip requirements uvicorn">
+                    <div class="card-header">
+                        <span class="card-title">Установка и запуск</span>
+                        <span class="badge b-fastapi">Setup</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Установка FastAPI и ASGI сервера Uvicorn</p>
+                        <div class="code-container">
+                            <span class="code-label">BASH</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Установка FastAPI и Uvicorn</span>
+pip install fastapi uvicorn[standard]
+
+<span class="c"># Опционально: для работы с БД</span>
+pip install sqlalchemy psycopg2-binary pydantic
+
+<span class="c"># Запуск сервера</span>
+uvicorn main:app --reload
+
+<span class="c"># На production</span>
+uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Сервер запущен на http://localhost:8000</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Документация доступна на http://localhost:8000/docs (Swagger)</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">ReDoc доступен на http://localhost:8000/redoc</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="fastapi route get post put delete app decorator path query">
+                    <div class="card-header">
+                        <span class="card-title">Основные методы и роуты</span>
+                        <span class="badge b-fastapi">Routing</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">GET, POST, PUT, DELETE запросы с параметрами пути и query</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> fastapi <span class="k">import</span> FastAPI
+<span class="k">from</span> pydantic <span class="k">import</span> BaseModel
+
+app = FastAPI()
+
+<span class="c"># GET - получение данных</span>
+@app.get(<span class="s">"/items"</span>)
+<span class="k">async def</span> <span class="k">get_items</span>(skip: <span class="k">int</span> = <span class="s">0</span>, limit: <span class="k">int</span> = <span class="s">10</span>):
+    <span class="k">return</span> {<span class="s">"skip"</span>: skip, <span class="s">"limit"</span>: limit}
+
+<span class="c"># GET с параметром пути</span>
+@app.get(<span class="s">"/items/{item_id}"</span>)
+<span class="k">async def</span> <span class="k">get_item</span>(item_id: <span class="k">int</span>):
+    <span class="k">return</span> {<span class="s">"item_id"</span>: item_id}
+
+<span class="c"># Модель Pydantic</span>
+<span class="k">class</span> Item(BaseModel):
+    name: <span class="k">str</span>
+    price: <span class="k">float</span>
+    is_offer: <span class="k">bool</span> = <span class="s">None</span>
+
+<span class="c"># POST - создание</span>
+@app.post(<span class="s">"/items"</span>)
+<span class="k">async def</span> <span class="k">create_item</span>(item: Item):
+    <span class="k">return</span> {<span class="s">"created"</span>: item}
+
+<span class="c"># PUT - обновление</span>
+@app.put(<span class="s">"/items/{item_id}"</span>)
+<span class="k">async def</span> <span class="k">update_item</span>(item_id: <span class="k">int</span>, item: Item):
+    <span class="k">return</span> {<span class="s">"updated"</span>: item_id, <span class="s">"item"</span>: item}
+
+<span class="c"># DELETE - удаление</span>
+@app.delete(<span class="s">"/items/{item_id}"</span>)
+<span class="k">async def</span> <span class="k">delete_item</span>(item_id: <span class="k">int</span>):
+    <span class="k">return</span> {<span class="s">"deleted"</span>: item_id}</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Автоматическая валидация данных через Pydantic</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Интерактивная документация в /docs</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Поддержка асинхронного кода с async/await</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="fastapi dependency injection provide auth token middleware">
+                    <div class="card-header">
+                        <span class="card-title">Зависимости и Authentication</span>
+                        <span class="badge b-fastapi">Security</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Внедрение зависимостей и аутентификация через JWT токены</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> fastapi <span class="k">import</span> Depends, HTTPException, status
+<span class="k">from</span> fastapi.security <span class="k">import</span> HTTPBearer, HTTPAuthorizationCredentials
+<span class="k">import</span> jwt
+
+security = HTTPBearer()
+SECRET_KEY = <span class="s">"your-secret-key"</span>
+
+<span class="c"># Функция зависимости</span>
+<span class="k">async def</span> <span class="k">get_current_user</span>(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    <span class="k">try</span>:
+        token = credentials.credentials
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[<span class="s">"HS256"</span>])
+        user_id = payload.get(<span class="s">"sub"</span>)
+        <span class="k">if</span> user_id <span class="k">is</span> <span class="s">None</span>:
+            <span class="k">raise</span> HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+        <span class="k">return</span> user_id
+    <span class="k">except</span> jwt.InvalidTokenError:
+        <span class="k">raise</span> HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+
+<span class="c"># Использование зависимости</span>
+@app.get(<span class="s">"/me"</span>)
+<span class="k">async def</span> <span class="k">get_me</span>(user_id: <span class="k">str</span> = Depends(get_current_user)):
+    <span class="k">return</span> {<span class="s">"user_id"</span>: user_id}
+
+<span class="c"># Middleware для логирования</span>
+@app.middleware(<span class="s">"http"</span>)
+<span class="k">async def</span> <span class="k">log_requests</span>(request, call_next):
+    response = <span class="k">await</span> call_next(request)
+    <span class="k">return</span> response</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Зависимости автоматически внедряются в функции</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">JWT токены для безопасной передачи данных</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Middleware для кроссплатформенной обработки</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="fastapi database sqlalchemy orm models relationship">
+                    <div class="card-header">
+                        <span class="card-title">Работа с БД и SQLAlchemy</span>
+                        <span class="badge b-fastapi">Database</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Интеграция с SQLAlchemy ORM</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> sqlalchemy <span class="k">import</span> create_engine
+<span class="k">from</span> sqlalchemy.orm <span class="k">import</span> sessionmaker, Session
+<span class="k">from</span> sqlalchemy.ext.declarative <span class="k">import</span> declarative_base
+<span class="k">from</span> sqlalchemy <span class="k">import</span> Column, Integer, String, Float
+
+DATABASE_URL = <span class="s">"postgresql://user:pass@localhost/dbname"</span>
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=<span class="s">False</span>, autoflush=<span class="s">False</span>, bind=engine)
+Base = declarative_base()
+
+<span class="c"># Модель SQLAlchemy</span>
+<span class="k">class</span> Product(Base):
+    __tablename__ = <span class="s">"products"</span>
+    id = Column(Integer, primary_key=<span class="s">True</span>)
+    name = Column(String, unique=<span class="s">True</span>)
+    price = Column(Float)
+
+<span class="c"># Использование в FastAPI</span>
+<span class="k">def</span> get_db():
+    db = SessionLocal()
+    <span class="k">try</span>:
+        <span class="k">yield</span> db
+    <span class="k">finally</span>:
+        db.close()
+
+@app.get(<span class="s">"/products"</span>)
+<span class="k">async def</span> <span class="k">get_products</span>(db: Session = Depends(get_db)):
+    <span class="k">return</span> db.query(Product).all()
+
+@app.post(<span class="s">"/products"</span>)
+<span class="k">async def</span> <span class="k">create_product</span>(name: <span class="k">str</span>, price: <span class="k">float</span>, db: Session = Depends(get_db)):
+    product = Product(name=name, price=price)
+    db.add(product)
+    db.commit()
+    db.refresh(product)
+    <span class="k">return</span> product</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Полная интеграция с реляционными БД</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">ORM для безопасных операций с данными</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="fastapi background task celery async queue">
+                    <div class="card-header">
+                        <span class="card-title">Background Tasks и Async</span>
+                        <span class="badge b-fastapi">Advanced</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Фоновые задачи и асинхронная обработка</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> fastapi <span class="k">import</span> BackgroundTasks
+<span class="k">import</span> asyncio
+
+<span class="c"># Background Task</span>
+<span class="k">def</span> send_email(email: <span class="k">str</span>, message: <span class="k">str</span>):
+    <span class="c"># Отправка email</span>
+    <span class="k">print</span>(<span class="s">f"Email отправлен на {email}"</span>)
+
+@app.post(<span class="s">"/send-notification"</span>)
+<span class="k">async def</span> <span class="k">send_notification</span>(email: <span class="k">str</span>, background_tasks: BackgroundTasks):
+    background_tasks.add_task(send_email, email, <span class="s">"Hello!"</span>)
+    <span class="k">return</span> {<span class="s">"message"</span>: <span class="s">"Notification queued"</span>}
+
+<span class="c"># Асинхронные операции</span>
+<span class="k">async def</span> <span class="k">fetch_data_async</span>(url: <span class="k">str</span>):
+    <span class="k">await</span> asyncio.sleep(<span class="s">1</span>)
+    <span class="k">return</span> {<span class="s">"data"</span>: <span class="s">"fetched"</span>}
+
+@app.get(<span class="s">"/async-data"</span>)
+<span class="k">async def</span> <span class="k">get_async_data</span>():
+    data = <span class="k">await</span> fetch_data_async(<span class="s">"https://api.example.com"</span>)
+    <span class="k">return</span> data</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Встроенная поддержка background tasks</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Полная асинхронность с async/await</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Для Celery используйте внешние queue системы</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="fastapi cors exception error handling validation">
+                    <div class="card-header">
+                        <span class="card-title">CORS, Exception Handling, Валидация</span>
+                        <span class="badge b-fastapi">Advanced</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Настройка CORS, обработка ошибок и валидация данных</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> fastapi.middleware.cors <span class="k">import</span> CORSMiddleware
+<span class="k">from</span> fastapi <span class="k">import</span> HTTPException
+<span class="k">from</span> pydantic <span class="k">import</span> BaseModel, validator
+
+<span class="c"># CORS конфигурация</span>
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[<span class="s">"https://example.com"</span>],
+    allow_credentials=<span class="s">True</span>,
+    allow_methods=[<span class="s">"*"</span>],
+    allow_headers=[<span class="s">"*"</span>],
+)
+
+<span class="c"># Валидация с Pydantic</span>
+<span class="k">class</span> User(BaseModel):
+    username: <span class="k">str</span>
+    email: <span class="k">str</span>
+    age: <span class="k">int</span>
+    
+    @validator(<span class="s">'age'</span>)
+    <span class="k">def</span> age_must_be_positive(cls, v):
+        <span class="k">if</span> v &lt; <span class="s">0</span>:
+            <span class="k">raise</span> ValueError(<span class="s">'Age must be positive'</span>)
+        <span class="k">return</span> v
+
+<span class="c"># Exception Handling</span>
+@app.exception_handler(HTTPException)
+<span class="k">async def</span> http_exception_handler(request, exc):
+    <span class="k">return</span> {<span class="s">"error"</span>: exc.detail}
+
+@app.post(<span class="s">"/users"</span>)
+<span class="k">async def</span> <span class="k">create_user</span>(user: User):
+    <span class="k">if</span> not user.email.endswith(<span class="s">"@example.com"</span>):
+        <span class="k">raise</span> HTTPException(status_code=<span class="s">400</span>, detail=<span class="s">"Invalid email"</span>)
+    <span class="k">return</span> user</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">CORS для безопасной кроссдоменной коммуникации</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Автоматическая валидация через Pydantic validators</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Кастомная обработка исключений</div>
+                        </div>
+                    </div>
+                </article>
+                <!-- NEW: FASTAPI WEBSOCKETS -->
+                <article class="card" data-tags="fastapi websockets real-time bidirectional">
+                    <div class="card-header">
+                        <span class="card-title">WebSockets в FastAPI</span>
+                        <span class="badge b-fastapi">Real-time</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            Реальное время с двусторонней связью для чатов, уведомлений и live-обновлений.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="kn">from</span> fastapi <span class="kn">import</span> FastAPI, WebSocket, WebSocketDisconnect
+<span class="kn">from</span> typing <span class="kn">import</span> List
+
+app = FastAPI()
+
+<span class="k">class</span> ConnectionManager:
+    <span class="k">def</span> __init__(self):
+        self.active_connections: List[WebSocket] = []
+
+    <span class="k">async def</span> connect(self, websocket: WebSocket):
+        <span class="k">await</span> websocket.accept()
+        self.active_connections.append(websocket)
+
+    <span class="k">def</span> disconnect(self, websocket: WebSocket):
+        self.active_connections.remove(websocket)
+
+    <span class="k">async def</span> send_personal_message(self, message: str, websocket: WebSocket):
+        <span class="k">await</span> websocket.send_text(message)
+
+    <span class="k">async def</span> broadcast(self, message: str):
+        <span class="k">for</span> connection <span class="k">in</span> self.active_connections:
+            <span class="k">await</span> connection.send_text(message)
+
+manager = ConnectionManager()
+
+@app.websocket(<span class="s">"/ws/{client_id}"</span>)
+<span class="k">async def</span> websocket_endpoint(websocket: WebSocket, client_id: int):
+    <span class="k">await</span> manager.connect(websocket)
+    <span class="k">try</span>:
+        <span class="k">while</span> True:
+            data = <span class="k">await</span> websocket.receive_text()
+            <span class="k">await</span> manager.send_personal_message(f<span class="s">"You wrote: {data}"</span>, websocket)
+            <span class="k">await</span> manager.broadcast(f<span class="s">"Client #{client_id} says: {data}"</span>)
+    <span class="k">except</span> WebSocketDisconnect:
+        manager.disconnect(websocket)
+        <span class="k">await</span> manager.broadcast(f<span class="s">"Client #{client_id} left the chat"</span>)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">WebSockets позволяют двустороннюю связь без polling.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: идеально для чатов, игр и real-time приложений.</div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Метод</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">websocket.accept()</span></td>
+                                <td class="attr-desc">Принимает соединение</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">websocket.receive_text()</span></td>
+                                <td class="attr-desc">Получает текстовое сообщение</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">websocket.send_text()</span></td>
+                                <td class="attr-desc">Отправляет текстовое сообщение</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- ================= FLASK SECTION ================= -->
+        <section id="flask" class="section">
+            <div class="section-header">
+                <h1 class="section-title"
+                    style="background: linear-gradient(135deg, #d2691e, #ff8c00); background-clip: text; -webkit-background-clip: text;">
+                    Flask Полная Справка</h1>
+                <p class="section-desc">Лёгкий микрофреймворк для создания веб-приложений с полной гибкостью</p>
+            </div>
+            <div class="grid">
+                <article class="card" data-tags="flask install pip requirements wsgi">
+                    <div class="card-header">
+                        <span class="card-title">Установка и первое приложение</span>
+                        <span class="badge b-flask">Setup</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Установка Flask и создание простого приложения</p>
+                        <div class="code-container">
+                            <span class="code-label">BASH</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Установка Flask</span>
+pip install flask python-dotenv
+
+<span class="c"># Запуск development сервера</span>
+flask run
+
+<span class="c"># Или запуск скрипта напрямую</span>
+python app.py
+
+<span class="c"># Для production используйте Gunicorn</span>
+pip install gunicorn
+gunicorn -w 4 -b 0.0.0.0:8000 app:app</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Development сервер на http://localhost:5000</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Auto-reload при изменении файлов</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Отладчик Werkzeug в браузере</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="flask route app.route decorator method request">
+                    <div class="card-header">
+                        <span class="card-title">Роуты и обработка запросов</span>
+                        <span class="badge b-flask">Routing</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Определение маршрутов и обработка HTTP методов</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> flask <span class="k">import</span> Flask, request, jsonify
+
+app = Flask(__name__)
+
+<span class="c"># Простой GET роут</span>
+@app.route(<span class="s">'/'</span>)
+<span class="k">def</span> hello():
+    <span class="k">return</span> <span class="s">'Hello, World!'</span>
+
+<span class="c"># Параметр пути</span>
+@app.route(<span class="s">'/user/&lt;int:user_id&gt;'</span>)
+<span class="k">def</span> get_user(user_id):
+    <span class="k">return</span> jsonify({<span class="s">'user_id'</span>: user_id})
+
+<span class="c"># Query параметры</span>
+@app.route(<span class="s">'/items'</span>)
+<span class="k">def</span> get_items():
+    skip = request.args.get(<span class="s">'skip'</span>, default=<span class="s">0</span>, type=<span class="k">int</span>)
+    limit = request.args.get(<span class="s">'limit'</span>, default=<span class="s">10</span>, type=<span class="k">int</span>)
+    <span class="k">return</span> jsonify({<span class="s">'skip'</span>: skip, <span class="s">'limit'</span>: limit})
+
+<span class="c"># POST с JSON телом</span>
+@app.route(<span class="s">'/items'</span>, methods=[<span class="s">'POST'</span>])
+<span class="k">def</span> create_item():
+    data = request.get_json()
+    <span class="k">return</span> jsonify({<span class="s">'created'</span>: data}), <span class="s">201</span>
+
+<span class="c"># PUT - обновление</span>
+@app.route(<span class="s">'/items/&lt;int:item_id&gt;'</span>, methods=[<span class="s">'PUT'</span>])
+<span class="k">def</span> update_item(item_id):
+    data = request.get_json()
+    <span class="k">return</span> jsonify({<span class="s">'updated'</span>: item_id, <span class="s">'item'</span>: data})
+
+<span class="c"># DELETE - удаление</span>
+@app.route(<span class="s">'/items/&lt;int:item_id&gt;'</span>, methods=[<span class="s">'DELETE'</span>])
+<span class="k">def</span> delete_item(item_id):
+    <span class="k">return</span> jsonify({<span class="s">'deleted'</span>: item_id})
+
+<span class="k">if</span> __name__ == <span class="s">'__main__'</span>:
+    app.run(debug=<span class="s">True</span>)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Декоратор @app.route для связи URL с функцией</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">request объект для доступа к данным</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">jsonify() для возврата JSON</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="flask template render html jinja2 static">
+                    <div class="card-header">
+                        <span class="card-title">Шаблоны и Jinja2</span>
+                        <span class="badge b-flask">Templates</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Использование Jinja2 для динамических HTML шаблонов</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> flask <span class="k">import</span> render_template, url_for
+
+<span class="c"># Файл: templates/index.html</span>
+<span class="c">"""</span>
+&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;ul&gt;
+  {% for item in items %}
+    &lt;li&gt;{{ item.name }} - ${{ item.price }}&lt;/li&gt;
+  {% endfor %}
+&lt;/ul&gt;
+&lt;a href="{{ url_for('get_item', item_id=1) }}"&gt;Товар 1&lt;/a&gt;
+<span class="c">"""</span>
+
+@app.route(<span class="s">'/'</span>)
+<span class="k">def</span> index():
+    items = [
+        {<span class="s">'name'</span>: <span class="s">'Product A'</span>, <span class="s">'price'</span>: <span class="s">100</span>},
+        {<span class="s">'name'</span>: <span class="s">'Product B'</span>, <span class="s">'price'</span>: <span class="s">200</span>}
+    ]
+    <span class="k">return</span> render_template(<span class="s">'index.html'</span>, title=<span class="s">'Welcome'</span>, items=items)
+
+<span class="c"># Наследование шаблонов</span>
+<span class="c">"""</span>
+<span class="c"># base.html</span>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;{% block title %}{% endblock %}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  {% block content %}{% endblock %}
+&lt;/body&gt;
+&lt;/html&gt;
+
+<span class="c"># page.html</span>
+{% extends "base.html" %}
+{% block title %}Page Title{% endblock %}
+{% block content %}&lt;h1&gt;Page content&lt;/h1&gt;{% endblock %}
+<span class="c">"""</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Jinja2 - мощный язык шаблонов</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Циклы, условия и наследование шаблонов</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">url_for() для генерации ссылок</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="flask database sqlalchemy flask-sqlalchemy model">
+                    <div class="card-header">
+                        <span class="card-title">Работа с БД и Flask-SQLAlchemy</span>
+                        <span class="badge b-flask">Database</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Использование Flask-SQLAlchemy для работы с БД</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> flask <span class="k">import</span> Flask
+<span class="k">from</span> flask_sqlalchemy <span class="k">import</span> SQLAlchemy
+
+app = Flask(__name__)
+app.config[<span class="s">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="s">'postgresql://user:pass@localhost/db'</span>
+db = SQLAlchemy(app)
+
+<span class="c"># Определение модели</span>
+<span class="k">class</span> User(db.Model):
+    __tablename__ = <span class="s">'users'</span>
+    id = db.Column(db.Integer, primary_key=<span class="s">True</span>)
+    username = db.Column(db.String(<span class="s">80</span>), unique=<span class="s">True</span>, nullable=<span class="s">False</span>)
+    email = db.Column(db.String(<span class="s">120</span>), unique=<span class="s">True</span>, nullable=<span class="s">False</span>)
+    posts = db.relationship(<span class="s">'Post'</span>, backref=<span class="s">'author'</span>, lazy=<span class="s">True</span>)
+
+<span class="k">class</span> Post(db.Model):
+    __tablename__ = <span class="s">'posts'</span>
+    id = db.Column(db.Integer, primary_key=<span class="s">True</span>)
+    title = db.Column(db.String(<span class="s">120</span>), nullable=<span class="s">False</span>)
+    user_id = db.Column(db.Integer, db.ForeignKey(<span class="s">'users.id'</span>), nullable=<span class="s">False</span>)
+
+<span class="c"># Операции с БД</span>
+@app.route(<span class="s">'/create-user'</span>, methods=[<span class="s">'POST'</span>])
+<span class="k">def</span> create_user():
+    user = User(username=<span class="s">'john'</span>, email=<span class="s">'john@example.com'</span>)
+    db.session.add(user)
+    db.session.commit()
+    <span class="k">return</span> jsonify({<span class="s">'id'</span>: user.id})
+
+@app.route(<span class="s">'/users'</span>)
+<span class="k">def</span> get_users():
+    users = User.query.all()
+    <span class="k">return</span> jsonify([{<span class="s">'id'</span>: u.id, <span class="s">'username'</span>: u.username} <span class="k">for</span> u <span class="k">in</span> users])
+
+@app.route(<span class="s">'/user/&lt;int:user_id&gt;'</span>)
+<span class="k">def</span> get_user(user_id):
+    user = User.query.get_or_404(user_id)
+    <span class="k">return</span> jsonify({<span class="s">'id'</span>: user.id, <span class="s">'username'</span>: user.username})</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Flask-SQLAlchemy упрощает работу с ORM</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Отношения между таблицами через relationships</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">db.session для управления транзакциями</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="flask authentication session login logout password hash">
+                    <div class="card-header">
+                        <span class="card-title">Аутентификация и сессии</span>
+                        <span class="badge b-flask">Security</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Реализация login/logout с хешированием паролей</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> flask <span class="k">import</span> session, redirect, url_for
+<span class="k">from</span> werkzeug.security <span class="k">import</span> generate_password_hash, check_password_hash
+
+app.secret_key = <span class="s">'your-secret-key'</span>
+
+@app.route(<span class="s">'/register'</span>, methods=[<span class="s">'POST'</span>])
+<span class="k">def</span> register():
+    username = request.form.get(<span class="s">'username'</span>)
+    password = request.form.get(<span class="s">'password'</span>)
+    hashed_pw = generate_password_hash(password)
+    
+    user = User(username=username, password=hashed_pw)
+    db.session.add(user)
+    db.session.commit()
+    <span class="k">return</span> redirect(url_for(<span class="s">'login'</span>))
+
+@app.route(<span class="s">'/login'</span>, methods=[<span class="s">'POST'</span>])
+<span class="k">def</span> login():
+    username = request.form.get(<span class="s">'username'</span>)
+    password = request.form.get(<span class="s">'password'</span>)
+    
+    user = User.query.filter_by(username=username).first()
+    <span class="k">if</span> user <span class="k">and</span> check_password_hash(user.password, password):
+        session[<span class="s">'user_id'</span>] = user.id
+        <span class="k">return</span> redirect(url_for(<span class="s">'dashboard'</span>))
+    <span class="k">return</span> <span class="s">'Invalid credentials'</span>, <span class="s">401</span>
+
+@app.route(<span class="s">'/logout'</span>)
+<span class="k">def</span> logout():
+    session.clear()
+    <span class="k">return</span> redirect(url_for(<span class="s">'index'</span>))</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Werkzeug для хеширования паролей</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Сессии для хранения данных пользователя</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Никогда не сохраняйте пароли в plaintext</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="flask blueprint modular app organization structure">
+                    <div class="card-header">
+                        <span class="card-title">Blueprints для модульности</span>
+                        <span class="badge b-flask">Advanced</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Организация кода через Blueprints</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Файл: auth/routes.py</span>
+<span class="k">from</span> flask <span class="k">import</span> Blueprint, request, jsonify
+
+auth_bp = Blueprint(<span class="s">'auth'</span>, __name__, url_prefix=<span class="s">'/auth'</span>)
+
+@auth_bp.route(<span class="s">'/login'</span>, methods=[<span class="s">'POST'</span>])
+<span class="k">def</span> login():
+    <span class="k">return</span> jsonify({<span class="s">'message'</span>: <span class="s">'Login'</span>})
+
+@auth_bp.route(<span class="s">'/logout'</span>)
+<span class="k">def</span> logout():
+    <span class="k">return</span> jsonify({<span class="s">'message'</span>: <span class="s">'Logout'</span>})
+
+<span class="c"># Файл: app.py</span>
+<span class="k">from</span> flask <span class="k">import</span> Flask
+<span class="k">from</span> auth.routes <span class="k">import</span> auth_bp
+
+app = Flask(__name__)
+app.register_blueprint(auth_bp)
+
+<span class="c"># Результат: /auth/login, /auth/logout</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Blueprints разделяют приложение на модули</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Перевосстанавливают код для больших проектов</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Каждый blueprint может иметь свои templates и static</div>
+                        </div>
+                    </div>
+                </article>
+                <!-- NEW: FLASK SQLALCHEMY -->
+                <article class="card" data-tags="flask sqlalchemy orm database models">
+                    <div class="card-header">
+                        <span class="card-title">Flask-SQLAlchemy</span>
+                        <span class="badge b-flask">ORM</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            ORM для работы с базами данных в Flask-приложениях.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="kn">from</span> flask <span class="kn">import</span> Flask
+<span class="kn">from</span> flask_sqlalchemy <span class="kn">import</span> SQLAlchemy
+
+app = Flask(__name__)
+app.config[<span class="s">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="s">'sqlite:///app.db'</span>
+db = SQLAlchemy(app)
+
+<span class="k">class</span> User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    <span class="k">def</span> __repr__(self):
+        <span class="k">return</span> f<span class="s">'&lt;User {self.username}&gt;'</span>
+
+<span class="c"># Создание таблиц</span>
+<span class="k">with</span> app.app_context():
+    db.create_all()
+
+@app.route(<span class="s">'/users'</span>)
+<span class="k">def</span> get_users():
+    users = User.query.all()
+    <span class="k">return</span> {user.username: user.email <span class="k">for</span> user <span class="k">in</span> users}
+
+@app.route(<span class="s">'/add_user/&lt;username&gt;/&lt;email&gt;'</span>)
+<span class="k">def</span> add_user(username, email):
+    user = User(username=username, email=email)
+    db.session.add(user)
+    db.session.commit()
+    <span class="k">return</span> f<span class="s">'User {username} added'</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">SQLAlchemy предоставляет высокоуровневый ORM для Flask.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: поддерживает миграции, отношения и сложные запросы.</div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Метод</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">db.Model</span></td>
+                                <td class="attr-desc">Базовый класс для моделей</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">db.Column</span></td>
+                                <td class="attr-desc">Определяет столбец таблицы</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">db.session</span></td>
+                                <td class="attr-desc">Управляет транзакциями</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- ================= DJANGO SECTION ================= -->
+        <section id="django" class="section">
+            <div class="section-header">
+                <h1 class="section-title"
+                    style="background: linear-gradient(135deg, #092e20, #44b78b); background-clip: text; -webkit-background-clip: text;">
+                    Django Полная Справка</h1>
+                <p class="section-desc">Полнофункциональный фреймворк для разработки масштабируемых веб-приложений</p>
+            </div>
+            <div class="grid">
+                <article class="card" data-tags="django install pip startproject startapp manage">
+                    <div class="card-header">
+                        <span class="card-title">Установка и создание проекта</span>
+                        <span class="badge b-django">Setup</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Инициализация Django проекта и приложения</p>
+                        <div class="code-container">
+                            <span class="code-label">BASH</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Установка Django</span>
+pip install django
+
+<span class="c"># Создание проекта</span>
+django-admin startproject myproject
+cd myproject
+
+<span class="c"># Создание приложения</span>
+python manage.py startapp myapp
+
+<span class="c"># Миграции</span>
+python manage.py makemigrations
+python manage.py migrate
+
+<span class="c"># Запуск development сервера</span>
+python manage.py runserver
+
+<span class="c"># Создание суперпользователя для админки</span>
+python manage.py createsuperuser</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Development сервер на http://localhost:8000</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Admin панель на http://localhost:8000/admin</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">ORM с автоматическими миграциями</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="django model fields orm relationships manager">
+                    <div class="card-header">
+                        <span class="card-title">Модели и ORM</span>
+                        <span class="badge b-django">Database</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Определение моделей и работа с ORM</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Файл: models.py</span>
+<span class="k">from</span> django.db <span class="k">import</span> models
+
+<span class="k">class</span> Category(models.Model):
+    name = models.CharField(max_length=<span class="s">100</span>)
+    description = models.TextField(blank=<span class="s">True</span>)
+    
+    <span class="k">def</span> __str__(self):
+        <span class="k">return</span> self.name
+
+<span class="k">class</span> Product(models.Model):
+    name = models.CharField(max_length=<span class="s">200</span>)
+    price = models.DecimalField(max_digits=<span class="s">10</span>, decimal_places=<span class="s">2</span>)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=<span class="s">True</span>)
+    updated_at = models.DateTimeField(auto_now=<span class="s">True</span>)
+    is_active = models.BooleanField(default=<span class="s">True</span>)
+    
+    class Meta:
+        ordering = [<span class="s">'-created_at'</span>]
+        verbose_name_plural = <span class="s">'Products'</span>
+    
+    <span class="k">def</span> __str__(self):
+        <span class="k">return</span> self.name
+
+<span class="c"># Запросы ORM</span>
+<span class="k"># Получить все</span>
+products = Product.objects.all()
+
+<span class="k"># Фильтрация</span>
+active = Product.objects.filter(is_active=<span class="s">True</span>)
+
+<span class="k"># Исключение</span>
+recent = Product.objects.exclude(created_at__lt=<span class="s">'2025-01-01'</span>)
+
+<span class="k"># Получить один объект</span>
+product = Product.objects.get(id=<span class="s">1</span>)
+
+<span class="k"># Создание</span>
+Product.objects.create(name=<span class="s">'New'</span>, price=<span class="s">99.99</span>, category_id=<span class="s">1</span>)
+
+<span class="k"># Обновление</span>
+product.price = <span class="s">79.99</span>
+product.save()
+
+<span class="k"># Удаление</span>
+product.delete()</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Django ORM с типизацией полей</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Автоматические связи ForeignKey, ManyToMany</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">QuerySet с ленивыми вычислениями</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="django views generic class-based function-based request response">
+                    <div class="card-header">
+                        <span class="card-title">Представления (Views)</span>
+                        <span class="badge b-django">Routing</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Функции и классы-представления для обработки запросов</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Файл: views.py</span>
+<span class="k">from</span> django.shortcuts <span class="k">import</span> render, get_object_or_404
+<span class="k">from</span> django.http <span class="k">import</span> JsonResponse
+<span class="k">from</span> django.views <span class="k">import</span> View
+<span class="k">from</span> django.views.generic <span class="k">import</span> ListView, DetailView
+
+<span class="c"># Function-based view</span>
+<span class="k">def</span> product_list(request):
+    products = Product.objects.all()
+    <span class="k">return</span> render(request, <span class="s">'products/list.html'</span>, {<span class="s">'products'</span>: products})
+
+<span class="c"># Class-based view</span>
+<span class="k">class</span> ProductListView(ListView):
+    model = Product
+    template_name = <span class="s">'products/list.html'</span>
+    context_object_name = <span class="s">'products'</span>
+    paginate_by = <span class="s">10</span>
+
+<span class="k">class</span> ProductDetailView(DetailView):
+    model = Product
+    template_name = <span class="s">'products/detail.html'</span>
+
+<span class="c"># JSON API view</span>
+<span class="k">def</span> api_products(request):
+    products = Product.objects.values(<span class="s">'id'</span>, <span class="s">'name'</span>, <span class="s">'price'</span>)
+    <span class="k">return</span> JsonResponse({<span class="s">'products'</span>: list(products)})
+
+<span class="c"># Файл: urls.py</span>
+<span class="k">from</span> django.urls <span class="k">import</span> path
+<span class="k">from</span> . <span class="k">import</span> views
+
+urlpatterns = [
+    path(<span class="s">'products/'</span>, views.ProductListView.as_view(), name=<span class="s">'product-list'</span>),
+    path(<span class="s">'products/&lt;int:pk&gt;/'</span>, views.ProductDetailView.as_view(), name=<span class="s">'product-detail'</span>),
+    path(<span class="s">'api/products/'</span>, views.api_products, name=<span class="s">'api-products'</span>),
+]</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Function-based views для простых случаев</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Class-based views (CBV) для переиспользования кода</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Встроенная поддержка JSON и пагинации</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="django template tags filters loop if for static">
+                    <div class="card-header">
+                        <span class="card-title">Шаблоны Django</span>
+                        <span class="badge b-django">Templates</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Синтаксис шаблонов Django с фильтрами и тегами</p>
+                        <div class="code-container">
+                            <span class="code-label">HTML</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="t">&lt;!-- Наследование шаблонов --&gt;</span>
+{% extends <span class="s">"base.html"</span> %}
+
+{% block title %}<span class="k">Products</span>{% endblock %}
+
+{% block content %}
+    <span class="t">&lt;h1&gt;</span>{{ page_title }}<span class="t">&lt;/h1&gt;</span>
+    
+    <span class="c">&lt;!-- Условия --&gt;</span>
+    {% if products %}
+        <span class="t">&lt;ul&gt;</span>
+            {% for product in products %}
+                <span class="t">&lt;li&gt;</span>
+                    <span class="t">&lt;a</span> <span class="a">href</span>=<span class="s">"{% url 'product-detail' product.id %}"</span><span class="t">&gt;</span>
+                        {{ product.name }}
+                    <span class="t">&lt;/a&gt;</span>
+                    <span class="c">&lt;!-- Фильтры --&gt;</span>
+                    - ${{ product.price|floatformat:2 }}
+                <span class="t">&lt;/li&gt;</span>
+            {% endfor %}
+        <span class="t">&lt;/ul&gt;</span>
+    {% else %}
+        <span class="t">&lt;p&gt;</span>Нет товаров<span class="t">&lt;/p&gt;</span>
+    {% endif %}
+    
+    <span class="c">&lt;!-- Статические файлы --&gt;</span>
+    {% load static %}
+    <span class="t">&lt;img</span> <span class="a">src</span>=<span class="s">"{% static 'images/logo.png' %}"</span> <span class="t">/&gt;</span>
+    
+    <span class="c">&lt;!-- Пагинация --&gt;</span>
+    {% if is_paginated %}
+        <span class="t">&lt;a</span> <span class="a">href</span>=<span class="s">"?page={{ page_obj.next_page_number }}"</span><span class="t">&gt;</span>Далее<span class="t">&lt;/a&gt;</span>
+    {% endif %}
+{% endblock %}</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">{% url %} для динамических ссылок</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">{% load static %} для статических файлов</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Встроенные фильтры (truncatewords, date, etc)</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="django forms modelform validation clean widgets">
+                    <div class="card-header">
+                        <span class="card-title">Формы Django</span>
+                        <span class="badge b-django">Forms</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Создание и валидация форм через Django Forms</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Файл: forms.py</span>
+<span class="k">from</span> django <span class="k">import</span> forms
+<span class="k">from</span> .models <span class="k">import</span> Product
+
+<span class="c"># ModelForm автоматически из модели</span>
+<span class="k">class</span> ProductForm(forms.ModelForm):
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={<span class="s">'rows'</span>: <span class="s">4</span>}),
+        required=<span class="s">False</span>
+    )
+    
+    class Meta:
+        model = Product
+        fields = [<span class="s">'name'</span>, <span class="s">'price'</span>, <span class="s">'category'</span>]
+    
+    <span class="c"># Кастомная валидация</span>
+    <span class="k">def</span> clean_price(self):
+        price = self.cleaned_data.get(<span class="s">'price'</span>)
+        <span class="k">if</span> price <span class="k">and</span> price &lt; <span class="s">0</span>:
+            <span class="k">raise</span> forms.ValidationError(<span class="s">"Price must be positive"</span>)
+        <span class="k">return</span> price
+
+<span class="c"># Использование в view</span>
+<span class="k">def</span> create_product(request):
+    <span class="k">if</span> request.method == <span class="s">'POST'</span>:
+        form = ProductForm(request.POST)
+        <span class="k">if</span> form.is_valid():
+            product = form.save()
+            <span class="k">return</span> redirect(<span class="s">'product-detail'</span>, pk=product.id)
+    <span class="k">else</span>:
+        form = ProductForm()
+    <span class="k">return</span> render(request, <span class="s">'create.html'</span>, {<span class="s">'form'</span>: form})
+
+<span class="c"># В шаблоне</span>
+<span class="c"># &lt;form method="post"&gt;</span>
+<span class="c">#     {% csrf_token %}</span>
+<span class="c">#     {{ form.as_p }}</span>
+<span class="c">#     &lt;button type="submit"&gt;Save&lt;/button&gt;</span>
+<span class="c"># &lt;/form&gt;</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">ModelForm автоматически из моделей</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">CSRF защита автоматически</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Встроенная валидация через clean методы</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="django middleware authentication permission decorator admin">
+                    <div class="card-header">
+                        <span class="card-title">Аутентификация и Admin панель</span>
+                        <span class="badge b-django">Security</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Встроенная система аутентификации и админки</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Файл: views.py</span>
+<span class="k">from</span> django.contrib.auth.decorators <span class="k">import</span> login_required
+<span class="k">from</span> django.contrib.auth <span class="k">import</span> authenticate, login, logout
+
+<span class="c"># Защита view от неавторизованных</span>
+@login_required(login_url=<span class="s">'login'</span>)
+<span class="k">def</span> profile(request):
+    <span class="k">return</span> render(request, <span class="s">'profile.html'</span>)
+
+<span class="k">def</span> login_view(request):
+    <span class="k">if</span> request.method == <span class="s">'POST'</span>:
+        username = request.POST.get(<span class="s">'username'</span>)
+        password = request.POST.get(<span class="s">'password'</span>)
+        user = authenticate(request, username=username, password=password)
+        <span class="k">if</span> user:
+            login(request, user)
+            <span class="k">return</span> redirect(<span class="s">'home'</span>)
+    <span class="k">return</span> render(request, <span class="s">'login.html'</span>)
+
+<span class="k">def</span> logout_view(request):
+    logout(request)
+    <span class="k">return</span> redirect(<span class="s">'home'</span>)
+
+<span class="c"># Файл: admin.py - регистрация моделей</span>
+<span class="k">from</span> django.contrib <span class="k">import</span> admin
+<span class="k">from</span> .models <span class="k">import</span> Product, Category
+
+@admin.register(Product)
+<span class="k">class</span> ProductAdmin(admin.ModelAdmin):
+    list_display = [<span class="s">'name'</span>, <span class="s">'price'</span>, <span class="s">'category'</span>, <span class="s">'is_active'</span>]
+    list_filter = [<span class="s">'is_active'</span>, <span class="s">'category'</span>]
+    search_fields = [<span class="s">'name'</span>]
+    ordering = [<span class="s">'-created_at'</span>]
+
+admin.site.register(Category)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Встроенная система User с группами и правами</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">@login_required декоратор для защиты view</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Auto-generated admin панель с фильтрацией</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="django rest framework api serializer viewset router">
+                    <div class="card-header">
+                        <span class="card-title">Django REST Framework</span>
+                        <span class="badge b-django">API</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Создание REST API с Django REST Framework</p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Файл: serializers.py</span>
+<span class="k">from</span> rest_framework <span class="k">import</span> serializers
+<span class="k">from</span> .models <span class="k">import</span> Product
+
+<span class="k">class</span> ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = [<span class="s">'id'</span>, <span class="s">'name'</span>, <span class="s">'price'</span>, <span class="s">'category'</span>]
+
+<span class="c"># Файл: views.py</span>
+<span class="k">from</span> rest_framework <span class="k">import</span> viewsets, status
+<span class="k">from</span> rest_framework.response <span class="k">import</span> Response
+
+<span class="k">class</span> ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+<span class="c"># Файл: urls.py</span>
+<span class="k">from</span> rest_framework.routers <span class="k">import</span> DefaultRouter
+<span class="k">from</span> .views <span class="k">import</span> ProductViewSet
+
+router = DefaultRouter()
+router.register(r<span class="s">'products'</span>, ProductViewSet)
+
+urlpatterns = router.urls
+<span class="c"># Результат: GET /products/, POST /products/, GET /products/{id}/, etc</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Serializers для валидации и трансформации данных</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">ViewSets автоматически генерируют CRUD endpoints</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Роутеры для автоматической регистрации URL</div>
+                        </div>
+                    </div>
+                </article>
+                <!-- NEW: DJANGO AUTHENTICATION -->
+                <article class="card" data-tags="django authentication user login logout permissions">
+                    <div class="card-header">
+                        <span class="card-title">Django Authentication</span>
+                        <span class="badge b-django">Auth</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">
+                            Система аутентификации пользователей в Django.
+                        </p>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Файл: models.py</span>
+<span class="k">from</span> django.db <span class="k">import</span> models
+<span class="k">from</span> django.contrib.auth.models <span class="k">import</span> AbstractUser
+
+<span class="k">class</span> CustomUser(AbstractUser):
+    phone = models.CharField(max_length=15, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
+
+<span class="c"># Файл: views.py</span>
+<span class="k">from</span> django.contrib.auth <span class="k">import</span> authenticate, login, logout
+<span class="k">from</span> django.contrib.auth.decorators <span class="k">import</span> login_required
+<span class="k">from</span> django.shortcuts <span class="k">import</span> render, redirect
+
+<span class="k">def</span> login_view(request):
+    <span class="k">if</span> request.method == <span class="s">'POST'</span>:
+        username = request.POST[<span class="s">'username'</span>]
+        password = request.POST[<span class="s">'password'</span>]
+        user = authenticate(request, username=username, password=password)
+        <span class="k">if</span> user <span class="k">is</span> not <span class="k">None</span>:
+            login(request, user)
+            <span class="k">return</span> redirect(<span class="s">'home'</span>)
+    <span class="k">return</span> render(request, <span class="s">'login.html'</span>)
+
+@login_required
+<span class="k">def</span> profile_view(request):
+    <span class="k">return</span> render(request, <span class="s">'profile.html'</span>, {<span class="s">'user'</span>: request.user})
+
+<span class="c"># Файл: settings.py</span>
+AUTH_USER_MODEL = <span class="s">'myapp.CustomUser'</span>
+
+<span class="c"># Проверка прав</span>
+<span class="k">from</span> django.contrib.auth.mixins <span class="k">import</span> LoginRequiredMixin
+<span class="k">from</span> django.views.generic <span class="k">import</span> ListView
+
+<span class="k">class</span> MySecureView(LoginRequiredMixin, ListView):
+    <span class="k">pass</span></pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Django предоставляет готовую систему аутентификации.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: поддерживает кастомные модели пользователей и права доступа.</div>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Функция</th>
+                                <th>Описание</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">authenticate()</span></td>
+                                <td class="attr-desc">Проверяет учетные данные</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">login()</span></td>
+                                <td class="attr-desc">Авторизует пользователя</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">@login_required</span></td>
+                                <td class="attr-desc">Декоратор для защищенных views</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
     <footer>
         <p>© 2026 Web Encyclopedia Vlad Avrely. Полный справочник с визуальными примерами.</p>
     </footer>
     <div class="toast" id="toast">✓ Код скопирован!</div>
     <script>
-        // Переключение вкладок HTML / CSS / JS / Python / SQL / PostgreSQL / Алгоритмы
+        // Переключение вкладок HTML / CSS / JS / Python / SQL / PostgreSQL / Алгоритмы / FastAPI / Flask / Django
         function switchTab(id, el) {
             document.querySelectorAll(".section").forEach((s) => s.classList.remove("active"));
             document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
