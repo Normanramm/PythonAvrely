@@ -283,9 +283,16 @@ input:checked+span {
  */
 .flex {
     display: flex;
-    /* правильное свойство */
+    /* выравнивает по вертикали(по главной оси)*/
     justify-content: center;
+    /*выравнивает по горизонтали(поперечная ось)*/
     align-items: center;
+    /*задает направление по горизантали и вертикали, реверс*/
+    flex-direction: row-reverse;
+
+
+
+
     background-color: #8c70c7;
     height: 300px;
     
