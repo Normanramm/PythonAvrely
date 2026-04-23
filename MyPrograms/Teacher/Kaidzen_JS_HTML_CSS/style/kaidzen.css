@@ -289,16 +289,15 @@ input:checked+span {
     align-items: center;
     /*задает направление по горизантали и вертикали, реверс*/
     flex-direction: row-reverse;
+    /* объединяет два других свойства например (направление и перенос)*/
+    flex-flow: column row;
     /*перенос на следующую строку если не влазит*/
     flex-wrap: wrap-reverse;
-    
-
-
-
-
+    /*регулирует растояние между рядами*/
+    align-content: center;
     background-color: #8c70c7;
     height: 300px;
-    
+
 }
 
 /**
@@ -314,23 +313,51 @@ input:checked+span {
     border-radius: 12px;
 }
 
-
 /*конкретные элементы*/
 #item_1 {
     /*для конкретных элементов менять порядок расположения(зависит от направления flex-direction: row-reverse*/
     order: 3;
     /*выравнивает по оси по направлению*/
     align-self: flex-end;
+    /*предназначен для сжатия всего пространстава своего родителя*/
+    flex-shrink: 1;
 }
 
 #item_2 {
     order: 2;
+    /*предназначен для занятия всего пространстава своего родителя*/
+    flex-grow: 1;
 }
 
 #item_3 {
     order: 1;
+    /*позволяет менять размер в процентах*/
+    flex-basis: 25%;
 }
 
+/* таблица на flexbox без grid(чтобы добиться результата нужно менять HTML теги*/
+.flex2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 50px;
+    color: #02ffaf;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium';
+    background-color: #00f57b;
+}
+
+.right {
+    flex-direction: column;
+}
+
+.item2 {
+    background-color: #4e68fe;
+    border: 3px solid #00bfff;
+    padding: 35px;
+    margin: 10px;
+    border-radius: 12px;
+}
 
 /* ========================================
 10. РАЗНЫЕ КЛАССЫ И ID
