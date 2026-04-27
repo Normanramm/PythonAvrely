@@ -68,9 +68,11 @@ li a:hover {
  * - текст — фиолетовый
  * - рамка — 1px сплошная синяя
  */
-pre + ul {
-    color: #a00bb7; /* фиолетовый текст */
-    border: 1px solid rgb(0, 123, 255); /* синяя рамка */
+pre+ul {
+    color: #a00bb7;
+    /* фиолетовый текст */
+    border: 1px solid rgb(0, 123, 255);
+    /* синяя рамка */
 }
 
 /**
@@ -79,7 +81,7 @@ pre + ul {
  * - рамка — 1px сплошная бирюзовая
  * - маркеры списка — греческие строчные буквы (α, β, γ и т.д.)
  */
-div.container > ul > li {
+div.container>ul>li {
     border: 1px solid rgb(0, 247, 239);
     list-style: lower-greek;
 }
@@ -91,7 +93,7 @@ div.container > ul > li {
  * - цвет — красный (#c62036)
  * - жирность шрифта — 600 (полужирный)
  */
-div.container > ul > li > span:nth-child(1) {
+div.container>ul>li>span:nth-child(1) {
     text-decoration: double;
     color: #c62036;
     font-weight: 600;
@@ -114,13 +116,16 @@ div.container > ul > li > span:nth-child(1) {
  * - выравнивание по центру
  */
 p[title] {
-    color: #ff6600; /* оранжевый текст */
+    color: #ff6600;
+    /* оранжевый текст */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 15px;
     font-weight: bold;
     font-style: italic;
-    line-height: 15px; /* плотный межстрочный интервал */
-    letter-spacing: 5px; /* разреженные буквы */
+    line-height: 15px;
+    /* плотный межстрочный интервал */
+    letter-spacing: 5px;
+    /* разреженные буквы */
     text-align: center;
 }
 
@@ -155,9 +160,11 @@ p:nth-child(4) {
  * - цвет текста — зелёный
  * - шрифт — полужирный
  */
-input:checked + span {
-    color: #08ec17; /* зелёный текст */
-    font-weight: 600; /* полужирный */
+input:checked+span {
+    color: #08ec17;
+    /* зелёный текст */
+    font-weight: 600;
+    /* полужирный */
 }
 
 
@@ -223,7 +230,8 @@ input:checked + span {
  */
 #title3 {
     border: 3px dashed rgb(7, 240, 7);
-    border-radius: 50%; /* круг */
+    border-radius: 50%;
+    /* круг */
     color: #19c822;
     width: 80%;
     height: 10%;
@@ -278,9 +286,12 @@ input:checked + span {
  * - отступ слева от текста
  */
 .new::after {
-    content: '✉'; /* символ */
-    color: rgb(233, 250, 1); /* жёлтый */
-    background-color: #000000; /* чёрный фон */
+    content: '✉';
+    /* символ */
+    color: rgb(233, 250, 1);
+    /* жёлтый */
+    background-color: #000000;
+    /* чёрный фон */
     padding: 3px;
     font-size: 10px;
     border-radius: 5px;
@@ -310,11 +321,16 @@ input:checked + span {
  */
 .flex {
     display: flex;
-    justify-content: center; /* центрирование по главной оси */
-    align-items: center;     /* центрирование по поперечной оси */
-    flex-direction: row-reverse; /* направление: справа налево */
-    flex-wrap: wrap-reverse;     /* перенос: новые строки сверху */
-    align-content: center;       /* выравнивание строк */
+    justify-content: center;
+    /* центрирование по главной оси */
+    align-items: center;
+    /* центрирование по поперечной оси */
+    flex-direction: row-reverse;
+    /* направление: справа налево */
+    flex-wrap: wrap-reverse;
+    /* перенос: новые строки сверху */
+    align-content: center;
+    /* выравнивание строк */
     background-color: #8c70c7;
     height: 300px;
 }
@@ -335,19 +351,26 @@ input:checked + span {
 /* Индивидуальные стили для конкретных flex-элементов */
 
 #item_1 {
-    order: 3;            /* изменяет порядок отображения — третий */
-    align-self: flex-end; /* выравнивание по поперечной оси — вниз */
-    flex-shrink: 1;      /* позволяет сжиматься при нехватке места */
+    order: 3;
+    /* изменяет порядок отображения — третий */
+    align-self: flex-end;
+    /* выравнивание по поперечной оси — вниз */
+    flex-shrink: 1;
+    /* позволяет сжиматься при нехватке места */
 }
 
 #item_2 {
-    order: 2;            /* второй по порядку */
-    flex-grow: 1;        /* занимает доступное свободное пространство */
+    order: 2;
+    /* второй по порядку */
+    flex-grow: 1;
+    /* занимает доступное свободное пространство */
 }
 
 #item_3 {
-    order: 1;            /* первый по порядку */
-    flex-basis: 25%;     /* базовый размер — 25% от контейнера */
+    order: 1;
+    /* первый по порядку */
+    flex-basis: 25%;
+    /* базовый размер — 25% от контейнера */
 }
 
 /**
@@ -385,6 +408,119 @@ input:checked + span {
 }
 
 
+/* ========================================
+10. GRID МАКЕТ
+   ======================================== */
+
+
+/**
+ * Контейнер сетки 2×2
+ * - две колонки и две строки, равные по ширине/высоте
+ * - маленькие промежутки между ячейками (gap)
+ * - закруглённые углы и тень
+ * - белый фон
+ * - обрезка содержимого по границам (overflow: hidden)
+ */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
+
+    /* Добавляем внутренние отступы для "дышащего" вида */
+    padding: 15px;
+    background-color: #ffffff;
+    /* Светлый фон для контейнера */
+    border-radius: 16px;
+    /* Закруглённые углы у всей сетки */
+    box-shadow: 0 4px 12px rgba(223, 20, 20, 0.05);
+    /* Лёгкая тень */
+    overflow: hidden;
+    /* Обрезаем дочерние тени по границам скругления */
+    gap: 10px;
+
+}
+
+/**
+ * Общие стили для всех grid-элементов
+ * - градиентный фон
+ * - закруглённые углы
+ * - тень и отступы
+ * - центрированный текст
+ * - плавная анимация при наведении
+ */
+.grid-item1,
+.grid-item2,
+.grid-item3 {
+    background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+    /* Мягкий природный градиент */
+    border-radius: 12px;
+    /* Закруглённые углы у элементов */
+    padding: 20px;
+    color: #2d3436;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+
+    /* Тень для объёмности */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /* Плавная анимация при наведении */
+    transition: all 0.3s ease;
+}
+
+/**
+ * Эффект при наведении:
+ * - поднятие элемента вверх
+ * - усиление тени
+ * - смена градиента
+ */
+.grid-item1:hover,
+.grid-item2:hover,
+.grid-item3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #8de4b0, #cdeab7);
+}
+
+/**
+ * Позиционирование элементов в сетке
+ */
+.grid-item1 {
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: center;
+    /* прижат к правому краю своей ячейки */
+    justify-self: end;
+    /* занимает 70% ширины ячейки */
+    width: 70%;
+
+
+}
+
+.grid-item2 {
+    grid-area: 1 / 2 / 2 / 3;
+    justify-self: center;
+    /* прижат к левому краю своей ячейки */
+    justify-self: start;
+    /* занимает 70% ширины ячейки */
+    width: 70%;
+
+}
+
+.grid-item3 {
+    grid-area: 2 / 1 / 3 / 3;
+    /* Теплый розовый градиент для нижнего блока */
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    /*центрирован по горизонтали */
+    justify-self: center;
+    width: 70%;
+
+}
+
+
+
 
 /* ========================================
 10. РАЗНЫЕ КЛАССЫ И ID
@@ -403,7 +539,8 @@ input:checked + span {
     height: 100px;
     background-color: #16a95f;
     color: #ffffff;
-    margin: 20px auto; /* центрирование */
+    margin: 20px auto;
+    /* центрирование */
     margin-top: 30px;
     margin-bottom: 1px;
     padding: 11px;
