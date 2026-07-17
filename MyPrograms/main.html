@@ -377,6 +377,11 @@
             color: #1b5e20;
         }
 
+        .b-neural {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+
         /* Code & Preview */
         .code-container {
             background: var(--bg-code);
@@ -714,6 +719,7 @@
                 <button class="tab" onclick="switchTab('fastapi', this)">FastAPI</button>
                 <button class="tab" onclick="switchTab('flask', this)">Flask</button>
                 <button class="tab" onclick="switchTab('django', this)">Django</button>
+                <button class="tab" onclick="switchTab('neural', this)">Нейросети</button>
             </div>
             <div class="search-box">
                 <span class="search-icon">🔍</span>
@@ -8564,6 +8570,1140 @@ AUTH_USER_MODEL = <span class="s">'myapp.CustomUser'</span>
                                 <td class="attr-desc">Декоратор для защищенных views</td>
                             </tr>
                         </table>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- ================= NEURAL NETWORKS SECTION ================= -->
+        <section id="neural" class="section">
+            <div class="section-header">
+                <h1 class="section-title"
+                    style="background: linear-gradient(135deg, #6d28d9, #a78bfa); background-clip: text; -webkit-background-clip: text;">
+                    Нейросети с нуля до профи</h1>
+                <p class="section-desc">Полный путь от идеи до обученной модели: подготовка данных, архитектура, обучение, оценка и улучшение результатов</p>
+            </div>
+            <div class="grid">
+                <article class="card" data-tags="neural network roadmap beginner pro">
+                    <div class="card-header">
+                        <span class="card-title">Путь от новичка к profi</span>
+                        <span class="badge b-neural">Roadmap</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Короткая карта развития: от основ Python до создания реальных моделей и проектов.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Сначала изучите Python, NumPy, pandas и базовую математику.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. На практике постройте одну простую сеть на Keras и одну на PyTorch.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. После этого переходите к датасетам, метрикам, регуляризации и деплою.</div>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Освой Python, NumPy, pandas и математику.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Научись строить простые сети на Keras и PyTorch.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Изучай датасеты, метрики, регуляризацию и деплой.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">EXAMPLE</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Пример пути обучения
+# Python -> NumPy -> TensorFlow -> MNIST -> CNN -> API</pre>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Уровень</th>
+                                <th>Что изучать</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Начинающий</span></td>
+                                <td class="attr-desc">Python, линейная алгебра, основы нейросетей</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Средний</span></td>
+                                <td class="attr-desc">Keras, PyTorch, датасеты, обучение и оценка</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Профи</span></td>
+                                <td class="attr-desc">CNN, RNN, Transformers, fine-tuning, deployment</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network projects mini project roadmap">
+                    <div class="card-header">
+                        <span class="card-title">Проектный маршрут: 10 мини-проектов</span>
+                        <span class="badge b-neural">Projects</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Маршрут от простого мини-проекта к рабочему ML-сервису: каждый проект решает реальную задачу и даёт понятный результат.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🧭 ПРОЕКТНЫЙ МАРШРУТ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Классификатор цифр — обучите сеть на MNIST и получите предсказание для нового изображения.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Анализ тональности — поймите, позитивный ли текст или негативный.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Спам-фильтр — выделяйте нежелательные сообщения по признакам текста.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">4. Рекомендатор — предложите похожие товары или статьи пользователю.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">5. Прогноз продаж — предскажите спрос по временным рядам.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">6. Генератор текста — создавайте короткие завершения для фраз.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">7. Детектор объектов — найдите предметы на изображении и обведите их.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">8. Генератор изображений — создавайте простые картинки из шума.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">9. Чат-бот FAQ — отвечайте на типовые вопросы по базе знаний.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">10. ML API — превратите модель в сервис, доступный через HTTP.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">EXAMPLE</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># 1. MNIST classifier
+from tensorflow.keras.datasets import mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train = x_train / 255.0
+model.fit(x_train, y_train, epochs=3)
+
+# 2. Sentiment analysis
+from sklearn.feature_extraction.text import CountVectorizer
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(["good movie", "bad movie"])
+
+# 3. Spam filter
+from sklearn.linear_model import LogisticRegression
+clf = LogisticRegression()
+clf.fit(X, [0, 1])
+
+# 4. Recommender
+import pandas as pd
+ratings = pd.DataFrame({"user": [1, 1, 2], "item": [1, 2, 2], "rating": [5, 4, 3]})
+
+# 5. Sales forecast
+import pandas as pd
+sales = pd.read_csv("sales.csv")
+
+# 6. Text generator
+from tensorflow.keras.preprocessing.text import Tokenizer
+
+# 7. Object detection
+import cv2
+img = cv2.imread("image.jpg")
+
+# 8. Image generator
+import tensorflow as tf
+
+# 9. FAQ bot
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# 10. ML API
+from fastapi import FastAPI
+app = FastAPI()</pre>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Проект</th>
+                                <th>Что получите</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">1. Digit classifier</span></td>
+                                <td class="attr-desc">Модель, распознающая рукописные цифры</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">2. Sentiment</span></td>
+                                <td class="attr-desc">Классификатор позитивных и негативных текстов</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">3. Spam filter</span></td>
+                                <td class="attr-desc">Фильтр для нежелательных сообщений</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">4. Recommender</span></td>
+                                <td class="attr-desc">Системаuggestions для похожих товаров</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">5. Forecast</span></td>
+                                <td class="attr-desc">Прогноз спроса и временных рядов</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network glossary terms loss accuracy epochs batch">
+                    <div class="card-header">
+                        <span class="card-title">Полезные термины</span>
+                        <span class="badge b-neural">Glossary</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Ключевые слова, которые встречаются в любой нейросетевой теме.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Читайте термины в контексте, а не как отдельные слова.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Следите за loss, accuracy, epoch и batch в каждом обучении.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Сравнивайте, что значит overfitting и почему это происходит.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">EXAMPLE</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Пример терминов из обучения
+loss = 0.12
+accuracy = 0.91
+epoch = 5</pre>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Термин</th>
+                                <th>Пояснение</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Epoch</span></td>
+                                <td class="attr-desc">Один полный проход по датасету</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Batch</span></td>
+                                <td class="attr-desc">Небольшая группа примеров за одну итерацию</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Loss</span></td>
+                                <td class="attr-desc">Ошибка модели, которую нужно уменьшать</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Accuracy</span></td>
+                                <td class="attr-desc">Процент правильных предсказаний</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Overfitting</span></td>
+                                <td class="attr-desc">Когда модель слишком хорошо запоминает обучающие данные</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network basics perceptron layers activation">
+                    <div class="card-header">
+                        <span class="card-title">Что такое нейросеть и как она устроена</span>
+                        <span class="badge b-neural">Basics</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Нейросеть — это набор слоёв, которые постепенно учатся выделять признаки и делать предсказания.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Представляйте сеть как цепочку преобразований: вход → признаки → ответ.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Поменяйте веса вручную в примере и посмотрите, как меняется результат.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Поймите, зачем нужны ReLU, Sigmoid и Softmax в разных задачах.</div>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Входной слой получает данные, скрытые слои извлекают признаки, выходной слой выдаёт результат.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">На практике используют ReLU, Sigmoid, Softmax и функции потерь.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">EXAMPLE</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Пример простой нейросети
+x = [0.2, 0.8]
+w = [0.5, 0.3]
+y = sum(x[i] * w[i] for i in range(len(x)))
+print(y)</pre>
+                        </div>
+                        <table class="attr-table">
+                            <tr>
+                                <th>Компонент</th>
+                                <th>Задача</th>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Input Layer</span></td>
+                                <td class="attr-desc">Принимает данные</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Hidden Layers</span></td>
+                                <td class="attr-desc">Извлекает закономерности</td>
+                            </tr>
+                            <tr>
+                                <td><span class="attr-name">Output Layer</span></td>
+                                <td class="attr-desc">Делает итоговое предсказание</td>
+                            </tr>
+                        </table>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network python tensorflow keras install data">
+                    <div class="card-header">
+                        <span class="card-title">Шаг 1. Установка и подготовка данных</span>
+                        <span class="badge b-neural">Setup</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Перед обучением нужно установить библиотеку и правильно подготовить датасет.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Создайте виртуальное окружение и установите TensorFlow.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Загрузите датасет, проверьте его форму и размеры.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Нормализуйте данные, потому что это часто сильно улучшает обучение.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Установка библиотеки</span>
+pip install tensorflow
+
+<span class="c"># Импортируем нужные инструменты</span>
+<span class="k">import</span> numpy as np
+<span class="k">from</span> tensorflow.keras.datasets <span class="k">import</span> mnist
+
+<span class="c"># Загружаем данные</span>(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+<span class="c"># Нормализуем значения пикселей к диапазону 0..1</span>
+x_train = x_train / <span class="s">255.0</span>
+x_test = x_test / <span class="s">255.0</span>
+
+<span class="c"># Проверяем форму данных</span>
+print(x_train.shape, y_train.shape)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Нормализация помогает нейросети обучаться быстрее и стабильнее.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Подготовка данных — одна из самых важных частей проекта.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network keras sequential dense relu sigmoid">
+                    <div class="card-header">
+                        <span class="card-title">Шаг 2. Первая нейросеть на Keras</span>
+                        <span class="badge b-neural">Keras</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Создание простой модели классификации с двумя Dense-слоями.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Определите модель через Sequential и добавьте слои.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Выберите optimizer='adam' и loss для вашей задачи.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Запустите обучение и сравните результат после нескольких эпох.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Импортируем слои и модель</span>
+<span class="k">from</span> tensorflow.keras.models <span class="k">import</span> Sequential
+<span class="k">from</span> tensorflow.keras.layers <span class="k">import</span> Dense, Flatten
+
+<span class="c"># Создаём последовательную модель</span>
+model = Sequential([
+    Flatten(input_shape=(<span class="s">28</span>, <span class="s">28</span>)), <span class="c"># Преобразуем изображение в вектор</span>
+    Dense(<span class="s">128</span>, activation=<span class="s">'relu'</span>), <span class="c"># Скрытый слой</span>
+    Dense(<span class="s">10</span>, activation=<span class="s">'softmax'</span>) <span class="c"># Выходной слой с 10 классами</span>
+])
+
+<span class="c"># Компилируем модель</span>
+model.compile(
+    optimizer=<span class="s">'adam'</span>,
+    loss=<span class="s">'sparse_categorical_crossentropy'</span>,
+    metrics=[<span class="s">'accuracy'</span>]
+)
+
+<span class="c"># Запускаем обучение</span>
+model.fit(x_train, y_train, epochs=<span class="s">5</span>, batch_size=<span class="s">32</span>)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Flatten превращает изображение в одномерный массив.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Dense-слои учат сеть распознавать сложные признаки шаг за шагом.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network mnist evaluate predict accuracy">
+                    <div class="card-header">
+                        <span class="card-title">Шаг 3. Обучение на MNIST и проверка качества</span>
+                        <span class="badge b-neural">Training</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Классический пример распознавания рукописных цифр — отличная отправная точка для изучения нейросетей.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Оцените модель на тестовых данных после обучения.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Проверьте не только accuracy, но и loss.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Сделайте предсказание для одного изображения и проверьте результат глазами.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Оцениваем модель на тестовых данных</span>
+loss, accuracy = model.evaluate(x_test, y_test)
+print(<span class="s">'Потери:'</span>, loss)
+print(<span class="s">'Точность:'</span>, accuracy)
+
+<span class="c"># Делаем предсказание для одного изображения</span>
+prediction = model.predict(x_test[[<span class="s">0</span>]])
+print(<span class="s">'Предсказание:'</span>, np.argmax(prediction))</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">MNIST — один из самых популярных датасетов для старта.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Оценка качества важна, потому что обучение не всегда означает хорошую модель.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network pytorch regression loss optimizer">
+                    <div class="card-header">
+                        <span class="card-title">Шаг 4. PyTorch: линейная регрессия</span>
+                        <span class="badge b-neural">PyTorch</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Минимальный пример обучения модели для задачи предсказания чисел.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Сформируйте простые входные данные и целевые значения.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Пройдите по циклу forward → loss → backward → step.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Смотрите, как меняется предсказание после каждого этапа обучения.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">import</span> torch
+<span class="k">import</span> torch.nn as nn
+
+<span class="c"># Данные для обучения</span>
+x = torch.tensor([[<span class="s">0.0</span>], [<span class="s">1.0</span>], [<span class="s">2.0</span>]])
+y = torch.tensor([[<span class="s">0.0</span>], [<span class="s">1.0</span>], [<span class="s">2.0</span>]])
+
+<span class="c"># Простая линейная нейросеть</span>
+model = nn.Linear(<span class="s">1</span>, <span class="s">1</span>)
+criterion = nn.MSELoss()
+optimizer = torch.optim.SGD(model.parameters(), lr=<span class="s">0.01</span>)
+
+<span class="c"># Цикл обучения</span>
+<span class="k">for</span> epoch <span class="k">in</span> range(<span class="s">100</span>):
+    optimizer.zero_grad() <span class="c"># Обнуляем градиенты</span>
+    pred = model(x) <span class="c"># Прямой проход</span>
+    loss = criterion(pred, y) <span class="c"># Считаем ошибку</span>
+    loss.backward() <span class="c"># Обратное распространение ошибки</span>
+    optimizer.step() <span class="c"># Обновляем веса</span>
+
+print(model(torch.tensor([[<span class="s">3.0</span>]])))</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">PyTorch часто используют в исследовательских и продвинутых проектах.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Этот пример показывает основу обучения: forward → loss → backward → update.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network dropout early stopping callbacks overfitting">
+                    <div class="card-header">
+                        <span class="card-title">Шаг 5. Как сделать модель сильнее</span>
+                        <span class="badge b-neural">Pro</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Профи используют регуляризацию, Dropout и callback-ы, чтобы избежать переобучения и получить стабильную модель.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Добавьте Dropout, чтобы уменьшить зависимость от отдельных нейронов.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Следите за val_loss и прерывайте обучение вовремя.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Сравните модель с и без регуляризации, чтобы увидеть разницу.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> tensorflow.keras.layers <span class="k">import</span> Dropout
+<span class="k">from</span> tensorflow.keras.callbacks <span class="k">import</span> EarlyStopping
+
+<span class="c"># Добавляем Dropout, чтобы снизить переобучение</span>
+model = Sequential([
+    Flatten(input_shape=(<span class="s">28</span>, <span class="s">28</span>)),
+    Dense(<span class="s">128</span>, activation=<span class="s">'relu'</span>),
+    Dropout(<span class="s">0.2</span>),
+    Dense(<span class="s">10</span>, activation=<span class="s">'softmax'</span>)
+])
+
+<span class="c"># Останавливаем обучение, если модель перестаёт улучшаться</span>
+callback = EarlyStopping(monitor=<span class="s">'val_loss'</span>, patience=<span class="s">2</span>)
+
+model.compile(optimizer=<span class="s">'adam'</span>, loss=<span class="s">'sparse_categorical_crossentropy'</span>, metrics=[<span class="s">'accuracy'</span>])
+model.fit(x_train, y_train, validation_split=<span class="s">0.2</span>, epochs=<span class="s">20</span>, callbacks=[callback])</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Dropout помогает снизить переобучение.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">EarlyStopping экономит время и не даёт модели «застыть» на плохом результате.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network nlp text classification tokenizer">
+                    <div class="card-header">
+                        <span class="card-title">Пример для NLP: классификация текста</span>
+                        <span class="badge b-neural">NLP</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Нейросеть может анализировать тексты и классифицировать их по темам или настроению.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Соберите небольшой набор текстов и меток.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Преобразуйте слова в числа через Tokenizer.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Обучите модель на этих последовательностях и проверьте качество.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c"># Простая модель для NLP на базе TensorFlow Keras</span>
+<span class="k">from</span> tensorflow.keras.preprocessing.text <span class="k">import</span> Tokenizer
+<span class="k">from</span> tensorflow.keras.preprocessing.sequence <span class="k">import</span> pad_sequences
+
+texts = [<span class="s">'я люблю программировать'</span>, <span class="s">'мне нравится машинное обучение'</span>, <span class="s">'этот фильм ужасный'</span>]
+labels = [<span class="s">1</span>, <span class="s">1</span>, <span class="s">0</span>]
+
+ tokenizer = Tokenizer(num_words=<span class="s">100</span>)
+ tokenizer.fit_on_texts(texts)
+ sequences = tokenizer.texts_to_sequences(texts)
+ padded = pad_sequences(sequences, maxlen=<span class="s">10</span>)
+
+print(padded)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Tokenizer превращает слова в числа, которые понимает нейросеть.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это база для анализа текста, чат-ботов и классификации сообщений.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network computer vision cnn image classification">
+                    <div class="card-header">
+                        <span class="card-title">Пример для компьютерного зрения</span>
+                        <span class="badge b-neural">CV</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Сверточные нейросети отлично подходят для распознавания изображений и объектов.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Подготовьте изображения в виде массивов нужной формы.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Добавьте Conv2D и MaxPooling2D, чтобы сеть выделяла признаки.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Сравните результат с обычной Dense-сетью и посмотрите разницу.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">from</span> tensorflow.keras.models <span class="k">import</span> Sequential
+<span class="k">from</span> tensorflow.keras.layers <span class="k">import</span> Conv2D, MaxPooling2D, Flatten, Dense
+
+<span class="c"># Простая CNN для изображений</span>
+model = Sequential([
+    Conv2D(<span class="s">32</span>, (<span class="s">3</span>, <span class="s">3</span>), activation=<span class="s">'relu'</span>, input_shape=(<span class="s">28</span>, <span class="s">28</span>, <span class="s">1</span>)),
+    MaxPooling2D(pool_size=(<span class="s">2</span>, <span class="s">2</span>)),
+    Flatten(),
+    Dense(<span class="s">128</span>, activation=<span class="s">'relu'</span>),
+    Dense(<span class="s">10</span>, activation=<span class="s">'softmax'</span>)
+])
+
+model.compile(optimizer=<span class="s">'adam'</span>, loss=<span class="s">'sparse_categorical_crossentropy'</span>, metrics=[<span class="s">'accuracy'</span>])
+print(model.summary())</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">CNN используют свёрточные слои для поиска признаков на изображениях.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Подходит для распознавания лиц, объектов, медицинских снимков и видео.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network optimizer sgd adam rmsprop">
+                    <div class="card-header">
+                        <span class="card-title">11. Оптимизаторы: SGD, Adam, RMSprop</span>
+                        <span class="badge b-neural">Optimizers</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Оптимизатор влияет на то, насколько быстро и стабильно сеть учится.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Сначала попробуйте Adam, он обычно даёт быстрый старт.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Затем сравните с SGD и RMSprop на той же задаче.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Выбирайте тот, который даёт лучшую стабильность и качество.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Adam часто выбирают для практики, потому что он быстро сходится
+# SGD полезен, когда нужен более строгий контроль над процессом
+# RMSprop хорошо работает в задачах с шумными градиентами
+import torch
+import torch.optim as optim
+
+optimizer = optim.Adam([torch.nn.Parameter(torch.tensor([1.0]))], lr=0.01)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Adam ускоряет сходимость, SGD даёт больше контроля, RMSprop стабилизирует обучение на шумных данных.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">В реальных задачах подбор оптимизатора влияет на качество не меньше, чем выбор архитектуры.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network regularization l1 l2 early stopping">
+                    <div class="card-header">
+                        <span class="card-title">12. Регуляризация: L1, L2, EarlyStopping</span>
+                        <span class="badge b-neural">Regularization</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Регуляризация снижает переобучение и помогает модели лучше работать на новых данных.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Используйте L2, если хотите уменьшить слишком большие веса.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Применяйте Dropout, когда сеть слишком быстро запоминает датасет.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Следите за валидацией и не тренируйте лишнее время.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># L1 и L2 штрафуют большие веса, чтобы сеть не переобучалась
+# EarlyStopping прерывает обучение, если качество перестаёт улучшаться
+from tensorflow.keras.callbacks import EarlyStopping
+
+callback = EarlyStopping(monitor='val_loss', patience=2)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">L1 и L2 уменьшают избыточные веса, а EarlyStopping спасает от обучения «вхолостую».</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Эти методы особенно полезны в задачах с маленькими датасетами и высокой вариативностью.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network transfer learning resnet vgg fine tuning">
+                    <div class="card-header">
+                        <span class="card-title">13. Transfer Learning: дообучение ResNet и VGG</span>
+                        <span class="badge b-neural">Transfer</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Вместо обучения модели с нуля можно взять готовую сеть и дообучить её под свою задачу.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Возьмите предобученную модель, например ResNet50.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Заморозьте базовые слои и дообучите верхние под свои данные.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Потом разморозьте часть слоёв и продолжите обучение осторожно.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Предобученные модели уже освоили базовые признаки изображений
+# Поэтому их легко адаптировать под новые классы и датасеты
+from tensorflow.keras.applications import ResNet50
+
+base_model = ResNet50(weights='imagenet', include_top=False)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Готовые модели уже умеют распознавать базовые формы, текстуры и структуры изображений.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это ускоряет разработку и повышает качество, когда данных для обучения мало.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network autoencoder anomaly detection">
+                    <div class="card-header">
+                        <span class="card-title">14. Автоэнкодеры и поиск аномалий</span>
+                        <span class="badge b-neural">Autoencoder</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Автоэнкодеры могут учиться восстанавливать нормальные данные и выявлять отклонения.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Обучите сеть на нормальных примерах.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Затем проверьте, насколько хорошо она восстанавливает новые данные.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Большая ошибка на одном примере — сигнал о возможной аномалии.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Если сеть плохо восстанавливает редкий пример, это может быть аномалия
+# Такой подход применяют в обнаружении мошенничества и дефектов
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Dense
+
+input_layer = Input(shape=(32,))
+encoded = Dense(16, activation='relu')(input_layer)
+decoded = Dense(32, activation='sigmoid')(encoded)</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Если сеть плохо восстанавливает редкий пример, это сигнал о возможной аномалии.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Такие модели применяют в fraud detection, промышленном контроле и поиске дефектов.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network gan generator discriminator">
+                    <div class="card-header">
+                        <span class="card-title">15. GAN: генератор и дискриминатор</span>
+                        <span class="badge b-neural">GAN</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">GAN обучаются через соревнование двух сетей: генератор пытается обмануть, а дискриминатор — распознать подделку.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Подготовьте датасет и простой генератор.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Обучайте генератор и дискриминатор по очереди.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Следите за тем, чтобы ни одна из сетей не «застывала» в плохом состоянии.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Генератор создаёт новые данные, а дискриминатор учится отличать реальные от синтетических
+# Этот подход используется в генерации изображений, аудио и синтетических наборов данных</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Генератор учится создавать данные, а дискриминатор — отличать правдоподобные от поддельных.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Такая схема используется в генерации лиц, стиля, синтетических датасетов и видео.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network transformer self attention">
+                    <div class="card-header">
+                        <span class="card-title">16. Transformer и self-attention</span>
+                        <span class="badge b-neural">Transformer</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Transformer изменил NLP и CV, потому что умеет учитывать взаимосвязи между всеми элементами входа.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Поймите, что такое Query, Key и Value.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Попробуйте небольшой Transformer на простом наборе текста.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Затем переходите к pretrained-моделям BERT или GPT.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Self-attention сравнивает каждый токен со всеми остальными
+# Это даёт модели понимание контекста и зависимостей на больших расстояниях
+# Q, K, V — это ключевые понятия механизма внимания</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Attention помогает модели сравнивать токены между собой и понимать контекст на больших расстояниях.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это фундамент для BERT, GPT, ViT и большинства современных архитектур.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network lstm text generation">
+                    <div class="card-header">
+                        <span class="card-title">17. LSTM для генерации текста</span>
+                        <span class="badge b-neural">Sequences</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">LSTM решает задачу удержания долгосрочного контекста в последовательностях.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Подготовьте последовательность данных: текст, временной ряд или события.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Сконструируйте окна последовательностей и целевые значения.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Обучите модель и проверьте, как она предсказывает следующий шаг.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># LSTM хорошо подходит для текста, временных рядов и последовательностей событий
+# Сеть учится предсказывать следующее слово или следующий шаг
+from tensorflow.keras.layers import Embedding, LSTM, Dense
+
+model = [Embedding, LSTM, Dense]</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">LSTM помнят важные элементы последовательности и помогают строить генерацию текста и прогнозы.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Их часто используют в автодополнении, аналитике временных рядов и чат-ботах.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network bert gpt fine tuning">
+                    <div class="card-header">
+                        <span class="card-title">18. Fine-tuning BERT и GPT</span>
+                        <span class="badge b-neural">LLM</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">После обучения на большом корпусе текста модель дообучают под конкретную задачу.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Возьмите готовую модель BERT или GPT.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Подготовьте собственный датасет с нужными метками.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Дообучайте на небольшом, но качественном наборе данных.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># BERT хорошо работает для понимания контекста
+# GPT сильнее в генерации текста
+# Fine-tuning позволяет адаптировать модель без обучения с нуля</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Fine-tuning позволяет взять сильную базовую модель и адаптировать её под свою задачу.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это один из стандартных рабочих сценариев в production NLP.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network stable diffusion diffusion">
+                    <div class="card-header">
+                        <span class="card-title">19. Stable Diffusion: генерация изображений</span>
+                        <span class="badge b-neural">Generative</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Diffusion-модели добавляют шум и постепенно восстанавливают изображение по текстовому описанию.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Понять идею: модель учится удалять шум постепенно.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Начните с простых генеративных экспериментов на небольших изображениях.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Затем переходите к текстовым промптам и более сложным архитектурам.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Diffusion-модели учатся удалять шум шаг за шагом
+# Это делает их очень точными в генерации новых картинок и сцен</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Diffusion-модели постепенно очищают шум и строят изображение по текстовому запросу.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это технология, стоящая за современными генераторами изображений и арт-инструментами.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network yolo object detection">
+                    <div class="card-header">
+                        <span class="card-title">20. YOLO: детекция объектов в реальном времени</span>
+                        <span class="badge b-neural">Detection</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">YOLO быстро находит объекты на изображении, что важно для видео и робототехники.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Соберите датасет с изображениями и bounding boxes.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Подготовьте разметку и проверьте, что координаты верны.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Обучите сеть и оцените качество по IoU и mAP.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># YOLO делит изображение на сетку и предсказывает bounding box для каждого объекта
+# Основное преимущество — скорость, поэтому её используют в системах реального времени</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">YOLO быстро находит объекты на кадре и подходит для видео и систем реального времени.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Её используют в видеонаблюдении, складской логистике и робототехнике.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network style transfer vision">
+                    <div class="card-header">
+                        <span class="card-title">21. Style Transfer: перенос художественного стиля</span>
+                        <span class="badge b-neural">Vision</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Style Transfer даёт возможность сохранить содержимое изображения, но изменить его визуальный стиль.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Возьмите два изображения: содержимое и стиль.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Извлеките признаки из разных слоёв сети.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Смешайте их так, чтобы сохранить форму и поменять художественную подачу.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Идея состоит в том, чтобы совмещать структуру одного изображения и стиль другого
+# Для этого используют признаки разных слоёв сверточной сети</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Style transfer сохраняет форму исходного изображения и меняет только его художественный стиль.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Такая техника встречается в редакторах, фильтрах и генеративном дизайне.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network reinforcement learning dqn">
+                    <div class="card-header">
+                        <span class="card-title">22. Reinforcement Learning: DQN</span>
+                        <span class="badge b-neural">RL</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">RL учит агента принимать решения через награды и штрафы.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Опишите среду и возможные действия агента.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Дайте понятную систему наград и штрафов.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Запускайте обучение по эпизодам и анализируйте, как агент улучшает поведение.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Агент видит состояние среды, выбирает действие и получает reward
+# DQN использует нейросеть для оценки полезности действий
+# Это основа многих систем обучения с подкреплением</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Агент учится получать награду за правильные решения и штрафы за ошибки.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">DQN применяется в играх, робототехнике и управлении поведением систем.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network tensorboard confusion matrix metrics">
+                    <div class="card-header">
+                        <span class="card-title">23. Метрики и отладка: TensorBoard, confusion matrix</span>
+                        <span class="badge b-neural">Metrics</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Наблюдать за метриками и ошибками крайне важно для понимания того, что происходит внутри модели.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Сохраняйте графики loss и accuracy во время обучения.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Используйте confusion matrix, чтобы видеть, какие классы путаются.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Сравнивайте разные версии модели по одним и тем же метрикам.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># TensorBoard показывает графики loss и accuracy во время обучения
+# Confusion matrix помогает понять, какие классы модель путает
+from sklearn.metrics import confusion_matrix</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">TensorBoard показывает динамику loss и accuracy во времени, а confusion matrix помогает видеть слабые классы.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Эти инструменты незаменимы при отладке и сравнении версий моделей.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network embeddings vector db similarity">
+                    <div class="card-header">
+                        <span class="card-title">24. Embeddings и векторные базы данных</span>
+                        <span class="badge b-neural">Embeddings</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Embeddings превращают объекты в числовые представления, которые удобно сравнивать и искать.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Превратите слова, товары или изображения в векторы.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Сравнивайте их через косинусное сходство или расстояние.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Используйте это для поиска похожих объектов и рекомендаций.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Embeddings помогают находить похожие тексты, документы и изображения
+# Их используют в поиске, рекомендациях и Retrieval-Augmented Generation</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Embeddings превращают слова, документы и изображения в понятные модели числовые представления.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Их используют в поиске, рекомендациях, RAG и семантическом сопоставлении.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network mlops pipeline ci cd">
+                    <div class="card-header">
+                        <span class="card-title">25. MLOps: pipeline обучения и доставки</span>
+                        <span class="badge b-neural">MLOps</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">MLOps соединяет разработку, обучение, тестирование и запуск модели как часть продуктовой инфраструктуры.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Версионируйте данные, код и модели.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Автоматизируйте запуск тестов и обучение.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Делайте развертывание повторяемым и безопасным.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># MLOps включает версионирование данных, моделей, экспериментов и инфраструктуры
+# Без этого сложно поддерживать модели в реальной эксплуатации</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">MLOps связывает данные, обучение, тесты и продакшен в один управляемый цикл.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Без этого сложно поддерживать и масштабировать реальные ML-сервисы.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network fastapi deployment api">
+                    <div class="card-header">
+                        <span class="card-title">26. FastAPI: деплой модели как API</span>
+                        <span class="badge b-neural">API</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Сервисный слой позволяет запускать предсказания через HTTP и интегрировать модель в приложение.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Сохраните обученную модель.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Откройте endpoint для предсказаний.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Подключите сервис к сайту, боту или мобильному приложению.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># FastAPI даёт быстрый способ открыть endpoint для инференса
+# Такой API можно подключить к веб-сервису, мобильному приложению или боту
+from fastapi import FastAPI
+
+app = FastAPI()</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Через API можно отдавать предсказания веб-приложениям, чат-ботам и мобильным сервисам.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это стандартный способ интеграции ML-модели в продукт.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network docker ci cd deployment">
+                    <div class="card-header">
+                        <span class="card-title">27. Docker и CI/CD для ML-проектов</span>
+                        <span class="badge b-neural">Docker</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Контейнеры и непрерывная доставка делают обучение и развертывание более предсказуемыми.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Упакуйте приложение в Docker.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Настройте автоматический запуск тестов и сборки.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Делайте деплой в контролируемой среде, а не вручную.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">DOCKER</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Docker создаёт одинаковую среду для обучения и продакшена
+# CI/CD помогает автоматически запускать тесты и обновлять сервисы</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Docker и CI/CD делают среду воспроизводимой, а обновления модели — предсказуемыми.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это критично для командной разработки и релизов в продакшен.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network explainability shap lime">
+                    <div class="card-header">
+                        <span class="card-title">28. Explainability: SHAP и LIME</span>
+                        <span class="badge b-neural">Explainability</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Объяснимость помогает понять, почему модель приняла то или иное решение.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Проверьте, какие признаки сильнее всего влияют на ответ.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Используйте SHAP или LIME для объяснения решения.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Показывайте такие объяснения пользователям и бизнесу.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># SHAP и LIME помогают объяснить влияние признаков на ответ модели
+# Это важно для бизнеса, медицины, права и финансов</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Объяснимость помогает показать, почему модель выбрала тот или иной ответ.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это особенно важно в медицине, финансах, юриспруденции и бизнес-аналитике.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network federated learning privacy">
+                    <div class="card-header">
+                        <span class="card-title">29. Federated Learning: обучение без передачи данных</span>
+                        <span class="badge b-neural">Privacy</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Federated learning позволяет обучать модели прямо на устройствах, не отправляя данные на центральный сервер.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Представьте, что обучение происходит прямо на устройствах пользователей.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Отправляйте только обновления весов, а не сами данные.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Это особенно полезно в задачах с приватностью и персональными данными.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Такой подход полезен там, где важны приватность и безопасность данных
+# Модель обучается локально, а обновления слоёв отправляются на сервер</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Federated learning учит модели прямо на устройствах, не передавая данные централизованно.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Это один из главных подходов в privacy-first AI и Edge ML.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network monitoring ab testing deployment">
+                    <div class="card-header">
+                        <span class="card-title">30. A/B тестирование и мониторинг моделей</span>
+                        <span class="badge b-neural">Monitoring</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Промышленный ML-проект живёт не только на этапе обучения, но и после запуска в продакшн.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Следите за метриками после релиза, а не только до него.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Делайте A/B тесты между версиями моделей.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Если качество падает, обновляйте модель и повторяйте цикл.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Нужно следить за качеством модели в проде, потому что данные меняются со временем
+# A/B тесты помогают понять, какая версия лучше для пользователей</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">В проде модели стареют, поэтому важно отслеживать метрики и сравнивать версии в реальном времени.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">A/B тесты помогают понять, какая версия действительно лучше для пользователей.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="neural network project pipeline deployment flask">
+                    <div class="card-header">
+                        <span class="card-title">31. Практический проект: от датасета до API</span>
+                        <span class="badge b-neural">Project</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-desc">Полный цикл: подготовка данных, обучение модели, сохранение и запуск предсказаний через API.</p>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🛠️ ЧТО ДЕЛАТЬ</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">1. Сначала подготовьте датасет и обучите модель.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">2. Сохраните её и откройте простой HTTP API.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">3. Проверьте систему на реальном запросе и улучшайте по результату.</div>
+                        </div>
+                        <div class="code-container">
+                            <span class="code-label">PYTHON</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"># Этот путь показывает, как из учебного примера сделать рабочий продукт
+# Сначала подготавливаем данные, затем обучаем модель, потом сохраняем её и подключаем интерфейс
+# На практике такой цикл используется в сервисах рекомендаций, классификации и генерации контента
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
+
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = MLPClassifier(hidden_layer_sizes=(64, 32), max_iter=300)
+model.fit(X_train, y_train)
+print(model.score(X_test, y_test))</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Этот проект показывает полный цикл: датасет → обучение → оценка → API → сервис.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Такой сценарий очень похож на реальную работу ML-разработчика в продукте.</div>
+                        </div>
                     </div>
                 </article>
             </div>
