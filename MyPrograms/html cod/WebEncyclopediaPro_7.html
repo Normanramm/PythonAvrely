@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>Web Encyclopedia Vlad Avrely — HTML5 • CSS3 • JS • Python • SQL • PostgreSQL • Algorithms • FastAPI • Flask • Django</title>
+    <title>Web Encyclopedia Vlad Avrely — HTML5 • CSS3 • JS • Python • SQLAlchemy • SQL • PostgreSQL • MySQL • Algorithms • FastAPI • Flask • Django</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <style>
@@ -350,6 +350,11 @@
         .b-postgres {
             background: #dfefff;
             color: #1f4f99;
+        }
+
+        .b-mysql {
+            background: #fff4e6;
+            color: #00758f;
         }
 
         .b-algo {
@@ -704,6 +709,7 @@
                 <button class="tab" onclick="switchTab('sqlalchemy', this)">SQLAlchemy</button>
                 <button class="tab" onclick="switchTab('sql', this)">SQL</button>
                 <button class="tab" onclick="switchTab('postgres', this)">PostgreSQL</button>
+                <button class="tab" onclick="switchTab('mysql', this)">MySQL</button>
                 <button class="tab" onclick="switchTab('algorithms', this)">Алгоритмы</button>
                 <button class="tab" onclick="switchTab('fastapi', this)">FastAPI</button>
                 <button class="tab" onclick="switchTab('flask', this)">Flask</button>
@@ -6326,6 +6332,456 @@ pg_restore -U postgres -d app_db_new app_db.dump</pre>
                                 запросы, через `pg_locks` — блокировки, мешающие транзакциям.</div>
                             <div style="font-size: 12px; color: var(--text-sec);">Комментарий: это первый шаг при
                                 жалобах на “тормозит БД” и “все зависло”.</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <!-- ================= MYSQL SECTION ================= -->
+        <section id="mysql" class="section">
+            <div class="section-header">
+                <h1 class="section-title"
+                    style="background: linear-gradient(135deg, #00758f, #f29111); background-clip: text; -webkit-background-clip: text;">
+                    MySQL Полная Справка</h1>
+                <p class="section-desc">От установки до production: типы, индексы, JSON, транзакции InnoDB,
+                    администрирование, репликация и оптимизация</p>
+            </div>
+            <div class="grid">
+                <article class="card" data-tags="mysql install mysql client docker my.cnf init connect">
+                    <div class="card-header">
+                        <span class="card-title">Установка и подключение</span>
+                        <span class="badge b-mysql">Setup</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">CLI</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">-- Подключение к серверу</span>
+mysql -h localhost -P 3306 -u root -p app_db
+
+<span class="k">-- Проверка версии и текущей БД</span>
+<span class="k">SELECT</span> VERSION();
+<span class="k">SELECT</span> DATABASE();
+
+<span class="k">-- Создание пользователя и БД</span>
+<span class="k">CREATE USER</span> <span class="s">'app_user'</span>@<span class="s">'localhost'</span> <span class="k">IDENTIFIED BY</span> <span class="s">'StrongPass123'</span>;
+<span class="k">CREATE DATABASE</span> app_db <span class="k">CHARACTER SET</span> utf8mb4 <span class="k">COLLATE</span> utf8mb4_unicode_ci;
+<span class="k">GRANT ALL PRIVILEGES ON</span> app_db.* <span class="k">TO</span> <span class="s">'app_user'</span>@<span class="s">'localhost'</span>;
+<span class="k">FLUSH PRIVILEGES</span>;</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Сервер MySQL запущен, база
+                                `app_db` и пользователь `app_user` готовы для приложения.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: для приложений всегда
+                                используйте `utf8mb4` — это полная поддержка Unicode, включая emoji.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card"
+                    data-tags="mysql datatypes auto increment bigint enum json datetime decimal">
+                    <div class="card-header">
+                        <span class="card-title">Типы данных MySQL</span>
+                        <span class="badge b-mysql">Types</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">CREATE TABLE</span> events (
+    id <span class="k">BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY</span>,
+    event_uuid <span class="k">CHAR(36) NOT NULL</span>,
+    title <span class="k">VARCHAR(255) NOT NULL</span>,
+    status <span class="k">ENUM</span>(<span class="s">'draft'</span>, <span class="s">'published'</span>, <span class="s">'archived'</span>),
+    price <span class="k">DECIMAL(10,2)</span>,
+    tags <span class="k">JSON</span>,
+    created_at <span class="k">DATETIME DEFAULT CURRENT_TIMESTAMP</span>
+) <span class="k">ENGINE</span>=InnoDB;</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <table class="attr-table" style="width: 100%;">
+                                <tr>
+                                    <th>Тип</th>
+                                    <th>Где применять</th>
+                                </tr>
+                                <tr>
+                                    <td>AUTO_INCREMENT</td>
+                                    <td>автоинкремент первичного ключа</td>
+                                </tr>
+                                <tr>
+                                    <td>JSON</td>
+                                    <td>гибкая структура данных (MySQL 5.7+)</td>
+                                </tr>
+                                <tr>
+                                    <td>DECIMAL</td>
+                                    <td>точные денежные значения</td>
+                                </tr>
+                            </table>
+                            <div style="font-size: 12px; color: var(--text-sec); margin-top: 8px;">Комментарий: для
+                                денег используйте `DECIMAL`, а не `FLOAT` — это исключает ошибки округления.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card"
+                    data-tags="mysql constraints primary key foreign key unique check default">
+                    <div class="card-header">
+                        <span class="card-title">Ограничения и целостность</span>
+                        <span class="badge b-mysql">Schema</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">CREATE TABLE</span> users (
+    id <span class="k">BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY</span>,
+    email <span class="k">VARCHAR(255) UNIQUE NOT NULL</span>,
+    age <span class="k">INT CHECK</span> (age &gt;= 13),
+    created_at <span class="k">DATETIME DEFAULT CURRENT_TIMESTAMP</span>
+) <span class="k">ENGINE</span>=InnoDB;
+
+<span class="k">CREATE TABLE</span> orders (
+    id <span class="k">BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY</span>,
+    user_id <span class="k">BIGINT UNSIGNED NOT NULL</span>,
+    total <span class="k">DECIMAL(10,2) CHECK</span> (total &gt;= 0),
+    <span class="k">CONSTRAINT</span> fk_orders_user
+        <span class="k">FOREIGN KEY</span> (user_id) <span class="k">REFERENCES</span> users(id)
+        <span class="k">ON DELETE CASCADE</span>
+) <span class="k">ENGINE</span>=InnoDB;</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">`CHECK`, `UNIQUE` и `FOREIGN KEY`
+                                защищают данные от некорректных значений и «висячих» связей.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: внешние ключи работают
+                                только в InnoDB — MyISAM их не поддерживает.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card"
+                    data-tags="mysql index btree fulltext composite explain analyze">
+                    <div class="card-header">
+                        <span class="card-title">Индексы и EXPLAIN</span>
+                        <span class="badge b-mysql">Perf</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">CREATE INDEX</span> idx_orders_user_id <span class="k">ON</span> orders(user_id);
+<span class="k">CREATE INDEX</span> idx_events_tags <span class="k">ON</span> events((CAST(tags-&gt;&gt;<span class="s">'$.status'</span> <span class="k">AS CHAR</span>(32))));
+
+<span class="k">EXPLAIN ANALYZE</span>
+<span class="k">SELECT</span> * <span class="k">FROM</span> orders <span class="k">WHERE</span> user_id = 42;</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div
+                                style="width: 100%; background: var(--bg-preview); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 12px;">
+                                -&gt; Index lookup on orders using idx_orders_user_id (actual time=0.05..0.12 rows=18)
+                            </div>
+                            <div style="font-size: 12px; color: var(--text-sec); margin-top: 8px;">Комментарий:
+                                `EXPLAIN ANALYZE` (MySQL 8.0.18+) показывает реальный план и время выполнения
+                                запроса.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="mysql json json extract json contains json set path">
+                    <div class="card-header">
+                        <span class="card-title">JSON: хранение и поиск</span>
+                        <span class="badge b-mysql">JSON</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c">-- JSON: тип данных MySQL для хранения JSON документов</span>
+<span class="c">-- tags-&gt;&gt;'$.status': извлекает значение по JSON-пути как строку</span>
+<span class="k">SELECT</span> id, tags-&gt;&gt;<span class="s">'$.status'</span> <span class="k">AS</span> status
+<span class="k">FROM</span> events
+<span class="c">-- JSON_CONTAINS: проверяет, содержит ли JSON указанный объект</span>
+<span class="k">WHERE</span> JSON_CONTAINS(tags, <span class="s">'{"priority":"high"}'</span>);
+
+<span class="c">-- JSON_SET(): обновляет значение по JSON-пути</span>
+<span class="k">UPDATE</span> events
+<span class="k">SET</span> tags = JSON_SET(tags, <span class="s">'$.status'</span>, <span class="s">'processed'</span>)
+<span class="k">WHERE</span> id = 1;</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">JSON позволяет хранить
+                                полуструктурированные данные и фильтровать их функциями `JSON_EXTRACT`, `JSON_CONTAINS`.
+                            </div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: для частых фильтров по
+                                JSON-полям создавайте функциональные индексы на выражения `CAST(... AS CHAR)`.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="mysql cte recursive window functions rank row_number lag lead">
+                    <div class="card-header">
+                        <span class="card-title">CTE и оконные функции</span>
+                        <span class="badge b-mysql">Analytics</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c">-- CTE (Common Table Expression) в MySQL 8.0+</span>
+<span class="k">WITH monthly AS</span> (
+  <span class="k">SELECT</span> user_id,
+         DATE_FORMAT(created_at, <span class="s">'%Y-%m-01'</span>) <span class="k">AS</span> m,
+         <span class="k">SUM</span>(total) <span class="k">AS</span> revenue
+  <span class="k">FROM</span> orders
+  <span class="k">GROUP BY</span> user_id, m
+)
+<span class="k">SELECT</span> user_id, m, revenue,
+       <span class="k">RANK</span>() <span class="k">OVER</span> (<span class="k">PARTITION BY</span> user_id <span class="k">ORDER BY</span> revenue <span class="k">DESC</span>) <span class="k">AS</span> revenue_rank
+<span class="k">FROM</span> monthly;</pre>
+                        </div>
+                        <div class="preview-container" style="align-items: flex-start;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <table class="attr-table" style="width: 100%;">
+                                <tr>
+                                    <th>user_id</th>
+                                    <th>month</th>
+                                    <th>revenue</th>
+                                    <th>rank</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2026-04-01</td>
+                                    <td>2950.00</td>
+                                    <td>1</td>
+                                </tr>
+                            </table>
+                            <div style="font-size: 12px; color: var(--text-sec); margin-top: 8px;">Комментарий: CTE и
+                                оконные функции доступны в MySQL 8.0+ — для аналитики это замена сложным подзапросам.
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card"
+                    data-tags="mysql transaction isolation level read committed repeatable read serializable innodb">
+                    <div class="card-header">
+                        <span class="card-title">Транзакции и уровни изоляции</span>
+                        <span class="badge b-mysql">ACID</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">START TRANSACTION</span>;
+<span class="k">SET SESSION TRANSACTION ISOLATION LEVEL</span> REPEATABLE READ;
+
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance - 500 <span class="k">WHERE</span> id = 1;
+<span class="k">UPDATE</span> accounts <span class="k">SET</span> balance = balance + 500 <span class="k">WHERE</span> id = 2;
+
+<span class="k">COMMIT</span>;
+<span class="k">-- при ошибке: ROLLBACK;</span></pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">InnoDB поддерживает ACID-транзакции;
+                                по умолчанию уровень изоляции — `REPEATABLE READ` с MVCC.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: для финансовых
+                                операций всегда оборачивайте связанные UPDATE в одну транзакцию.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card"
+                    data-tags="mysql users grants revoke privileges backup restore mysqldump mysqladmin">
+                    <div class="card-header">
+                        <span class="card-title">Пользователи, права, backup/restore</span>
+                        <span class="badge b-mysql">Admin</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">ADMIN</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">CREATE USER</span> <span class="s">'readonly'</span>@<span class="s">'%'</span> <span class="k">IDENTIFIED BY</span> <span class="s">'ReadOnlyPass'</span>;
+<span class="k">GRANT SELECT ON</span> app_db.* <span class="k">TO</span> <span class="s">'readonly'</span>@<span class="s">'%'</span>;
+<span class="k">FLUSH PRIVILEGES</span>;
+
+<span class="k">-- Отзыв прав</span>
+<span class="k">REVOKE INSERT, UPDATE, DELETE ON</span> app_db.* <span class="k">FROM</span> <span class="s">'readonly'</span>@<span class="s">'%'</span>;
+
+<span class="k">-- Резервная копия и восстановление</span>
+mysqldump -u root -p --single-transaction app_db &gt; app_db.sql
+mysql -u root -p app_db_new &lt; app_db.sql</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Минимальные права по ролям +
+                                регулярный `mysqldump --single-transaction` — базовая стратегия для InnoDB.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: флаг `--single-transaction`
+                                делает консистентный дамп без блокировки таблиц на запись.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="mysql innodb myisam engine row lock transaction buffer pool">
+                    <div class="card-header">
+                        <span class="card-title">Движки хранения: InnoDB</span>
+                        <span class="badge b-mysql">Engines</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">-- InnoDB: транзакции, FK, row-level locks (рекомендуется)</span>
+<span class="k">CREATE TABLE</span> accounts (
+    id <span class="k">BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY</span>,
+    email <span class="k">VARCHAR(255) UNIQUE NOT NULL</span>,
+    balance <span class="k">DECIMAL(12,2) NOT NULL DEFAULT</span> 0
+) <span class="k">ENGINE</span>=InnoDB;
+
+<span class="k">SHOW TABLE STATUS LIKE</span> <span class="s">'accounts'</span>;
+<span class="k">SHOW ENGINES</span>;</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">InnoDB — стандарт для production:
+                                ACID, внешние ключи, crash recovery через redo log.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: MyISAM не поддерживает
+                                транзакции — используйте только InnoDB для приложений.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="mysql partitioning range list hash large tables retention">
+                    <div class="card-header">
+                        <span class="card-title">Партиционирование таблиц</span>
+                        <span class="badge b-mysql">Scale</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">CREATE TABLE</span> logs (
+    id <span class="k">BIGINT UNSIGNED AUTO_INCREMENT</span>,
+    created_at <span class="k">DATE NOT NULL</span>,
+    payload <span class="k">JSON</span>,
+    <span class="k">PRIMARY KEY</span> (id, created_at)
+) <span class="k">ENGINE</span>=InnoDB
+<span class="k">PARTITION BY RANGE</span> (<span class="k">TO_DAYS</span>(created_at)) (
+    <span class="k">PARTITION</span> p202604 <span class="k">VALUES LESS THAN</span> (<span class="k">TO_DAYS</span>(<span class="s">'2026-05-01'</span>)),
+    <span class="k">PARTITION</span> p202605 <span class="k">VALUES LESS THAN</span> (<span class="k">TO_DAYS</span>(<span class="s">'2026-06-01'</span>))
+);</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Данные автоматически раскладываются по
+                                партициям; старые партиции можно удалять через `ALTER TABLE ... DROP PARTITION`.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: ключ партиционирования
+                                должен входить во все UNIQUE/PK индексы таблицы.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="mysql replication binlog primary replica gtid failover">
+                    <div class="card-header">
+                        <span class="card-title">Репликация и binlog</span>
+                        <span class="badge b-mysql">Replication</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="c">-- На primary: включить binlog и GTID</span>
+<span class="c">-- my.cnf: log_bin=ON, gtid_mode=ON, enforce_gtid_consistency=ON</span>
+
+<span class="k">SHOW MASTER STATUS</span>;
+
+<span class="c">-- На replica: настроить подключение к primary</span>
+<span class="k">CHANGE REPLICATION SOURCE TO</span>
+  SOURCE_HOST=<span class="s">'192.168.1.10'</span>,
+  SOURCE_USER=<span class="s">'repl'</span>,
+  SOURCE_PASSWORD=<span class="s">'ReplPass'</span>,
+  SOURCE_AUTO_POSITION=1;
+
+<span class="k">START REPLICA</span>;
+<span class="k">SHOW REPLICA STATUS\G</span></pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">GTID-репликация упрощает failover:
+                                replica знает, какую позицию binlog применять автоматически.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: в MySQL 8.0+ команды
+                                `CHANGE REPLICATION SOURCE TO` и `START REPLICA` заменили старый синтаксис SLAVE.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="mysql optimize analyze table innodb stats maintenance">
+                    <div class="card-header">
+                        <span class="card-title">OPTIMIZE, ANALYZE, обслуживание</span>
+                        <span class="badge b-mysql">Maintenance</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">ANALYZE TABLE</span> orders;
+<span class="k">OPTIMIZE TABLE</span> orders;
+
+<span class="k">-- Статистика InnoDB</span>
+<span class="k">SELECT</span> table_name, table_rows, data_length, index_length
+<span class="k">FROM</span> information_schema.tables
+<span class="k">WHERE</span> table_schema = <span class="s">'app_db'</span>;</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">`ANALYZE TABLE` обновляет статистику
+                                для оптимизатора, `OPTIMIZE TABLE` дефрагментирует (для InnoDB — перестройка).</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: без актуальной статистики
+                                оптимизатор может выбрать full table scan вместо индекса.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card" data-tags="mysql monitoring processlist performance schema slow query log">
+                    <div class="card-header">
+                        <span class="card-title">Мониторинг и диагностика</span>
+                        <span class="badge b-mysql">Observability</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="code-container">
+                            <span class="code-label">SQL</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <pre class="code-block"><span class="k">SHOW FULL PROCESSLIST</span>;
+
+<span class="k">SELECT</span> thread_id, event_name, timer_wait/1000000000 <span class="k">AS</span> ms
+<span class="k">FROM</span> performance_schema.events_waits_current
+<span class="k">WHERE</span> timer_wait &gt; 0;
+
+<span class="k">-- Медленные запросы (slow_query_log=ON в my.cnf)</span>
+<span class="k">SELECT</span> start_time, query_time, sql_text
+<span class="k">FROM</span> mysql.slow_log
+<span class="k">ORDER BY</span> start_time <span class="k">DESC LIMIT</span> 10;</pre>
+                        </div>
+                        <div class="preview-container"
+                            style="align-items: flex-start; flex-direction: column; gap: 8px;">
+                            <span class="preview-label">🖥️ PREVIEW</span>
+                            <div style="font-size: 12px; color: var(--text-sec);">Через `PROCESSLIST` видно активные
+                                запросы, через `performance_schema` — узкие места по ожиданиям.</div>
+                            <div style="font-size: 12px; color: var(--text-sec);">Комментарий: включите `slow_query_log`
+                                на staging/production — это первый шаг при жалобах на «тормозит БД».</div>
                         </div>
                     </div>
                 </article>
