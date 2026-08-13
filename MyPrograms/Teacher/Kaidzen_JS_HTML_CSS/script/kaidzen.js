@@ -85,14 +85,44 @@ while (count2 > 2) {
 }
 
 // DOM на JavaScript(будет работать до script)_______________________________________
-let elem = document.getElementById('element5'); 
-elem.textContent = "Тут был текст его изменил в kaidzen.js для DOM"; // Меняем текст
-elem.style.background = "green" // меняем цвет фона
-elem.style.color = "white" // меняем цвет текста
+// Для HTML
+// 1. Работа с element5
+let elem5 = document.getElementById('element5');
+elem5.textContent += " (А этот добавил в kaidzen.js для DOM)";
+elem5.style.background = "green"; // Меняем цвет фона на зеленый
+elem5.style.color = "white";      // Меняем цвет текста на белый
+
+
+// 2. Работа с element6
+let elem6 = document.getElementById('element6');
+// Здесь используем innerHTML, так как внутри есть HTML-тег <b>
+elem6.innerHTML += " <b style='color: yellow'> (А этот цвет шрифта изменил в kaidzen.js для DOM c использованием стиля)</b>";
+elem6.style.background = "blue";   // Меняем цвет фона на красный
+elem6.style.color = "#00ffbb";
+
+// // второй вариант, но лучше использовть тот, что выше!!!
+// element6.innerHTML += " <b style='color: yellow'> А этот добавил в kaidzen.js для DOM второй вариант написания)</b>"; // Меняем текст 
+// element6.style.background = "red" // меняем цвет фона
+// element6.style.color = "white" // меняем цвет текста
+
+
+// 3. Работа только с element7 (убираем предыдущие наложения!)
+// Мы выбираем только те div, у которых есть класс 'element7' (точка перед именем обязательна!)
+let elems7 = document.querySelectorAll('.element7');
+
+for (let i of elems7) {
+    i.innerHTML += " <b style='color: #70f8ad'> (А этот цвет шрифта изменил в kaidzen.js для DOM c использованием стиля)</b>";
+    i.style.background = "red";
+    i.style.color = "white";
+}
+
+// Для CSS 
+let elem = document.querySelector("#element6")
 
 
 // в сайте________________________________________________
 console.log("этот текст я ввел в kaidzen.js");
+// alert('Это простое сообщение вылезет при запуске сайта!');
 
 // ВНИМАНИЕ: innerHTML перезапишет то, что мы сделали через textContent выше! 
 // Если хочешь видеть оба варианта, меняй разные элементы.
