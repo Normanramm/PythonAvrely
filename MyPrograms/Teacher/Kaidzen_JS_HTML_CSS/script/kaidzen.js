@@ -85,6 +85,14 @@ while (count2 > 2) {
 }
 
 // DOM на JavaScript(будет работать до script)_______________________________________
+
+// textContent - текстовое содержимое элемента
+// querySelector() - найти элемент по CSS селектору
+// nodeList - список из элементов (похож на массив)
+// getElementById() - найти элемент по идентификатору
+// innerHTML - содержимое элемента с HTML тегами
+
+
 // Для HTML
 // 1. Работа с element5
 let elem5 = document.getElementById('element5');
@@ -100,6 +108,7 @@ elem6.innerHTML += " <b style='color: yellow'> (А этот цвет шрифт�
 elem6.style.background = "blue";   // Меняем цвет фона на красный
 elem6.style.color = "#00ffbb";
 
+
 // // второй вариант, но лучше использовть тот, что выше!!!
 // element6.innerHTML += " <b style='color: yellow'> А этот добавил в kaidzen.js для DOM второй вариант написания)</b>"; // Меняем текст 
 // element6.style.background = "red" // меняем цвет фона
@@ -111,10 +120,61 @@ elem6.style.color = "#00ffbb";
 let elems7 = document.querySelectorAll('.element7');
 
 for (let i of elems7) {
-    i.innerHTML += " <b style='color: #70f8ad'> (А этот цвет шрифта изменил в kaidzen.js для DOM c использованием стиля)</b>";
+    i.innerHTML += " <b style='color: #70f8ad'> (А этот цвет шрифта изменил в kaidzen.js для DOM c использованием стиля и циклом for)</b>";
     i.style.background = "red";
     i.style.color = "white";
 }
+
+// 4. С циклом while
+let elems8 = document.querySelectorAll('.element8');
+let i = 0;
+while (i < elems8.length) {
+    elems8[i].innerHTML += " <b style='color: #f870eb'> (А этот цвет шрифта изменил в kaidzen.js для DOM c использованием стиля и циклом while)</b>";
+    elems8[i].style.background = "green";
+    elems8[i].style.color = "white";
+    i++;
+}
+
+
+// 5. Работа с массивом, для отображения на странице
+let strs = ["Элемент 1 (созданно)", "Элемент 2(в kaidzen.js)", "Элемент 3(для DOM)"];
+document.querySelector('.element9').innerHTML = `
+<ol>
+    <li style="background: yellow;">${strs[0]} (этот будет синим)</li>
+    <li style="color: blue;">${strs[1]} (этот будет синим)</li>
+    <li style="color: green;">${strs[2]} (этот будет красным)</li>
+</ol>
+`
+
+let strs2 = ["Элемент 4 (созданно)", "Элемент 5(в kaidzen.js)", "Элемент 6(для DOM)"];
+document.querySelector('.element10').innerHTML =`
+${strs2[0]} - ${strs2[1]} - ${strs2[2]}
+`
+
+
+// // Если вы хотите управлять стилями исключительно через JS, менять их нужно после того, как innerHTML сгенерировал HTML-код, иначе JS не найдет элементы внутри.
+// let strs = ["Элемент 1 (создано)", "Элемент 2 (в kaidzen.js)", "Элемент 3 (для DOM)"];
+
+// // 1. Сначала вставляем HTML
+// const container = document.querySelector('.element9');
+// container.innerHTML = `
+// <ol>
+//     <li>${strs[0]}</li>
+//     <li>${strs[1]}</li>
+//     <li>${strs[2]}</li>
+// </ol>
+// `;
+
+// // 2. Затем находим сам список (ol) внутри контейнера и красим его
+// const listElement = container.querySelector('ol');
+// listElement.style.color = "red"; 
+
+// // Или красим конкретный элемент (например, второй <li>):
+// const secondItem = container.querySelectorAll('li')[1];
+// secondItem.style.color = "green";
+
+
+
 
 // Для CSS 
 let elem = document.querySelector("#element6")
