@@ -613,3 +613,46 @@ input:checked+span {
     margin-top: 1px;
     margin-bottom: 30px;
 }
+
+
+/* Для работы с DOM */
+.container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            width: 200px;
+            display: block;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0071e3;
+        }
+
+        .result2 {
+            padding: 15px;
+            background: #f5f5f7;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 10px;
+            text-align: center;
+            min-height: 24px;
+        }
+
+        .result2:empty::before {
+            content: "Результат";
+            color: #aaa;
+            font-weight: 400;
+        }

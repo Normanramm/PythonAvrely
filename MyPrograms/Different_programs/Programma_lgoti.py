@@ -2,7 +2,7 @@ from datetime import date
 
 # Исходные данные
 start = date(2014, 4, 29)
-end = date(2026, 5, 13)
+end = date(2026, 11, 10)
 
 # Периоды с особыми коэффициентами
 p1_start = date(2021, 5, 22)

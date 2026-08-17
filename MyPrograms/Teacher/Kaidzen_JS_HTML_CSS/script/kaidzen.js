@@ -147,7 +147,7 @@ document.querySelector('.element9').innerHTML = `
 `
 
 let strs2 = ["Элемент 4 (созданно)", "Элемент 5(в kaidzen.js)", "Элемент 6(для DOM)"];
-document.querySelector('.element10').innerHTML =`
+document.querySelector('.element10').innerHTML = `
 ${strs2[0]} - ${strs2[1]} - ${strs2[2]}
 `
 
@@ -174,6 +174,38 @@ ${strs2[0]} - ${strs2[1]} - ${strs2[2]}
 // secondItem.style.color = "green";
 
 
+
+// Атрибуты в DOM___________________________________________________
+let element_proverka = document.querySelector('.element10')
+element_proverka.setAttribute('title', 'изменил всплывающую подсказу в kaidzen.js')
+
+console.log(element_proverka.hasAttribute('title')) // поиск атрибута
+console.log(element_proverka.getAttribute('title')) // позволяет получить значение определенного атрибута
+console.log(element_proverka.dataset.about) // для взаимодействия со свои атрибутом, если он составной(data-about-block в HTML коде), то пишется - element_proverka.dataset.aboutBlock
+
+
+// Для калькулятора в DOM________________________________________________
+function update() {
+    let money = +document.querySelector('.money').value // с помощью плюса превратили в число
+    let year = +document.querySelector('.year').value   // с помощью плюса превратили в число
+    let result2 = money + money * 0.12 * year
+    document.querySelector('.result2').textContent = result2
+}
+
+update()
+
+document.querySelector('.money').addEventListener('input', update)
+
+document.querySelector('.year').addEventListener('input', update)
+
+// Вариант написания с анонимной функцией
+// document.querySelector('.monye').addEventListener('input', function () {
+//     update()
+// })
+
+// document.querySelector('.year').addEventListener('input', function () {
+//     update()
+// })
 
 
 // Для CSS 
